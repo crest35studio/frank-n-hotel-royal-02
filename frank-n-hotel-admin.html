@@ -61,7 +61,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--ral);min-height:10
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px}
 ::-webkit-scrollbar-thumb:hover{background:var(--gold-bdr)}
-
+ 
 /* ═══════════════════════════════════════════
    LOGIN
 ═══════════════════════════════════════════ */
@@ -104,12 +104,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--ral);min-height:10
 .l-btn:disabled{opacity:.4;cursor:not-allowed}
 .l-btn:disabled::before{display:none}
 .l-err{background:var(--red-dim);border:1px solid rgba(192,57,43,.3);color:#e67e73;font-size:11px;padding:10px 14px;margin-bottom:14px;display:none}
-
+ 
 /* ═══════════════════════════════════════════
    APP SHELL
 ═══════════════════════════════════════════ */
 #app{display:none}
-
+ 
 /* SIDEBAR */
 #sidebar{
   position:fixed;top:0;left:0;bottom:0;width:var(--sw);
@@ -161,7 +161,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--ral);min-height:10
   letter-spacing:.14em;padding:9px;cursor:pointer;transition:all var(--ease);
 }
 .sb-logout:hover{border-color:var(--gold);color:var(--text)}
-
+ 
 /* TOPBAR */
 #topbar{
   position:fixed;top:0;left:var(--sw);right:0;height:var(--th);
@@ -174,7 +174,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--ral);min-height:10
 .tb-live{display:flex;align-items:center;gap:6px;font-size:8px;letter-spacing:.16em;color:var(--text-muted)}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(46,204,113,.4)}50%{opacity:.7;box-shadow:0 0 0 4px rgba(46,204,113,0)}}
-
+ 
 /* MAIN */
 #main{
   margin-left:var(--sw);margin-top:var(--th);
@@ -183,7 +183,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--ral);min-height:10
 .panel{display:none}
 .panel.active{display:block;animation:pin .22s ease}
 @keyframes pin{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-
+ 
 /* ═══════════════════════════════════════════
    STATS GRID
 ═══════════════════════════════════════════ */
@@ -203,7 +203,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--ral);min-height:10
 .stat-sub{font-size:9px;color:var(--text-muted);margin-top:5px}
 .stat-divider{height:1px;background:var(--gold-bdr);margin:12px 0 10px}
 .stat-tag{font-size:8px;letter-spacing:.14em;color:var(--gold);font-style:italic}
-
+ 
 /* ═══════════════════════════════════════════
    SPARKLINE
 ═══════════════════════════════════════════ */
@@ -212,7 +212,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--ral);min-height:10
 .spark-bar{width:100%;min-height:2px;transition:height .6s ease;border-radius:1px 1px 0 0;background:linear-gradient(180deg,var(--gold) 0%,rgba(201,169,110,.25) 100%)}
 .spark-bar.today{background:var(--gold)}
 .spark-lbl{position:absolute;bottom:-17px;font-size:7px;color:var(--text-muted);letter-spacing:.04em}
-
+ 
 /* ═══════════════════════════════════════════
    SECTION HEADER
 ═══════════════════════════════════════════ */
@@ -220,7 +220,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--ral);min-height:10
 .sec-title{font-family:var(--cinzel);font-size:12px;letter-spacing:.2em;color:var(--text)}
 .sec-desc{font-size:10px;color:var(--text-muted);margin-top:3px}
 .sec-acts{display:flex;gap:8px;align-items:center;flex-shrink:0}
-
+ 
 /* ═══════════════════════════════════════════
    DASHBOARD 3-COL ACTIVITY
 ═══════════════════════════════════════════ */
@@ -232,7 +232,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--ral);min-height:10
 .dash-item:last-child{border-bottom:none}
 .dash-name{font-size:12px;color:var(--text)}
 .dash-sub{font-size:9px;color:var(--text-muted);margin-top:1px}
-
+ 
 /* ═══════════════════════════════════════════
    TABLE
 ═══════════════════════════════════════════ */
@@ -266,7 +266,7 @@ tbody tr:hover .copy-btn{opacity:1}
 .row-cb:checked{background:var(--gold);border-color:var(--gold)}
 .row-cb:checked::after{content:'\2713';position:absolute;top:-1px;left:2px;font-size:9px;color:var(--bg);font-weight:700}
 .row-cb:hover{border-color:var(--gold)}
-
+ 
 /* ═══════════════════════════════════════════
    BADGES
 ═══════════════════════════════════════════ */
@@ -283,7 +283,7 @@ tbody tr:hover .copy-btn{opacity:1}
 .badge-chat     {background:var(--blue-dim);color:var(--blue);border:1px solid rgba(91,155,213,.28)}
 .badge-flagged  {background:rgba(201,169,110,.1);color:var(--gold);border:1px solid var(--gold-bdr)}
 .badge-trash    {background:var(--red-dim);color:#e74c3c;border:1px solid rgba(192,57,43,.28)}
-
+ 
 /* ═══════════════════════════════════════════
    BUTTONS
 ═══════════════════════════════════════════ */
@@ -298,14 +298,14 @@ tbody tr:hover .copy-btn{opacity:1}
 .btn-ghost:hover{border-color:var(--gold);color:var(--text)}
 .btn-sm{padding:5px 11px;font-size:8px}
 .btn-xs{padding:3px 8px;font-size:8px;letter-spacing:.1em}
-
+ 
 /* ═══════════════════════════════════════════
    CARD
 ═══════════════════════════════════════════ */
 .card{background:var(--bg2);border:1px solid var(--gold-bdr);padding:20px 18px;margin-bottom:16px}
 .card-title{font-family:var(--cinzel);font-size:9px;letter-spacing:.2em;color:var(--text);margin-bottom:14px}
 .card-div{height:1px;background:var(--gold-bdr);margin:12px 0}
-
+ 
 /* ═══════════════════════════════════════════
    FORM
 ═══════════════════════════════════════════ */
@@ -320,7 +320,7 @@ tbody tr:hover .copy-btn{opacity:1}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold)}
 .form-select option{background:var(--bg3)}
 .form-textarea{resize:vertical;min-height:75px}
-
+ 
 /* ROOMS */
 .rooms-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 .room-card{background:var(--bg2);border:1px solid var(--gold-bdr);padding:18px;transition:border-color var(--ease)}
@@ -344,7 +344,7 @@ tbody tr:hover .copy-btn{opacity:1}
 .price-curr{font-family:var(--cinzel);font-size:13px;color:var(--gold)}
 .price-inp{flex:1;background:var(--bg3);border:1px solid var(--gold-bdr);color:var(--text);font-family:var(--cinzel);font-size:17px;padding:7px 9px;outline:none;transition:border-color var(--ease)}
 .price-inp:focus{border-color:var(--gold)}
-
+ 
 /* TESTIMONIALS */
 .testi-grid{display:flex;flex-direction:column;gap:11px}
 .testi-card{background:var(--bg2);border:1px solid var(--gold-bdr);padding:16px 18px;transition:border-color var(--ease)}
@@ -354,7 +354,7 @@ tbody tr:hover .copy-btn{opacity:1}
 .testi-city{font-size:9px;color:var(--text-muted);margin-top:2px}
 .testi-quote{font-family:var(--cor);font-size:14px;font-style:italic;color:var(--text-dim);line-height:1.65;margin-bottom:11px}
 .testi-acts{display:flex;gap:7px}
-
+ 
 /* ═══════════════════════════════════════════
    CONCIERGE PANEL
 ═══════════════════════════════════════════ */
@@ -369,7 +369,7 @@ tbody tr:hover .copy-btn{opacity:1}
 .ci-val{font-family:var(--cinzel);font-size:26px;color:var(--gold);line-height:1}
 .ci-val.sm{font-size:14px;padding-top:5px}
 .ci-sub{font-size:9px;color:var(--text-muted);margin-top:5px}
-
+ 
 /* TABS + TOOLBAR */
 .conc-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
 .conc-tabs{display:flex;border:1px solid var(--gold-bdr);overflow:hidden}
@@ -390,7 +390,7 @@ tbody tr:hover .copy-btn{opacity:1}
 }
 .conc-search:focus{border-color:var(--gold)}
 .conc-search::placeholder{color:var(--text-muted)}
-
+ 
 /* BULK BAR */
 .bulk-bar{
   display:none;align-items:center;gap:12px;
@@ -399,23 +399,23 @@ tbody tr:hover .copy-btn{opacity:1}
 }
 .bulk-bar.on{display:flex}
 .bulk-txt{font-size:11px;color:var(--gold);flex:1;letter-spacing:.04em}
-
+ 
 /* SETTINGS */
 .set-sec{margin-bottom:26px}
 .set-sec-title{font-size:8px;letter-spacing:.26em;color:var(--gold);margin-bottom:12px;padding-bottom:7px;border-bottom:1px solid var(--gold-bdr);font-weight:600}
 .set-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-
+ 
 /* DETAIL */
 .dr{display:flex;gap:7px;margin-bottom:9px;font-size:12px}
 .dk{color:var(--text-muted);min-width:128px;flex-shrink:0;letter-spacing:.03em}
 .dv{color:var(--text)}
 .dd{height:1px;background:var(--gold-bdr);margin:12px 0}
-
+ 
 /* EMPTY */
 .empty{text-align:center;padding:48px 20px;color:var(--text-muted)}
 .empty-ico{font-size:26px;margin-bottom:11px;opacity:.28}
 .empty-txt{font-size:11px;letter-spacing:.06em}
-
+ 
 /* ═══════════════════════════════════════════
    MODALS
 ═══════════════════════════════════════════ */
@@ -434,7 +434,7 @@ tbody tr:hover .copy-btn{opacity:1}
   padding-bottom:14px;border-bottom:1px solid var(--gold-bdr);
 }
 .modal-acts{display:flex;gap:9px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--gold-bdr);flex-wrap:wrap}
-
+ 
 /* ═══════════════════════════════════════════
    CONVERSATION VIEWER — CRITICAL: placed in HTML before <script>
 ═══════════════════════════════════════════ */
@@ -511,13 +511,14 @@ tbody tr:hover .copy-btn{opacity:1}
   color:#e74c3c;padding:6px 12px;cursor:pointer;transition:all var(--ease);
 }
 .cv-perm-btn:hover{background:var(--red-dim)}
-
-/* CONFIRM */
+ 
+/* CONFIRM — z-index must exceed cv-ov (2000) */
+#confirm-modal{z-index:3000}
 .confirm-card{background:var(--bg2);border:1px solid var(--gold-bdr);padding:26px 24px;width:100%;max-width:380px;animation:min .2s ease;text-align:center}
 .confirm-title{font-family:var(--cinzel);font-size:12px;letter-spacing:.16em;color:var(--text);margin-bottom:11px}
 .confirm-desc{font-size:11px;color:var(--text-muted);line-height:1.7;margin-bottom:22px}
 .confirm-acts{display:flex;gap:9px;justify-content:center}
-
+ 
 /* TOAST */
 #toast{
   position:fixed;bottom:22px;right:22px;
@@ -530,16 +531,46 @@ tbody tr:hover .copy-btn{opacity:1}
 #toast.on{opacity:1;transform:none}
 #toast.ok{border-color:rgba(46,204,113,.4)}
 #toast.err{border-color:rgba(192,57,43,.4)}
-
+ 
 /* LOADER */
 .spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(201,169,110,.2);border-top-color:var(--gold);border-radius:50%;animation:sp .8s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 .ldr{display:flex;align-items:center;gap:9px;color:var(--text-muted);font-size:11px;padding:22px}
-
+ 
+/* ═══════════════════════════════════════════
+   PIN SCREEN
+═══════════════════════════════════════════ */
+#pin-screen{
+  display:none;align-items:center;justify-content:center;
+  min-height:100vh;position:fixed;inset:0;z-index:9000;
+  background:radial-gradient(ellipse 60% 50% at 50% -10%,rgba(201,169,110,.09) 0%,transparent 60%),var(--bg);
+}
+.pin-card{width:100%;max-width:360px;padding:0 20px;text-align:center}
+.pin-badge-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:36px}
+.pin-lock{font-size:24px;opacity:.5;margin-bottom:4px}
+.pin-dots{display:flex;justify-content:center;gap:14px;margin:22px 0 20px}
+.pin-dot{width:12px;height:12px;border-radius:50%;border:1px solid var(--gold-bdr);transition:all .2s;background:transparent}
+.pin-dot.filled{background:var(--gold);border-color:var(--gold)}
+.pin-dot.shake{animation:psh .4s ease}
+@keyframes psh{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.pin-key{
+  background:var(--bg3);border:1px solid var(--gold-bdr);
+  color:var(--text);font-family:var(--cinzel);font-size:16px;
+  padding:16px;cursor:pointer;transition:all var(--ease);
+  user-select:none;-webkit-user-select:none;
+}
+.pin-key:hover{background:var(--gold-dim);border-color:var(--gold-bdr2);color:var(--gold)}
+.pin-key:active{transform:scale(.95)}
+.pin-key.del{font-size:12px;font-family:var(--ral);letter-spacing:.08em;color:var(--text-muted)}
+.pin-key.del:hover{color:var(--text)}
+.pin-err{background:var(--red-dim);border:1px solid rgba(192,57,43,.3);color:#e67e73;font-size:11px;padding:10px 14px;margin-bottom:12px;display:none}
+.pin-hint{font-size:9px;letter-spacing:.18em;color:var(--text-muted);margin-top:16px}
+ 
 /* SETUP */
 #setup-screen{display:none;align-items:center;justify-content:center;min-height:100vh;background:var(--bg)}
 .setup-card{width:100%;max-width:480px;background:var(--bg2);border:1px solid var(--gold-bdr);padding:44px 36px}
-
+ 
 /* RESPONSIVE */
 @media(max-width:1400px){.stats-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:1100px){.stats-grid{grid-template-columns:repeat(2,1fr)};.dash-cols{grid-template-columns:1fr 1fr}.rooms-grid{grid-template-columns:1fr}.set-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}}
@@ -556,7 +587,7 @@ tbody tr:hover .copy-btn{opacity:1}
 </style>
 </head>
 <body>
-
+ 
 <!-- LOGIN -->
 <div id="login-screen">
   <div class="lw">
@@ -580,10 +611,10 @@ tbody tr:hover .copy-btn{opacity:1}
     <button class="l-btn" id="l-btn" onclick="doLogin()"><span>SIGN IN</span></button>
   </div>
 </div>
-
+ 
 <!-- APP -->
 <div id="app">
-
+ 
   <aside id="sidebar">
     <div class="sb-brand">
       <div class="sb-badge">FNR</div>
@@ -605,18 +636,18 @@ tbody tr:hover .copy-btn{opacity:1}
     </nav>
     <div class="sb-foot"><button class="sb-logout" onclick="doLogout()">SIGN OUT</button></div>
   </aside>
-
+ 
   <header id="topbar">
     <div class="tb-title" id="tb-title">DASHBOARD</div>
     <div class="tb-right">
-      <div style="font-size:8px;letter-spacing:.14em;color:rgba(201,169,110,.45);border:1px solid rgba(201,169,110,.2);padding:3px 8px;">v3 · MAR 2026</div>
+      <div style="font-size:8px;letter-spacing:.14em;color:rgba(201,169,110,.45);border:1px solid rgba(201,169,110,.2);padding:3px 8px;">v4 · MAR 2026</div>
       <div class="tb-live" title="Auto-refreshing every 90s"><div class="live-dot"></div>LIVE</div>
       <div class="tb-time" id="tb-time"></div>
     </div>
   </header>
-
+ 
   <main id="main">
-
+ 
     <!-- ═══ DASHBOARD ═══ -->
     <div class="panel active" id="panel-dashboard">
       <!-- 6 stat cards -->
@@ -656,7 +687,7 @@ tbody tr:hover .copy-btn{opacity:1}
           <div class="stat-tag" id="st-top-room">—</div>
         </div>
       </div>
-
+ 
       <!-- 3-col activity -->
       <div class="dash-cols">
         <div class="dash-card">
@@ -679,7 +710,7 @@ tbody tr:hover .copy-btn{opacity:1}
         </div>
       </div>
     </div>
-
+ 
     <!-- ═══ BOOKINGS ═══ -->
     <div class="panel" id="panel-bookings">
       <div class="sec-hdr">
@@ -701,7 +732,7 @@ tbody tr:hover .copy-btn{opacity:1}
         </table>
       </div>
     </div>
-
+ 
     <!-- ═══ ENQUIRIES ═══ -->
     <div class="panel" id="panel-enquiries">
       <div class="sec-hdr">
@@ -723,7 +754,7 @@ tbody tr:hover .copy-btn{opacity:1}
         </table>
       </div>
     </div>
-
+ 
     <!-- ═══ ROOMS ═══ -->
     <div class="panel" id="panel-rooms">
       <div class="sec-hdr">
@@ -732,7 +763,7 @@ tbody tr:hover .copy-btn{opacity:1}
       </div>
       <div class="rooms-grid" id="rooms-grid"><div class="ldr"><span class="spin"></span>Loading rooms…</div></div>
     </div>
-
+ 
     <!-- ═══ TESTIMONIALS ═══ -->
     <div class="panel" id="panel-testimonials">
       <div class="sec-hdr">
@@ -741,13 +772,13 @@ tbody tr:hover .copy-btn{opacity:1}
       </div>
       <div class="testi-grid" id="testi-list"><div class="ldr"><span class="spin"></span>Loading…</div></div>
     </div>
-
+ 
     <!-- ═══ CONCIERGE ═══ -->
     <div class="panel" id="panel-concierge">
       <div class="sec-hdr">
         <div><div class="sec-title">BRUME — ROYAL CONCIERGE INTELLIGENCE</div><div class="sec-desc">AI conversation sessions · Training data · Guest interaction analytics</div></div>
       </div>
-
+ 
       <!-- Intelligence cards -->
       <div class="conc-intel">
         <div class="ci-card">
@@ -766,7 +797,7 @@ tbody tr:hover .copy-btn{opacity:1}
           <div class="ci-sub">Most requested room type</div>
         </div>
       </div>
-
+ 
       <!-- Toolbar -->
       <div class="conc-toolbar">
         <div class="conc-tabs">
@@ -777,14 +808,14 @@ tbody tr:hover .copy-btn{opacity:1}
         <input class="conc-search" id="conc-search" type="text" placeholder="Search name · contact · room…" oninput="filterConc()"/>
         <button class="btn btn-ghost btn-sm" onclick="loadConcierge()" title="Refresh">↻ REFRESH</button>
       </div>
-
+ 
       <!-- Bulk bar -->
       <div class="bulk-bar" id="bulk-bar">
         <span class="bulk-txt" id="bulk-txt">0 sessions selected</span>
         <button class="btn btn-danger btn-sm" onclick="bulkTrash()">MOVE TO TRASH</button>
         <button class="btn btn-ghost btn-sm" onclick="clearBulk()">CLEAR</button>
       </div>
-
+ 
       <!-- Table -->
       <div class="tbl-wrap">
         <table>
@@ -797,7 +828,7 @@ tbody tr:hover .copy-btn{opacity:1}
         </table>
       </div>
     </div>
-
+ 
     <!-- ═══ SETTINGS ═══ -->
     <div class="panel" id="panel-settings">
       <div class="sec-hdr">
@@ -806,10 +837,10 @@ tbody tr:hover .copy-btn{opacity:1}
       </div>
       <div id="settings-body"><div class="ldr"><span class="spin"></span>Loading…</div></div>
     </div>
-
+ 
   </main>
 </div>
-
+ 
 <!-- SETUP SCREEN -->
 <div id="setup-screen">
   <div class="setup-card">
@@ -829,17 +860,18 @@ tbody tr:hover .copy-btn{opacity:1}
     </div>
   </div>
 </div>
-
+ 
 <!-- ═══════════════════════════════════════════
      ALL MODALS — must be placed BEFORE <script>
 ═══════════════════════════════════════════ -->
-
+ 
 <!-- Booking Modal -->
 <div class="mov" id="bk-modal">
   <div class="modal" style="max-width:580px">
     <div class="modal-title" id="bk-modal-title">BOOKING DETAILS</div>
     <div id="bk-modal-body"></div>
     <div class="modal-acts">
+      <button class="btn btn-danger btn-sm" onclick="deleteBk()" style="margin-right:auto" title="Permanently delete this booking">DELETE</button>
       <select class="form-select" id="bk-status-sel" style="width:145px;padding:7px 11px;font-size:11px">
         <option value="pending">Pending</option>
         <option value="confirmed">Confirmed</option>
@@ -851,7 +883,7 @@ tbody tr:hover .copy-btn{opacity:1}
     </div>
   </div>
 </div>
-
+ 
 <!-- Enquiry Modal -->
 <div class="mov" id="enq-modal">
   <div class="modal" style="max-width:540px">
@@ -869,7 +901,7 @@ tbody tr:hover .copy-btn{opacity:1}
     </div>
   </div>
 </div>
-
+ 
 <!-- Testimonial Modal -->
 <div class="mov" id="testi-modal">
   <div class="modal" style="max-width:480px">
@@ -885,7 +917,7 @@ tbody tr:hover .copy-btn{opacity:1}
     </div>
   </div>
 </div>
-
+ 
 <!-- Conversation Viewer Modal -->
 <div class="cv-ov" id="cv-ov">
   <div class="cv-modal">
@@ -909,7 +941,7 @@ tbody tr:hover .copy-btn{opacity:1}
     </div>
   </div>
 </div>
-
+ 
 <!-- Confirm Modal -->
 <div class="mov" id="confirm-modal">
   <div class="confirm-card">
@@ -921,10 +953,49 @@ tbody tr:hover .copy-btn{opacity:1}
     </div>
   </div>
 </div>
-
+ 
+<!-- PIN SCREEN — shown after Supabase auth, before dashboard access -->
+<div id="pin-screen">
+  <div class="pin-card">
+    <div class="pin-badge-wrap">
+      <div class="l-badge">FNR</div>
+      <div>
+        <div class="l-hotel">FRANK N HOTEL ROYAL</div>
+        <div class="l-role">Admin Verification Required</div>
+      </div>
+    </div>
+    <div class="l-div"></div>
+    <div class="pin-lock">🔒</div>
+    <div class="pin-dots" id="pin-dots">
+      <div class="pin-dot" id="pd0"></div>
+      <div class="pin-dot" id="pd1"></div>
+      <div class="pin-dot" id="pd2"></div>
+      <div class="pin-dot" id="pd3"></div>
+      <div class="pin-dot" id="pd4"></div>
+      <div class="pin-dot" id="pd5"></div>
+    </div>
+    <div class="pin-err" id="pin-err">Incorrect PIN. Please try again.</div>
+    <div class="pin-grid" id="pin-grid">
+      <button class="pin-key" onclick="pinKey('1')">1</button>
+      <button class="pin-key" onclick="pinKey('2')">2</button>
+      <button class="pin-key" onclick="pinKey('3')">3</button>
+      <button class="pin-key" onclick="pinKey('4')">4</button>
+      <button class="pin-key" onclick="pinKey('5')">5</button>
+      <button class="pin-key" onclick="pinKey('6')">6</button>
+      <button class="pin-key" onclick="pinKey('7')">7</button>
+      <button class="pin-key" onclick="pinKey('8')">8</button>
+      <button class="pin-key" onclick="pinKey('9')">9</button>
+      <button class="pin-key" onclick="pinLogout()" style="font-size:9px;letter-spacing:.1em;color:var(--text-muted)">EXIT</button>
+      <button class="pin-key" onclick="pinKey('0')">0</button>
+      <button class="pin-key del" onclick="pinDelete()">DEL</button>
+    </div>
+    <div class="pin-hint">ENTER ADMIN PIN TO CONTINUE</div>
+  </div>
+</div>
+ 
 <!-- Toast -->
 <div id="toast"></div>
-
+ 
 <!-- ═══════════════════════════════════════════
      SCRIPT — after all modals
 ═══════════════════════════════════════════ -->
@@ -932,13 +1003,15 @@ tbody tr:hover .copy-btn{opacity:1}
 /* CONFIG */
 var SB_URL  = 'https://jjrwisknstiitzwrhjnu.supabase.co';
 var SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impqcndpc2tuc3RpaXR6d3Joam51Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MTI3NzgsImV4cCI6MjA4OTE4ODc3OH0.piu6gbwoBOv8uwZfoMS4hTolskRIinUl8feb5r9p9EA';
-
+var ADMIN_PIN = '2025'; /* ← Change this to your preferred PIN (numbers only) */
+ 
 /* STATE */
 var sb = null;
 var curBkId = null, curEnqId = null, curTestiId = null, curSession = null;
 var concTab = 'active', concAll = [], selIds = [], roomsData = [];
 var refreshTimer = null, confirmCb = null, toastTimer = null;
-
+var pinVerified = false, pinEntry = '';
+ 
 /* CLOCK */
 function tick() {
   var now = new Date();
@@ -948,7 +1021,7 @@ function tick() {
     '  ·  ' + now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
 }
 tick(); setInterval(tick, 30000);
-
+ 
 /* INIT */
 async function init() {
   if (SB_URL === 'YOUR_SUPABASE_PROJECT_URL') { showSetup(); return; }
@@ -969,16 +1042,65 @@ function showSetup(msg) {
   if (msg) document.getElementById('setup-msg').textContent = msg;
 }
 function showLogin() {
+  pinVerified = false; pinEntry = '';
   document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('pin-screen').style.display = 'none';
   document.getElementById('app').style.display = 'none';
   if (refreshTimer) { clearInterval(refreshTimer); refreshTimer = null; }
 }
 function showApp() {
   document.getElementById('login-screen').style.display = 'none';
+  if (!pinVerified) { showPinScreen(); return; }
+  showAppDirect();
+}
+function showAppDirect() {
+  document.getElementById('pin-screen').style.display = 'none';
   document.getElementById('app').style.display = 'block';
   loadDashboard(); loadBadges(); startRefresh();
 }
-
+function showPinScreen() {
+  document.getElementById('pin-screen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  pinEntry = ''; renderPinDots();
+  document.getElementById('pin-err').style.display = 'none';
+}
+ 
+/* PIN LOGIC */
+function pinKey(d) {
+  if (pinEntry.length >= ADMIN_PIN.length) return;
+  pinEntry += d;
+  renderPinDots();
+  if (pinEntry.length === ADMIN_PIN.length) {
+    setTimeout(function(){ verifyPin(); }, 120);
+  }
+}
+function pinDelete() {
+  pinEntry = pinEntry.slice(0,-1);
+  renderPinDots();
+  document.getElementById('pin-err').style.display = 'none';
+}
+function renderPinDots() {
+  for (var i = 0; i < 6; i++) {
+    var d = document.getElementById('pd'+i);
+    if (d) d.className = 'pin-dot' + (i < pinEntry.length ? ' filled' : '');
+  }
+}
+function verifyPin() {
+  if (pinEntry === ADMIN_PIN) {
+    pinVerified = true;
+    showAppDirect();
+  } else {
+    document.getElementById('pin-err').style.display = 'block';
+    var dots = document.getElementById('pin-dots');
+    dots.querySelectorAll('.pin-dot').forEach(function(d){ d.classList.add('shake'); });
+    setTimeout(function(){
+      dots.querySelectorAll('.pin-dot').forEach(function(d){ d.classList.remove('shake'); });
+      pinEntry = ''; renderPinDots();
+    }, 450);
+  }
+}
+function pinLogout() { doLogout(); }
+ 
 /* AUTH */
 async function doLogin() {
   var email = document.getElementById('l-email').value.trim();
@@ -994,10 +1116,11 @@ async function doLogin() {
 function showLErr(m){ var e=document.getElementById('l-err'); e.textContent=m; e.style.display='block'; }
 async function doLogout(){ await sb.auth.signOut(); }
 document.getElementById('l-pass').addEventListener('keydown',function(e){ if(e.key==='Enter') doLogin(); });
-
-/* AUTO-REFRESH */
+ 
+/* AUTO-REFRESH + REAL-TIME */
 function startRefresh() {
   if (refreshTimer) clearInterval(refreshTimer);
+  /* Polling fallback every 90s */
   refreshTimer = setInterval(function(){
     loadBadges();
     var a = document.querySelector('.panel.active');
@@ -1007,8 +1130,35 @@ function startRefresh() {
     else if (a.id==='panel-enquiries') loadEnquiries();
     else if (a.id==='panel-concierge') loadConcierge();
   }, 90000);
+  /* Real-time subscriptions — instant updates */
+  try {
+    sb.channel('fnr-admin')
+      .on('postgres_changes',{event:'*',schema:'public',table:'bookings'},function(){
+        loadBadges();
+        var a=document.querySelector('.panel.active');
+        if(!a) return;
+        if(a.id==='panel-bookings') loadBookings();
+        if(a.id==='panel-dashboard') loadDashboard();
+      })
+      .on('postgres_changes',{event:'*',schema:'public',table:'enquiries'},function(){
+        loadBadges();
+        var a=document.querySelector('.panel.active');
+        if(!a) return;
+        if(a.id==='panel-enquiries') loadEnquiries();
+        if(a.id==='panel-dashboard') loadDashboard();
+      })
+      .on('postgres_changes',{event:'*',schema:'public',table:'concierge_sessions'},function(){
+        loadBadges();
+        var a=document.querySelector('.panel.active');
+        if(a&&a.id==='panel-concierge') loadConcierge();
+      })
+      .subscribe(function(status){
+        var dot=document.querySelector('.live-dot');
+        if(dot) dot.style.background = (status==='SUBSCRIBED') ? 'var(--ok)' : 'var(--amber)';
+      });
+  } catch(e){ console.log('Real-time unavailable, using polling only.'); }
 }
-
+ 
 /* NAV */
 var TITLES = {
   dashboard:'DASHBOARD',bookings:'BOOKINGS',enquiries:'ENQUIRIES',
@@ -1030,7 +1180,7 @@ function showPanel(name) {
   });
   if(LOADERS[name]) LOADERS[name]();
 }
-
+ 
 /* TOAST */
 function toast(msg, ok) {
   var t = document.getElementById('toast');
@@ -1039,7 +1189,7 @@ function toast(msg, ok) {
   if(toastTimer) clearTimeout(toastTimer);
   toastTimer = setTimeout(function(){ t.className=''; }, 3200);
 }
-
+ 
 /* HELPERS */
 function fmt(n)    { return '\u20A6'+Number(n||0).toLocaleString(); }
 function fmtD(s)   { if(!s) return '\u2014'; return new Date(s).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
@@ -1049,7 +1199,7 @@ function esc(s)    { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').r
 function clip(txt,lbl) {
   if(navigator.clipboard) navigator.clipboard.writeText(txt).then(function(){toast('Copied: '+lbl);});
 }
-
+ 
 /* BADGES */
 async function loadBadges() {
   if(!sb) return;
@@ -1062,7 +1212,7 @@ async function loadBadges() {
   if(tr.count>0){ trPill.textContent=tr.count; trPill.style.display=''; }
   else { trPill.style.display='none'; }
 }
-
+ 
 /* ════════════════════════════════════════
    DASHBOARD — now includes concierge data
 ════════════════════════════════════════ */
@@ -1079,7 +1229,7 @@ async function loadDashboard() {
     sb.from('concierge_sessions').select('guest_name,room_interest,converted,created_at').is('deleted_at',null).order('created_at',{ascending:false}).limit(5),
     sb.from('concierge_sessions').select('converted,room_interest').is('deleted_at',null)
   ]);
-
+ 
   var totalBk   = r1.count||0;
   var pData     = r2.data||[];
   var unread    = r3.count||0;
@@ -1092,13 +1242,13 @@ async function loadDashboard() {
   var totalSes  = allSes.length;
   var converted = allSes.filter(function(s){return s.converted;}).length;
   var convRate  = totalSes>0 ? Math.round((converted/totalSes)*100)+'%' : '0%';
-
+ 
   /* top room */
   var rm = {};
   allSes.forEach(function(s){ if(s.room_interest) rm[s.room_interest]=(rm[s.room_interest]||0)+1; });
   var topRoom = '\u2014', topN=0;
   Object.keys(rm).forEach(function(k){ if(rm[k]>topN){topN=rm[k];topRoom=k;} });
-
+ 
   /* stat cards */
   document.getElementById('st-bookings').textContent  = totalBk;
   document.getElementById('st-pending').textContent   = pending;
@@ -1107,14 +1257,14 @@ async function loadDashboard() {
   document.getElementById('st-sessions').textContent  = totalSes;
   document.getElementById('st-conversion').textContent= convRate;
   document.getElementById('st-top-room').textContent  = topRoom !== '\u2014' ? 'Top: '+topRoom : 'No data yet';
-
+ 
   /* recent bookings */
   document.getElementById('dash-bk').innerHTML = recentBk.length===0
     ? '<div class="empty"><div class="empty-txt">No bookings yet</div></div>'
     : recentBk.map(function(b){
         return '<div class="dash-item"><div><div class="dash-name">'+esc(b.guest_name)+'</div><div class="dash-sub">'+esc(b.room_name)+' &middot; '+fmtD(b.check_in)+'</div></div>'+bdg(b.status)+'</div>';
       }).join('');
-
+ 
   /* recent brume sessions */
   document.getElementById('dash-brume').innerHTML = recentSes.length===0
     ? '<div class="empty"><div class="empty-txt">No Brume sessions yet</div></div>'
@@ -1122,17 +1272,17 @@ async function loadDashboard() {
         var statusBdg = s.converted ? bdg('converted') : bdg('chat');
         return '<div class="dash-item"><div><div class="dash-name">'+esc(s.guest_name||'Unknown Guest')+'</div><div class="dash-sub">'+(s.room_interest?esc(s.room_interest)+' &middot; ':'')+fmtD(s.created_at)+'</div></div>'+statusBdg+'</div>';
       }).join('');
-
+ 
   /* recent enquiries */
   document.getElementById('dash-enq').innerHTML = recentEnq.length===0
     ? '<div class="empty"><div class="empty-txt">No enquiries yet</div></div>'
     : recentEnq.map(function(e){
         return '<div class="dash-item"><div><div class="dash-name">'+esc(e.name)+'</div><div class="dash-sub">'+esc(e.subject||'General Enquiry')+' &middot; '+fmtD(e.created_at)+'</div></div>'+bdg(e.status)+'</div>';
       }).join('');
-
+ 
   loadSparkline();
 }
-
+ 
 async function loadSparkline() {
   if(!sb) return;
   var days=[], labels=[];
@@ -1158,7 +1308,7 @@ async function loadSparkline() {
       '<div class="spark-lbl">'+labels[i]+'</div></div>';
   }).join('');
 }
-
+ 
 /* ════════════════════════════════════════
    BOOKINGS
 ════════════════════════════════════════ */
@@ -1221,7 +1371,20 @@ async function updateBkStatus() {
   toast('Booking updated'); closeBkModal(); loadBookings(); loadBadges(); loadDashboard();
 }
 function closeBkModal(){ document.getElementById('bk-modal').classList.remove('open'); curBkId=null; }
-
+async function deleteBk(){
+  if(!curBkId) return;
+  var ref=document.getElementById('bk-modal-title').textContent.replace('BOOKING — ','').trim();
+  confirmAction(
+    'DELETE BOOKING',
+    'Booking '+(ref||'')+ ' will be permanently deleted. Use this only for test entries. This cannot be undone.',
+    async function(){
+      var r=await sb.from('bookings').delete().eq('id',curBkId);
+      if(r.error){toast(r.error.message,false);return;}
+      toast('Booking deleted'); closeBkModal(); loadBookings(); loadBadges(); loadDashboard();
+    }
+  );
+}
+ 
 /* ════════════════════════════════════════
    ENQUIRIES
 ════════════════════════════════════════ */
@@ -1275,7 +1438,7 @@ async function updateEnqStatus() {
   toast('Enquiry updated'); closeEnqModal(); loadEnquiries(); loadBadges();
 }
 function closeEnqModal(){document.getElementById('enq-modal').classList.remove('open');curEnqId=null;}
-
+ 
 /* ════════════════════════════════════════
    ROOMS
 ════════════════════════════════════════ */
@@ -1328,7 +1491,7 @@ async function saveAllRooms() {
   errs.length?toast('Some rooms failed to save',false):toast('All rooms saved');
   loadRooms();
 }
-
+ 
 /* ════════════════════════════════════════
    TESTIMONIALS
 ════════════════════════════════════════ */
@@ -1379,7 +1542,7 @@ async function saveTesti(){
   toast('Testimonial added'); closeTesti(); loadTestimonials();
 }
 function closeTesti(){document.getElementById('testi-modal').classList.remove('open');}
-
+ 
 /* ════════════════════════════════════════
    CONCIERGE
 ════════════════════════════════════════ */
@@ -1391,7 +1554,7 @@ function switchTab(tab){
   thCb.innerHTML = tab!=='trash' ? '<input type="checkbox" class="row-cb" id="select-all" onclick="toggleAll(this)" title="Select all"/>' : '';
   loadConcierge();
 }
-
+ 
 async function loadConcierge(){
   if(!sb) return;
   var tb=document.getElementById('conc-tbody');
@@ -1406,7 +1569,7 @@ async function loadConcierge(){
   concAll=r.data||[];
   renderConc(concAll);
 }
-
+ 
 async function loadConcIntel(){
   if(!sb) return;
   var r=await sb.from('concierge_sessions').select('converted,room_interest').is('deleted_at',null);
@@ -1422,7 +1585,7 @@ async function loadConcIntel(){
   document.getElementById('ci-rate').textContent=rate+'%';
   document.getElementById('ci-room').textContent=topR;
 }
-
+ 
 function renderConc(data){
   var search=(document.getElementById('conc-search').value||'').toLowerCase();
   var filt=search?data.filter(function(s){
@@ -1489,7 +1652,7 @@ async function bulkTrash(){
     clearBulk(); loadConcierge(); loadBadges();
   });
 }
-
+ 
 /* ════════════════════════════════════════
    CONVERSATION VIEWER
 ════════════════════════════════════════ */
@@ -1499,9 +1662,9 @@ function openCV(session){
   var isTrash=!!session.deleted_at;
   var isConv=!!session.converted;
   var isFlag=!!session.training_flag;
-
+ 
   document.getElementById('cv-name').textContent=session.guest_name||'Unknown Guest';
-
+ 
   var chips=[
     session.guest_phone||session.guest_email,
     session.room_interest?'Interest: '+session.room_interest:null,
@@ -1513,17 +1676,17 @@ function openCV(session){
   if(isFlag) chtml+='<span class="cv-chip flag">\u2691 FLAGGED</span>';
   if(isTrash) chtml+='<span class="cv-chip trash">IN TRASH</span>';
   document.getElementById('cv-chips').innerHTML=chtml;
-
+ 
   document.getElementById('cv-sid').textContent=session.session_id?'SID: \u2026'+session.session_id.slice(-10):'';
-
+ 
   var fb=document.getElementById('cv-flag-btn');
   fb.className='cv-flag-btn'+(isFlag?' on':'');
   fb.innerHTML=isFlag?'\u2691 UNFLAG TRAINING':'\u2691 FLAG FOR TRAINING';
-
+ 
   document.getElementById('cv-trash-btn').style.display   = (!isTrash&&!isConv)?'':'none';
   document.getElementById('cv-restore-btn').style.display = isTrash?'':'none';
   document.getElementById('cv-perm-btn').style.display    = isTrash?'':'none';
-
+ 
   var thread=document.getElementById('cv-thread');
   if(!msgs.length){
     thread.innerHTML='<div class="cv-empty">No messages recorded in this session.</div>';
@@ -1544,7 +1707,7 @@ function openCV(session){
   setTimeout(function(){thread.scrollTop=0;},40);
 }
 function closeCV(){document.getElementById('cv-ov').classList.remove('open');curSession=null;}
-
+ 
 async function toggleFlag(){
   if(!curSession) return;
   var nf=!curSession.training_flag;
@@ -1557,7 +1720,7 @@ async function toggleFlag(){
   toast(nf?'Flagged for training':'Flag removed');
   loadConcierge();
 }
-
+ 
 async function moveToTrash(){
   if(!curSession) return;
   confirmAction('MOVE TO TRASH','This session will be hidden from active view. You can restore it at any time from the Trash tab.',async function(){
@@ -1566,14 +1729,14 @@ async function moveToTrash(){
     toast('Session moved to trash'); closeCV(); loadConcierge(); loadBadges();
   });
 }
-
+ 
 async function restoreSession(){
   if(!curSession) return;
   var r=await sb.from('concierge_sessions').update({deleted_at:null}).eq('id',curSession.id);
   if(r.error){toast(r.error.message,false);return;}
   toast('Session restored'); closeCV(); loadConcierge(); loadBadges();
 }
-
+ 
 async function permDelete(){
   if(!curSession) return;
   confirmAction('DELETE PERMANENTLY','This conversation will be erased forever and cannot be recovered.',async function(){
@@ -1582,7 +1745,7 @@ async function permDelete(){
     toast('Session permanently deleted'); closeCV(); loadConcierge(); loadBadges();
   });
 }
-
+ 
 /* ════════════════════════════════════════
    SETTINGS
 ════════════════════════════════════════ */
@@ -1617,7 +1780,7 @@ async function saveSettings(){
   }
   errs.length?toast('Some settings failed',false):toast('Settings saved');
 }
-
+ 
 /* ════════════════════════════════════════
    CONFIRM MODAL
 ════════════════════════════════════════ */
@@ -1631,7 +1794,7 @@ document.getElementById('confirm-ok').addEventListener('click',function(){
   closeConfirm(); if(confirmCb) confirmCb(); confirmCb=null;
 });
 function closeConfirm(){document.getElementById('confirm-modal').classList.remove('open');}
-
+ 
 /* BACKDROP CLOSE */
 ['bk-modal','enq-modal','testi-modal','confirm-modal'].forEach(function(id){
   var el=document.getElementById(id); if(!el) return;
@@ -1644,7 +1807,7 @@ function closeConfirm(){document.getElementById('confirm-modal').classList.remov
   });
 });
 document.getElementById('cv-ov').addEventListener('click',function(e){if(e.target===this)closeCV();});
-
+ 
 /* KEYBOARD SHORTCUTS */
 document.addEventListener('keydown',function(e){
   if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT') return;
@@ -1658,9 +1821,10 @@ document.addEventListener('keydown',function(e){
   if(k==='c'||k==='C'){showPanel('concierge');return;}
   if(k==='s'||k==='S'){showPanel('settings');return;}
 });
-
+ 
 /* START */
 init();
 </script>
 </body>
 </html>
+ 
