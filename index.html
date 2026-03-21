@@ -1574,6 +1574,7 @@
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: y mandatory;
         overscroll-behavior: contain;
+        touch-action: pan-y;
       }
 
       /* Photo fills first screen — guest scrolls past to info */
@@ -1693,6 +1694,7 @@
         padding: 32px 22px 72px;
         overflow-y: visible;
         scroll-snap-align: start;
+        scroll-snap-stop: always;
       }
 
       .sm-badge     { font-size: 8px; letter-spacing: .3em; margin-bottom: 14px; }
@@ -7671,7 +7673,28 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
 
       /* Reset scroll position to top of photo */
       var sw = document.getElementById('sm-scroll-wrap');
-      if (sw) { sw.scrollTop = 0; }
+      if (sw) {
+        sw.scrollTop = 0;
+        /* Show scroll hint again for this suite open */
+        var hint = document.getElementById('sm-scroll-hint');
+        if (hint) { hint.style.opacity = ''; hint.style.pointerEvents = ''; }
+      }
+
+      /* Hide scroll hint once user scrolls into the info panel */
+      (function () {
+        var swEl   = document.getElementById('sm-scroll-wrap');
+        var hintEl = document.getElementById('sm-scroll-hint');
+        if (!swEl || !hintEl) { return; }
+        function onScroll () {
+          var scrolled = swEl.scrollTop > swEl.clientHeight * 0.15;
+          hintEl.style.opacity       = scrolled ? '0' : '';
+          hintEl.style.pointerEvents = scrolled ? 'none' : '';
+        }
+        /* Remove any previous listener before adding new one */
+        swEl.removeEventListener('scroll', swEl._hintScroll || function(){});
+        swEl._hintScroll = onScroll;
+        swEl.addEventListener('scroll', onScroll, { passive: true });
+      }());
 
       /* Wire reserve button */
       document.getElementById('sm-reserve-btn').onclick = function() {
@@ -7860,11 +7883,11 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
             syncDots(current);
             paused = false;
             startAuto();
-          } else if (ady > adx && ady > 18) {
-            /* Deliberate vertical swipe — scroll modal to room details */
-            var modalEl = document.getElementById('suite-modal');
-            if (modalEl) {
-              modalEl.scrollBy({ top: dy * 2, behavior: 'smooth' });
+          } else if (ady > adx && ady > 44) {
+            /* Deliberate vertical swipe — scroll sm-scroll-wrap to info panel */
+            var swWrap = document.getElementById('sm-scroll-wrap');
+            if (swWrap) {
+              swWrap.scrollTo({ top: swWrap.scrollHeight, behavior: 'smooth' });
             }
           } else {
             /* Small movement — treat as tap, pause carousel */
