@@ -6964,6 +6964,217 @@ Tell me your dates, who is travelling, and the kind of stay you have in mind —
       /* ── Warri Wolves / football ── */
       if (/(warri wolves|warri.*football|wolves.*fc|warri.*stadium|township.*stadium)/.test(q)) return { text:'Warri Wolves FC is the heartbeat of football in Delta State — the passion at Warri Township Stadium on match day is something to experience. If there is a home fixture during your stay, Royal Concierge can help you plan around it.', actions:[{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'},{label:'WhatsApp', action:'whatsapp'}] };
 
+
+      /* ── Room upgrade ── */
+      if (/(upgrade.*room|room.*upgrade|better.*room|bigger.*room|move.*room|switch.*room|change.*room)/.test(q)) return { text:'Room upgrades at Frank N Hotel Royal are subject to availability on arrival. To request one in advance, Royal Concierge recommends reaching out on WhatsApp before your check-in date with your current booking details — we will do everything possible to accommodate you.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Go to Booking', action:'booking'}] };
+
+      /* ── Owner / founder ── */
+      if (/(who.*own|owner|founder|who.*build|who.*built|who.*behind|proprietor|ceo.*hotel|hotel.*ceo|chief.*nani|nani.*hotel|obukowho|john.*nani)/.test(q)) return { text:'Frank N Hotel Royal is owned by Chief Bar. John Obukowho Nani — a visionary who set out to build a destination that reflects what Nigerian luxury looks like when executed without compromise. His vision: world-class standards rooted in Delta State heritage.', actions:[{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'},{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Storybook gallery ── */
+      if (/(storybook|gallery|photo.*hotel|hotel.*photo|see.*hotel|hotel.*picture|picture.*hotel|tour.*hotel|hotel.*tour)/.test(q)) return { text:'The Frank N Storybook is a cinematic gallery that walks you through every mood and space of the hotel — from arrival to dining, poolside to suite. You can find it in the Storybook section of this page.', actions:[{label:'View Storybook', action:'prompt', value:'Show me the Storybook gallery'}] };
+
+      /* ── Delta State Governor ── */
+      if (/(delta.*gov|governor.*delta|who.*govern.*delta|sheriff.*oborevwori|oborevwori|delta.*state.*leader|delta.*state.*government)/.test(q)) return { text:'Delta State is currently governed by His Excellency Rt. Hon. Sheriff F. O. Oborevwori, with Chief (Sir) Monday John Onyeme as Deputy Governor. The State Secretary to the Government is Dr. Kingsley Emu.', actions:[{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── Uvwie LGA chairman ── */
+      if (/(uvwie.*chairman|chairman.*uvwie|uvwie.*lga|lga.*uvwie|local.*gov.*uvwie)/.test(q)) return { text:'The current chairman of Uvwie Local Government Council — the LGA where Frank N Hotel Royal is located — is Hon. Chief Anthony Ofoni.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Premium nightlife specific spots ── */
+      if (/(trt|prive|rooftop.*bar.*warri|best.*lounge.*warri|upscale.*bar|premium.*nightlife|classy.*bar|cocktail.*bar.*warri)/.test(q)) return { text:'For premium evenings out, TRT PRIVÈ at Okuokoko is the top rooftop lounge experience in the area — cocktails, ambience, and a strong crowd. The Palm Resto Lounge on Airport Road offers elegant dining and drinks. K16 on Airport Road is popular with professionals for date nights. Artemis Lounge at Otokutu is the pick for premium cocktails and music. Royal Concierge can arrange transport to any of these.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── Outdoor/casual nightlife ── */
+      if (/(bbq.*warri|barbecue.*warri|outdoor.*drinks|catfish.*bar|suya.*bar|casual.*night|chill.*spot|local.*bar|open.*air.*bar)/.test(q)) return { text:'For a relaxed outdoor evening — the Custom Barracks axis on Airport Road is the classic local scene: open-air grills, fresh fish, cold drinks, and real Warri energy. Sizzler\'s Beer Garden is the sports bar pick. Exclusive Spot Bar in Ebrumede is great for live band and catfish nights.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Shopping specific ── */
+      if (/(electronics.*warri|phone.*shop.*warri|gadget.*warri|robinson.*plaza)/.test(q)) return { text:'For electronics and phones, Robinson Shopping Plaza in Effurun is the main destination. Airport Road also has several outlets for phones, accessories, and tech.', actions:[{label:'Open Map Section', action:'location'}] };
+      if (/(liquor|wine.*shop|buy.*wine|buy.*spirits|drinks.*shop|booze.*warri)/.test(q)) return { text:'Booze.ng has a Warri outlet in Effurun — a good stop for premium wines and spirits. For standard provisions, Tivo Supermarket on Airport Road and Our Lady\'s Shopping Mall in Ekpan are reliable options.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Hospital specific ── */
+      if (/(lily.*hospital|best.*hospital.*warri|private.*hospital.*warri|specialist.*hospital)/.test(q)) return { text:'Lily Hospitals in Warri is the leading private multispecialist facility in the area — 24/7, comprehensive care. Capitol Hill Hospitals on Airport Road and Westend Hospital are also strong options. For any medical need during your stay, contact Royal Concierge immediately on WhatsApp and we will coordinate assistance personally.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Oil & gas / FUPRE / PTI ── */
+      if (/(fupre|petroleum.*university|oil.*gas.*school.*warri|pti.*effurun|petroleum.*training)/.test(q)) return { text:'FUPRE — the Federal University of Petroleum Resources in Effurun — is one of Nigeria\'s leading petroleum and engineering universities, located close to the hotel. PTI (Petroleum Training Institute) in Effurun is the top technical training facility for oil and gas professionals in the country.', actions:[{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── Events & weddings expanded ── */
+      if (/(wedding.*venue|wedding.*reception|venue.*wedding|corporate.*event|gala.*dinner|product.*launch|end.*year.*party|owambe)/.test(q)) return { text:'Frank N Hotel Royal can host private events, weddings, corporate gatherings, and celebration dinners in a luxury setting. The team works with you to tailor every detail — décor, catering, setup, and guest experience. Share your event brief via WhatsApp or the contact form and Royal Concierge will respond with a personalised proposal.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Contact Form', action:'contact'}] };
+
+      /* ── LGA Chairmen ── */
+      if (/(warri south.*chairman|chairman.*warri south|agbateyiniro)/.test(q)) return { text:'The current chairman of Warri South Local Government Council is Hon. Isaac Agbateyiniro.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(udu.*chairman|chairman.*udu|udu.*lga|vincent.*oyibode)/.test(q)) return { text:'The current chairman of Udu Local Government Council is Hon. Vincent Oyibode.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(ughelli north.*chairman|chairman.*ughelli north|jaro.*egbo)/.test(q)) return { text:'The current chairman of Ughelli North Local Government Council is Olorogun Jaro Egbo.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(ughelli south.*chairman|chairman.*ughelli south|lucky.*avweromre)/.test(q)) return { text:'The current chairman of Ughelli South Local Government Council is Hon. Dr. Lucky Avweromre.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(lga.*chairman.*delta|chairman.*lga.*delta|local.*government.*delta.*chair)/.test(q)) return { text:'Here are key LGA chairmen in Delta State: Uvwie — Hon. Chief Anthony Ofoni · Warri South — Hon. Isaac Agbateyiniro · Udu — Hon. Vincent Oyibode · Ughelli North — Olorogun Jaro Egbo · Ughelli South — Hon. Dr. Lucky Avweromre.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Delta State universities full ── */
+      if (/(university.*delta|delta.*university|school.*delta|higher.*institution.*delta|polytechnic.*delta|maritime.*university)/.test(q)) return { text:'Major higher institutions in Delta State: FUPRE and PTI in Effurun (petroleum/engineering), DELSU in Abraka, Dennis Osadebay University in Asaba, Southern Delta University in Ozoro, College of Education in Warri, Delta State Polytechnic in Oghara, and Nigeria Maritime University in Okerenkoko.', actions:[{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── Hospitals full ── */
+      if (/(hospital.*delta|best.*hospital.*delta|central.*hospital.*warri|teaching.*hospital.*oghara|federal.*medical.*centre|fmc.*udu)/.test(q)) return { text:'Key hospitals in Delta State: Lily Hospitals Warri (best private, 24/7), Central Hospital Warri (major public), Delta State University Teaching Hospital in Oghara, Federal Medical Centre in Ovwian/Udu, Asaba Specialist Hospital. For immediate assistance during your stay, WhatsApp Royal Concierge.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Directions from specific locations ── */
+      if (/(from.*osubi|osubi.*airport.*hotel|from.*warri.*airport|coming.*from.*airport|direction.*from.*airport)/.test(q)) return { text:'From Osubi Airport to Frank N Hotel Royal: approximately 15-20 minutes. Exit the airport, take Airport Road toward Effurun, turn left at Effurun Roundabout (Delta Mall/Shoprite is the landmark), follow PTI Road into Effurun GRA — Council Road is clearly signposted. About 7km total.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*asaba|coming.*from.*asaba|asaba.*airport.*warri|direction.*asaba)/.test(q)) return { text:'From Asaba to Frank N Hotel Royal: approximately 75-90 minutes. Take the East-West Road (Asaba-Warri Expressway) heading west through Agbor and toward Effurun. At Effurun Roundabout, follow PTI Road to Effurun GRA, Council Road.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*benin|coming.*from.*benin city|benin.*to.*warri|direction.*benin)/.test(q)) return { text:'From Benin City to Frank N Hotel Royal: approximately 2-2.5 hours. Take the Benin-Sapele Expressway south through Sapele, join Warri-Sapele Road into Effurun. At Effurun Roundabout (Delta Mall landmark), follow PTI Road to Effurun GRA, Council Road.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*port harcourt|coming.*from.*ph|from.*ph.*warri|direction.*port harcourt)/.test(q)) return { text:'From Port Harcourt to Frank N Hotel Royal: approximately 2-3 hours. Take the East-West Road heading west or via Patani-Warri Road into Warri, then continue to Effurun. At Effurun Roundabout, follow PTI Road to Effurun GRA, Council Road.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*sapele|coming.*from.*sapele|direction.*sapele)/.test(q)) return { text:'From Sapele to Frank N Hotel Royal: approximately 45-60 minutes. Take the Warri-Sapele Road heading toward Effurun, enter Effurun, head to Effurun Roundabout (Delta Mall), follow PTI Road to Effurun GRA, Council Road.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*ughelli|coming.*from.*ughelli|direction.*ughelli)/.test(q)) return { text:'From Ughelli to Frank N Hotel Royal: approximately 45-55 minutes. Take the Ughelli-Warri Road (East-West Road) south toward Effurun. Continue to Effurun Roundabout (Delta Mall), then PTI Road to Effurun GRA, Council Road.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*abraka|coming.*from.*abraka|from.*delsu|direction.*abraka)/.test(q)) return { text:'From Abraka to Frank N Hotel Royal: approximately 60-75 minutes. Head south from Abraka via Abraka-Warri Road through Eku and Aghalokpe, join Warri-Sapele Road, continue to Effurun Roundabout (Delta Mall), follow PTI Road to Effurun GRA, Council Road.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*agbor|coming.*from.*agbor|direction.*agbor)/.test(q)) return { text:'From Agbor to Frank N Hotel Royal: approximately 90-120 minutes. Head west on the East-West Road through Ughelli toward Effurun. At Effurun Roundabout, follow PTI Road to Effurun GRA, Council Road.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*oghara|coming.*from.*oghara|direction.*oghara)/.test(q)) return { text:'From Oghara to Frank N Hotel Royal: approximately 60-75 minutes. Head south on the Benin-Sapele Road then Warri-Sapele Road toward Effurun. At Effurun Roundabout, proceed to Effurun GRA, Council Road.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*abuja|coming.*from.*abuja|direction.*abuja|abuja.*to.*warri)/.test(q)) return { text:'From Abuja to Frank N Hotel Royal: flying is strongly recommended — Osubi Airport is 15-20 minutes from the hotel, or Asaba International Airport is about 90 minutes. By road from Abuja is approximately 7-9 hours via Lokoja-Benin City-Sapele-Effurun.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*lagos|coming.*from.*lagos|direction.*lagos|lagos.*to.*warri)/.test(q)) return { text:'From Lagos to Frank N Hotel Royal: flying is recommended — Osubi Airport is 15-20 minutes from the hotel. By road from Lagos is approximately 7-8 hours via Benin City — Sapele — Warri-Sapele Road — Effurun Roundabout. Landmark: Delta Mall at Effurun Roundabout.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*koko|from.*burutu|from.*bomadi|from.*warri north|direction.*riverine|from.*patani)/.test(q)) return { text:'From the riverine areas (Burutu, Bomadi, Koko, Patani) to Frank N Hotel Royal: approximately 90-120 minutes by road via Warri. Cross into Warri by road or ferry, then proceed through Warri toward Effurun via the Warri-Effurun Road. At Effurun Roundabout (Delta Mall), follow PTI Road to Effurun GRA, Council Road.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(from.*ozoro|coming.*from.*ozoro|from.*isoko|direction.*isoko)/.test(q)) return { text:'From Ozoro / Isoko to Frank N Hotel Royal: approximately 90-120 minutes. Head toward Ughelli from Ozoro, then take the Ughelli-Warri Road south to Effurun Roundabout. Follow PTI Road to Effurun GRA, Council Road.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(how.*get.*hotel|direction.*hotel|how.*reach.*hotel|road.*hotel|get.*frank.*n.*hotel|navigate.*hotel|drive.*hotel|route.*hotel|find.*hotel|coming.*hotel|coming.*warri)/.test(q)) return { text:'Frank N Hotel Royal is at 24 Council Road, Effurun GRA, Uvwie LGA, Delta State. The easiest landmark to aim for is Effurun Roundabout (Delta Mall / Shoprite). From there, take PTI Road into Effurun GRA — Council Road is signposted. From Osubi Airport: 15-20 mins. From Warri centre: 15-20 mins. From Asaba: ~90 mins. From Benin City: ~2 hours.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+
+
+      /* ── Delta Port / NPA ── */
+      if (/(delta port|warri port|npa.*warri|nigerian ports.*warri|port.*warri|maritime.*warri|shipping.*warri)/.test(q)) return { text:'Delta Port (operated by the Nigerian Ports Authority) is located on the Warri port axis — one of the key maritime terminals in the Niger Delta. For business travellers with port-related schedules, Frank N Hotel Royal is ideally positioned and Royal Concierge can assist with transport arrangements.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Open Map Section', action:'location'}] };
+
+      /* ── WACCIMA ── */
+      if (/(waccima|warri chamber|chamber of commerce.*warri|warri.*chamber|business.*association.*warri|commerce.*warri)/.test(q)) return { text:'WACCIMA — the Warri Chamber of Commerce, Industry, Mines and Agriculture — is located on the Effurun-Sapele Road axis. It is the main business association for the Warri commercial corridor. For business visitors attending WACCIMA events or meetings, Royal Concierge can arrange transfer and logistics support.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── NCDMB ── */
+      if (/(ncdmb|nigerian content.*board|content.*development.*monitoring|local content.*board|ncdmb.*warri)/.test(q)) return { text:'The Nigerian Content Development and Monitoring Board (NCDMB) is headquartered in GRA, Warri — a key institution for oil and gas local content policy in Nigeria. Frank N Hotel Royal is a preferred choice for professionals visiting NCDMB for meetings and engagements. Transfer arrangements available through Royal Concierge.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Find My Room', action:'prompt', value:'Recommend a room for me'}] };
+
+      /* ── FRSC / Driver's Licence ── */
+      if (/(frsc|driver.*licen|licence.*centre|drivers.*licence.*warri|renew.*licence.*warri|get.*licence.*effurun|vehicle.*licence)/.test(q)) return { text:'The FRSC Warri II Driver's Licence Centre is located on the PTI axis in Effurun — very close to Frank N Hotel Royal. It handles new licence applications, renewals, and related documentation. Royal Concierge can advise on the quickest route from the hotel.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Open Map Section', action:'location'}] };
+
+      /* ── NIMC / NIN ── */
+      if (/(nimc|nin.*registration|national.*identity|nin.*correction|nin.*retrieval|nin.*enrolment|nin.*number|get.*nin|update.*nin)/.test(q)) return { text:'NIMC (National Identity Management Commission) has NIN support points across Warri and Effurun for registration, correction, and retrieval. The closest points to Frank N Hotel Royal are on the Airport Road and PTI Road corridors. Royal Concierge can point you to the nearest active centre.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── DSIRS / Delta State Tax ── */
+      if (/(dsirs|delta state.*revenue|delta.*internal revenue|tax.*delta state|state tax.*warri|revenue service.*delta)/.test(q)) return { text:'The Delta State Internal Revenue Service (DSIRS) handles state tax matters across Delta State. Their offices serve businesses and individuals operating in the state. For guests with DSIRS appointments, Royal Concierge can assist with directions and transport from the hotel.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Classy dinner/drinks ready response ── */
+      if (/(classy.*place|classy.*spot|elegant.*dinner.*warri|nice.*restaurant.*warri|fine.*dining.*warri|upscale.*evening|sophisticated.*evening|where.*take.*date.*warri|impress.*dinner.*warri)/.test(q)) return { text:'For a classy evening in the area, I would recommend TRT PRIVÈ at Okuokoko for a premium rooftop experience, The Palm Resto Lounge on Airport Road for elegant dining, K16 for a polished social atmosphere, or The Hive for a stylish but relaxed setting. Royal Concierge can arrange transport to any of these from the hotel.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── Barbecue/outdoor drinks ready response ── */
+      if (/(barbecue.*warri|bbq.*warri|outdoor.*bar.*warri|grilled.*fish.*warri|catfish.*warri|open.*air.*warri|chill.*outdoor.*warri|suya.*spot.*warri)/.test(q)) return { text:'For outdoor barbecue and drinks, the Custom Barracks axis on Airport Road is the classic authentic Warri experience — open-air grills, fresh catfish, cold drinks, and real local energy. Sizzler's Beer Garden on Airport Road is good for sports viewing and casual drinks. Exclusive Spot Bar in Ebrumede is strong for live band and catfish nights.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Mall ready response ── */
+      if (/(need.*mall|go.*mall|shopping.*mall.*warri|mall.*effurun|nearest.*mall|where.*mall.*warri|big.*shop.*warri)/.test(q)) return { text:'Delta Mall (locally called Shoprite) at Effurun Roundabout is the main mall-style shopping destination — approximately 5 minutes from Frank N Hotel Royal. For quicker stops on Airport Road, Tivo Supermarket and Peck Shopping Mall are convenient. For bulk provisions, Our Lady's Shopping Mall in Ekpan is a solid option.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+
+
+      /* ── Spa / wellness / massage ── */
+      if (/(spa.*warri|massage.*warri|wellness.*warri|facial.*warri|body.*treatment.*warri|relaxation.*warri|spa.*effurun|massage.*effurun)/.test(q)) return { text:'Several wellness centres and massage parlours are available along Airport Road and within Effurun GRA. For a curated recommendation based on your preference, Royal Concierge will point you to the right option. Just describe what you are looking for — full body massage, facial, or full spa treatment.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Salon / barbing / beauty ── */
+      if (/(salon.*warri|barber.*warri|haircut.*warri|barbing.*warri|beauty.*salon|hair.*salon.*effurun|nail.*warri|makeup.*warri)/.test(q)) return { text:'Beauty salons and barbing shops are plentiful along PTI Road and the Airport Road corridor. The hotel front desk can direct you to the nearest recommended option for your needs.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Laundry / dry cleaning ── */
+      if (/(laundry|dry.*clean|wash.*cloth|iron.*cloth|hotel.*laundry|clean.*suit|press.*shirt)/.test(q)) return { text:'Frank N Hotel Royal offers laundry and dry-cleaning on request. Items submitted before 9:00 AM are typically returned same day. Items submitted later are ready the following morning. Contact the front desk or WhatsApp Royal Concierge to arrange collection from your room.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Room service / in-suite dining ── */
+      if (/(room service|in.*room.*dining|suite.*dining|food.*room|order.*food.*room|eat.*room|bring.*food.*room)/.test(q)) return { text:'In-suite dining is available for all room categories at Frank N Hotel Royal. For the Presidential Suite and Suite, an elevated service experience is provided. Contact the front desk via the in-room phone or WhatsApp Royal Concierge to place your order.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Wake-up call ── */
+      if (/(wake.*up.*call|alarm.*hotel|morning.*call|wake.*me.*up|call.*wake|early.*morning.*call)/.test(q)) return { text:'Wake-up calls are available at Frank N Hotel Royal. Simply contact the front desk before retiring for the evening and specify your preferred time. You can also request via WhatsApp Royal Concierge.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Car hire / rental ── */
+      if (/(car.*hire|car.*rental|rent.*car|hire.*driver|private.*car.*warri|chauffeur.*warri|car.*with.*driver)/.test(q)) return { text:'Car hire with a driver can be arranged through Royal Concierge for airport transfers, city tours, business runs, and inter-city travel. Rates depend on distance and duration. Contact us on WhatsApp with your schedule and we will arrange everything.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Ride-hailing / Bolt / Uber ── */
+      if (/(bolt.*warri|uber.*warri|ride.*hailing.*warri|taxi.*warri|cab.*warri|keke.*warri|okada.*warri)/.test(q)) return { text:'Bolt is the most active ride-hailing app in Warri and Effurun. Uber has limited coverage. Keke Napep (tricycles) and Okada (motorcycles) are widely available for short distances across the city. The hotel can also arrange a trusted private driver through Royal Concierge.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Fuel station ── */
+      if (/(fuel.*station|petrol.*station|filling.*station.*warri|filling.*station.*effurun|buy.*fuel.*warri)/.test(q)) return { text:'Several filling stations are located along Airport Road and PTI Road within 5 minutes of Frank N Hotel Royal. The hotel front desk can direct you to the nearest open station.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Bus park / inter-state travel ── */
+      if (/(bus.*park|motor park|park.*warri|travel.*bus|interstate.*bus|go.*lagos.*bus|go.*abuja.*bus|long.*distance.*warri)/.test(q)) return { text:'Warri Main Motor Park handles inter-state buses to Lagos, Abuja, Benin City, Port Harcourt, and other major cities. It is approximately 20-25 minutes from Frank N Hotel Royal. For comfortable inter-city travel, private car hire through Royal Concierge is also an option.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Speedboat / ferry / riverine ── */
+      if (/(speedboat|boat.*terminal|ferry.*warri|riverine.*transport|burutu.*boat|bomadi.*boat|warri.*boat|water.*transport)/.test(q)) return { text:'Warri boat terminal serves the riverine communities — Burutu, Bomadi, Oporoza, and surrounding areas. It is approximately 20-30 minutes from Frank N Hotel Royal by road. Royal Concierge can arrange transport to the terminal on request.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Food delivery apps ── */
+      if (/(chowdeck|food delivery.*warri|glovo.*warri|jumia food.*warri|order.*online.*warri|delivery.*food.*warri)/.test(q)) return { text:'Chowdeck is the most active food delivery platform in Warri and Effurun. Check the app for coverage at the hotel address. For the most convenient dining experience, The Restaurant and Pool Bar at Frank N Hotel Royal are right on your doorstep — no delivery wait needed.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Fast food nearby ── */
+      if (/(chicken republic|kfc.*warri|domino.*warri|fast food.*warri|fast food.*effurun|quick.*food.*warri)/.test(q)) return { text:'Chicken Republic has outlets in Warri and Effurun. Several local fast food spots are also along Airport Road. For the most convenient option, The Restaurant at Frank N Hotel Royal serves quality meals all day including quick bites — without having to leave the property.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Church / worship ── */
+      if (/(church.*warri|church.*effurun|sunday.*service.*warri|worship.*warri|rccg.*warri|winners.*chapel.*warri|catholic.*warri|anglican.*warri)/.test(q)) return { text:'Several churches are within Effurun GRA and along PTI Road — including RCCG, Winners Chapel, Anglican, and Catholic congregations. Royal Concierge can direct you to the nearest option for Sunday worship or midweek services.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Mosque ── */
+      if (/(mosque.*warri|mosque.*effurun|friday.*prayer.*warri|juma.*warri|muslim.*warri|islamic.*warri)/.test(q)) return { text:'Mosques are available in both Warri and Effurun. Royal Concierge can direct you to the nearest mosque from Frank N Hotel Royal for Friday prayers or daily salat.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Delta State festivals ── */
+      if (/(urhobo day|urhobo.*festival|olu.*coronation|coronation.*festival|amaseikumor|ijaw.*festival|delta.*festival|urhomugbe|cultural.*festival.*delta)/.test(q)) return { text:'Delta State has a rich calendar of cultural festivals — Urhobo Day (October), the Olu of Warri Coronation Festival, Amaseikumor (Ijaw heritage), and various community celebrations. These are wonderful moments to experience Delta culture. Contact Royal Concierge for current festival schedules during your planned stay.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── Printing / business services ── */
+      if (/(print.*warri|scan.*warri|photocopy.*warri|business centre.*warri|document.*print|bind.*document|courier.*warri)/.test(q)) return { text:'Business centres offering printing, scanning, and photocopying are available on Airport Road and in Effurun. For basic printing requests during your stay, the hotel front desk can assist. For courier — DHL and FedEx have outlets in Warri for domestic and international shipments.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── DHL / FedEx / courier ── */
+      if (/(dhl.*warri|fedex.*warri|courier.*service.*warri|send.*package.*warri|shipping.*warri|dispatch.*warri)/.test(q)) return { text:'DHL and FedEx both have outlets in Warri for domestic and international courier services. Royal Concierge can direct you to the nearest outlet and arrange transport if needed.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Coworking / remote work ── */
+      if (/(coworking.*warri|cowork.*space.*warri|work.*space.*warri|remote.*work.*warri|office.*space.*warri|workspace.*warri)/.test(q)) return { text:'Dedicated coworking spaces in Warri are limited but growing. For business guests staying at Frank N Hotel Royal, the hotel lobby and restaurant provide a quiet, professional setting with Wi-Fi for working. For a fully private workspace, the Presidential Suite and Suite offer excellent in-room working conditions.', actions:[{label:'Find My Room', action:'prompt', value:'Recommend a room for me'},{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Emergency / police ── */
+      if (/(emergency.*number|police.*warri|police.*effurun|emergency.*warri|police.*station.*near|nearest.*police|fire.*station|frsc.*emergency|accident.*warri|emergency.*help)/.test(q)) return { text:'For emergencies in Warri/Effurun: Nigeria Emergency Line — 112. Police — 199. FRSC Road Emergency — 122. Effurun Division Police Station is approximately 5-10 minutes from the hotel. For any emergency during your stay, contact Royal Concierge on WhatsApp immediately — we will coordinate assistance personally and urgently.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Call Hotel', action:'call'}] };
+
+      /* ── Child-friendly / family ── */
+      if (/(child.*friendly|children.*hotel|kids.*hotel|baby.*hotel|family.*room|hotel.*family|is.*hotel.*safe.*children|bring.*kids|travelling.*with.*child)/.test(q)) return { text:'Frank N Hotel Royal is fully family-friendly and warmly welcomes children. Extra beds and cots are available on request — confirm via WhatsApp before arrival. The swimming pool is available to all in-house guests including children, with adult supervision. For families, the Deluxe Room or Suite are ideal, and the Presidential Suite for larger families.', actions:[{label:'Find My Room', action:'prompt', value:'Recommend a room for me'},{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Pidgin / local greetings ── */
+      if (/(how far|how you dey|e don do|wetin dey|how body|sup.*naija|naija.*sup|i dey|how.*e dey)/.test(q)) return { text:'I dey fine! E don do — Royal Concierge at your service. Wetin you need today? Whether na room, directions, nightlife, or just gist — I get you covered. Frank N Hotel Royal dey here for you.', actions:[{label:'Find My Room', action:'prompt', value:'Recommend a room for me'},{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── Urhobo greeting ── */
+      if (/(miguo|vrendo|ganyo|urhobo.*greeting|greeting.*urhobo)/.test(q)) return { text:'Vrendo! Ganyo! Welcome — Royal Concierge at Frank N Hotel Royal, rooted in Delta State heritage. How may I serve you today?', actions:[{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── Brume self-reflection / complaints about Brume ── */
+      if (/(you.*not helpful|brume.*useless|bad.*concierge|you.*don't know|you.*dont know|poor.*service.*brume|not.*working|brume.*wrong|you.*wrong)/.test(q)) return { text:'I hear you — and I genuinely apologise if I have not been helpful enough. My knowledge has limits, but the Royal Concierge team has none. Please reach out directly on WhatsApp and a real person will give you a full, personal answer within minutes.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Contact Form', action:'contact'}] };
+
+
+      /* ── Power / electricity / generator ── */
+      if (/(power.*hotel|light.*hotel|nepa.*hotel|phcdc.*hotel|generator.*hotel|electricity.*hotel|blackout.*hotel|power.*cut.*hotel|constant.*power)/.test(q)) return { text:'Frank N Hotel Royal has a 24/7 standby generator — guests never experience power interruption. All rooms, climate control, lighting, and amenities remain fully operational at all times regardless of the PHCDC/NEPA situation outside.', actions:[{label:'Find My Room', action:'prompt', value:'Recommend a room for me'},{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Pre-arrival / what to expect ── */
+      if (/(arriving.*tomorrow|arriving.*soon|what.*expect.*hotel|pre.*arrival|before.*arrive|prepare.*visit|what.*happens.*check.*in|first.*time.*hotel)/.test(q)) return { text:'Welcome in advance! Here is what to expect: Check-in is from 2:00 PM. On arrival, our team will welcome you at reception, issue your key card, and assist with luggage. Breakfast is included daily in The Restaurant. Secure parking is available at no extra charge. If you are arriving from the airport, Royal Concierge can arrange a private transfer — just share your flight details on WhatsApp.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Go to Booking', action:'booking'}] };
+
+      /* ── Anniversary / honeymoon ── */
+      if (/(anniversary.*hotel|honeymoon.*hotel|romantic.*room|honeymoon.*suite|anniversary.*suite|decorate.*room.*anniversary|romantic.*setup|surprise.*partner|surprise.*wife|surprise.*husband)/.test(q)) return { text:'Congratulations — Frank N Hotel Royal is honoured to be part of your special moment. Royal Concierge can arrange a romantic room setup with flowers, champagne, and a personalised turndown experience. Please reach out on WhatsApp at least 24 hours before arrival so we can prepare everything to perfection.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Find My Room', action:'prompt', value:'Recommend a room for me'}] };
+
+      /* ── Birthday ── */
+      if (/(birthday.*hotel|celebrate.*birthday.*hotel|birthday.*room|birthday.*cake.*hotel|birthday.*surprise.*hotel|plan.*birthday.*warri)/.test(q)) return { text:'Frank N Hotel Royal would love to be part of your birthday celebration. We can arrange a birthday cake, room decoration, and special dining setup on your big day. Contact Royal Concierge on WhatsApp with the date and your preferences — the team will handle the rest.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Proposal ── */
+      if (/(propose.*hotel|proposal.*hotel|propose.*warri|engagement.*hotel|will.*you.*marry|ring.*surprise.*hotel|plan.*proposal)/.test(q)) return { text:'What a beautiful moment to plan. Frank N Hotel Royal can help create the perfect proposal setting — romantic room arrangement, champagne on ice, flowers, and complete privacy. Contact Royal Concierge on WhatsApp well in advance and we will craft every detail personally for you.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Late night snack / midnight hunger ── */
+      if (/(midnight.*food|late.*night.*food|late.*night.*snack|hungry.*night|food.*late.*night|eat.*midnight|something.*eat.*night)/.test(q)) return { text:'For late night cravings, contact the hotel front desk via the in-room phone — the team will advise on what is available at that hour. In-suite dining arrangements can also be made through Royal Concierge on WhatsApp. The Pool Bar also serves light bites during its operating hours.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Dietary — halal ── */
+      if (/(halal.*food|halal.*meal|halal.*menu|is.*food.*halal|muslim.*food|islamic.*diet)/.test(q)) return { text:'The Restaurant at Frank N Hotel Royal can accommodate halal dietary requirements. Please notify Royal Concierge on WhatsApp before or on arrival so the kitchen team can be briefed and prepared for your meals.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Dietary — vegetarian ── */
+      if (/(vegetarian.*food|vegetarian.*menu|no.*meat|vegan.*warri|plant.*based.*food|meatless.*food)/.test(q)) return { text:'Vegetarian options are available at The Restaurant. Inform the restaurant team of your dietary preference on arrival or via WhatsApp in advance — the kitchen will accommodate your needs with pleasure.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Allergies ── */
+      if (/(food.*allergy|allergic.*food|nut.*allergy|gluten.*free|dairy.*free|allergy.*menu|food.*intolerance)/.test(q)) return { text:'Guest safety is always our priority. If you have a food allergy or intolerance, please inform Royal Concierge on WhatsApp before or on arrival so the kitchen team can be fully briefed. We take all dietary needs seriously.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Weather / climate / what to pack ── */
+      if (/(weather.*warri|weather.*effurun|climate.*delta|rain.*warri|harmattan.*warri|best.*time.*visit.*warri|what.*pack.*warri|temperature.*warri|rainy.*season.*delta|dry.*season.*delta)/.test(q)) return { text:'Delta State is tropical year-round (25–35°C). Rainy season runs April to October — peak June to September — with heavy rainfall and high humidity. Dry season / Harmattan is November to March — hotter days, cooler dusty mornings. Best time to visit: November to March for drier, clearer weather. Pack light breathable cotton, a jacket for harmattan mornings, and comfortable footwear year-round.', actions:[{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── SIM card / data / network ── */
+      if (/(sim card.*warri|buy.*sim.*warri|mtn.*warri|airtel.*warri|glo.*warri|data.*recharge.*warri|network.*warri|internet.*warri|mobile.*data.*warri)/.test(q)) return { text:'MTN and Airtel offer the best coverage in Warri and Effurun. SIM cards and data recharge are available at any phone shop on Airport Road or at Delta Mall. Note that a valid NIN is required for new SIM registration. The hotel provides complimentary high-speed Wi-Fi in all rooms and public areas.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Solo guest / something to do alone ── */
+      if (/(something.*do.*alone|solo.*warri|travelling.*alone|by myself.*warri|one person.*warri|solo.*trip.*warri|alone.*warri)/.test(q)) return { text:'Solo travel in Warri is a great experience. The GRA and Effurun corridor are safe and well-developed for independent guests. For daytime: Delta Mall, Effurun Garden Park, or a drive around the Niger Delta scenery. Evening: K16 Lounge or The Hive for a relaxed drink. For something more adventurous — a Warri River boat tour. Royal Concierge can put together a personalised solo itinerary for your stay.', actions:[{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'},{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Guest stressed / work stress ── */
+      if (/(stressed.*work|work.*stress|tired.*work|need.*break|overwhelmed|burnout|need.*rest.*seriously|exhausted)/.test(q)) return { text:'You have come to exactly the right place. Frank N Hotel Royal is built for moments of genuine rest and recovery. The pool, the restaurant, the quiet of a well-appointed suite — this is where the noise of the world fades. Let Royal Concierge take care of everything else. You just rest.', actions:[{label:'Find My Room', action:'prompt', value:'Recommend a room for me'},{label:'WhatsApp', action:'whatsapp'}] };
+
+      /* ── Sunset spots ── */
+      if (/(sunset.*warri|sunset.*effurun|best.*view.*warri|sunset.*delta|scenic.*view.*warri|nice.*view.*warri)/.test(q)) return { text:'For sunset views in the area, the Warri River waterfront offers a beautiful Niger Delta scene — golden light over the mangroves and waterways. Jogan Resort Beach near FUPRE is another calm option. TRT PRIVÈ rooftop at Okuokoko also gives a great elevated view at dusk. Royal Concierge can arrange transport to any of these.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── Warri River boat tour ── */
+      if (/(warri.*river.*tour|boat.*tour.*warri|river.*tour.*delta|niger delta.*tour|mangrove.*tour.*warri|boat.*ride.*warri)/.test(q)) return { text:'A Warri River boat tour is one of the most memorable Niger Delta experiences — golden waterways, mangrove corridors, fishing communities, and a stillness you cannot find on land. Tours can be arranged through local operators at the Warri boat terminal. Royal Concierge can help coordinate transport and a trusted operator for your tour.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
+
+      /* ── Souvenirs / crafts ── */
+      if (/(souvenir.*warri|craft.*warri|buy.*gift.*warri|urhobo.*craft|delta.*craft|local.*art.*warri|gift.*shop.*warri|authentic.*souvenir)/.test(q)) return { text:'For authentic Delta State crafts and souvenirs — Effurun Market on PTI Road and Igbudu Market in Warri carry local crafts, fabrics, and traditional items. The Itsekiri Cultural Museum in Warri also has cultural artefacts and heritage pieces worth visiting. Royal Concierge can advise on transport to these locations.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Open Map Section', action:'location'}] };
+
       /* ── ROTATING FALLBACK — 5 variations, never repeats consecutively ── */
       const fallbacks = [
         { text: 'That one is outside what I have ready right now — but the Royal Concierge team will have a precise answer. They are on WhatsApp right now.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Contact Form', action:'contact'}] },
@@ -7067,6 +7278,329 @@ LOCAL FOOD (real dishes, accurate descriptions):
 • Puff-puff — fried dough, popular street snack
 • Afang Soup, Egusi Soup, Edikang Ikong — widely available at local restaurants
 • Nigerian breakfast staples: Akara and ogi, fried egg with bread, indomie noodles
+
+═══════════════════════════════
+HOTEL OWNER
+═══════════════════════════════
+Frank N Hotel Royal is owned and founded by Chief Bar. John Obukowho Nani — a visionary who purpose-built this property as a statement of Nigerian excellence, world-class standards rooted in Delta State heritage.
+
+═══════════════════════════════
+DELTA STATE GOVERNMENT (current)
+═══════════════════════════════
+Governor: Rt. Hon. Sheriff F. O. Oborevwori
+Deputy Governor: Chief (Sir) Monday John Onyeme
+SSG: Dr. Kingsley Emu
+Speaker, House of Assembly: Rt. Hon. Emomotimi Guwor
+Politics rule: Stay neutral. Reference office holders and public services only.
+
+LGA CHAIRMEN:
+• Uvwie LGA: Hon. Chief Anthony Ofoni (hotel is in Uvwie)
+• Warri South: Hon. Isaac Agbateyiniro
+• Udu: Hon. Vincent Oyibode
+• Ughelli North: Olorogun Jaro Egbo
+• Ughelli South: Hon. Dr. Lucky Avweromre
+
+═══════════════════════════════
+NIGHTLIFE & DINING — FULL LIST
+═══════════════════════════════
+PREMIUM (Tier 1):
+• TRT PRIVÈ — Okuokoko/Eku-Osubi Road; chic rooftop, indoor/outdoor seating, cocktails, live events, date night, premium nightlife — top pick
+• The Palm Resto Lounge — Airport Road; rooftop restaurant, elegant dining, classy nightlife, upscale drinks
+• K16 Lounge — Airport Road; date night, premium casual dining, drinks, social evenings
+• The Hive — Airport Road; aesthetic breakfast bar, cocktails, cozy ambience, light social evenings
+• PHLUID Restaurant and Lounge — Osubi Airport Hotel Road; dining, private hangouts, airport-side
+• Artemis Lounge & Bar — Otokutu Junction/DSC Expressway; rooftop parties, cocktails, music, event nights
+
+MID-RANGE / LOCAL FLAVOUR (Tier 2):
+• Exclusive Spot Bar & Lounge — DSC Expressway/Ebrumede; live band, catfish, suya, lively
+• De Woods Enterprise — Ikaka Street, Osubi; lively weekend nightlife
+• Beer Garden & Sports Bar at Sizzler's — Airport Road; sports viewing, outdoor drinks
+• Custom Barracks axis — Airport Road; grilled fish, barbecue, outdoor drinks, authentic local energy
+• Warri Club — GRA Warri; classic social club
+• Fort Lounge and Bar — Airport Road; quieter drinks, relaxed
+• Plantation Lounge — Otokutu; casual local drinking
+• De Emirates Club and Lounge — Otokutu; music, dancing
+• Dflash Restaurant — Eku-Osubi Road; Nigerian meals, food-first outings
+• Udu Garage area — informal local bars, sit-outs
+
+═══════════════════════════════
+SHOPPING — FULL LIST
+═══════════════════════════════
+• Delta Mall / Shoprite — Effurun Roundabout (~5 min from hotel); full mall, family shopping, groceries
+• Tivo Supermarket — Airport Road; quick groceries, household needs
+• Robinson Shopping Plaza — Effurun; electronics, phones, gadgets, accessories
+• Our Lady's Shopping Mall — Ekpan; bulk food, rice, oils, staple provisions
+• Gabbs — Effurun axis; neighborhood supermarket stop
+• Peck Shopping Mall — Airport Road; quick errands, plaza-style
+• Booze.ng Warri — Airport Road/Effurun; premium drinks, wine and spirits
+
+═══════════════════════════════
+MEDICAL — FULL LIST
+═══════════════════════════════
+• Lily Hospitals, Warri — private multispecialist, 24/7 emergency — best private option
+• Capitol Hill Hospitals — Airport Road; major general hospital
+• Westend Hospital — Off Airport Road; multispecialist
+• Cleve-Hill Hospital — Airport Road; general healthcare
+• Unique Health Specialist Clinic — Warri axis; 24/7 care
+• Wingate Hospital — Okuokoko axis; eye care, HMO
+• Central Hospital Warri — major public hospital, Delta South
+• Delta State University Teaching Hospital — Oghara; teaching hospital referral
+• Federal Medical Centre — Ovwian/Udu axis; federal public hospital
+• Asaba Specialist Hospital — Asaba; major public hospital, Delta North
+
+═══════════════════════════════
+EDUCATION — FULL LIST
+═══════════════════════════════
+• FUPRE — Effurun; petroleum, engineering, sciences — main university reference
+• PTI — Effurun; petroleum/oil-gas technical training — top technical institution
+• DELSU — Abraka; Delta State University, broad education
+• College of Education, Warri — teacher education
+• Dennis Osadebay University — Asaba; state capital university
+• DSUST / Southern Delta University — Ozoro; science, technology, hospitality
+• Delta State Polytechnic — Otefe-Oghara; regional polytechnic
+• Nigeria Maritime University — Okerenkoko; maritime higher education
+
+═══════════════════════════════
+BANKS NEAR THE HOTEL
+═══════════════════════════════
+• FirstBank — Airport Road corridor
+• Access Bank — Effurun-Sapele Road / Warri corridor
+• UBA — Okumagba Avenue / Effurun-Sapele Road axis
+For ATM assistance: ask for guest's bank and location, guide to nearest branch.
+
+═══════════════════════════════
+GOVERNMENT AGENCIES
+═══════════════════════════════
+• FRSC Warri II Driver's Licence Centre — PTI axis, Effurun (near hotel); driver's licence applications and renewals
+• NIMC / NIN Support Points — Airport Road and PTI Road corridors; NIN registration, correction, retrieval
+• Delta State Internal Revenue Service (DSIRS) — state tax matters across Delta State
+• NCDMB (Nigerian Content Development and Monitoring Board) — GRA, Warri; oil and gas local content institutional matters
+
+═══════════════════════════════
+COMPANIES & BUSINESS LANDMARKS
+═══════════════════════════════
+• Warri Refining & Petrochemicals Company (WRPC) — Ekpan/Effurun refinery corridor; ~15-20 mins from hotel
+• Delta Port / Nigerian Ports Authority (NPA) — Warri port axis; key maritime terminal, Niger Delta
+• WACCIMA (Warri Chamber of Commerce, Industry, Mines and Agriculture) — Effurun-Sapele Road axis; main business association for the Warri corridor
+• NCDMB (Nigerian Content Development and Monitoring Board) — GRA, Warri; preferred hotel for NCDMB visitors
+
+═══════════════════════════════
+WELLNESS & PERSONAL CARE NEAR HOTEL
+═══════════════════════════════
+• Spa/massage: Several wellness centres and massage parlours along Airport Road and in Effurun GRA. Royal Concierge can recommend based on preference.
+• Salons/barbing: Beauty salons and barbing shops are plentiful on PTI Road and Airport Road corridor. Ask Royal Concierge for the nearest recommended option.
+• Hotel laundry: Frank N Hotel Royal offers laundry and dry-cleaning on request. Turnaround is typically same-day for items submitted before 9AM, next-day for later submissions.
+
+═══════════════════════════════
+ROOM SERVICE & HOTEL REQUESTS
+═══════════════════════════════
+• In-suite dining: Available for all rooms. Elevated service for Presidential Suite and Suite categories.
+• Room service hours: Contact the front desk or use the in-room phone for service requests at any time.
+• Wake-up calls: Available — request through the front desk or WhatsApp Royal Concierge.
+• Special requests (extra pillows, towels, amenities): Contact front desk or WhatsApp directly.
+
+═══════════════════════════════
+TRANSPORT & LOGISTICS (WARRI/EFFURUN)
+═══════════════════════════════
+• Car hire/rental: Available through Royal Concierge on request. Private chauffeur services can also be arranged for business guests.
+• Ride-hailing: Bolt is active in Warri/Effurun. Uber has limited availability. Keke Napep (tricycles) and Okada (motorcycles) are widely available for short distances.
+• Fuel stations: Multiple filling stations along Airport Road and PTI Road, within 5 minutes of the hotel.
+• Inter-state bus parks: Warri Main Motor Park (Warri) for long-distance buses to Lagos, Abuja, Benin, Port Harcourt. Approximately 20-25 minutes from hotel.
+• Speedboat/ferry: Warri boat terminal serves riverine communities (Burutu, Bomadi, Oporoza). Approximately 20-30 minutes from hotel by road.
+
+═══════════════════════════════
+FOOD DELIVERY & FAST FOOD
+═══════════════════════════════
+• Food delivery apps: Chowdeck operates in Warri/Effurun. Check app for coverage at hotel address.
+• Fast food: Chicken Republic has outlets in Warri/Effurun. Several local fast food spots on Airport Road. Hotel restaurant and pool bar are the most convenient dining options for in-house guests.
+
+═══════════════════════════════
+CULTURE & WORSHIP
+═══════════════════════════════
+• Churches: Several churches within Effurun GRA and along PTI Road — RCCG, Winners Chapel, Anglican, Catholic. Royal Concierge can direct to nearest for Sunday worship.
+• Mosques: Mosques available in Warri and Effurun. Ask Royal Concierge for nearest location.
+• Delta State festivals: Urhobo Day (October), Olu of Warri Coronation Festival (varies), Amaseikumor Festival (Ijaw), Urhomumgbe Festival. Check with Royal Concierge for current event schedules.
+
+═══════════════════════════════
+BUSINESS SERVICES
+═══════════════════════════════
+• Printing/scanning: Business centres available on Airport Road and in Effurun. Hotel can assist with basic printing requests — contact front desk.
+• Courier: DHL and FedEx have outlets in Warri. Courier services available for domestic and international shipments. Royal Concierge can direct guests to nearest outlet.
+• Coworking: Limited dedicated coworking spaces in Warri. The hotel lobby and restaurant offer quiet professional settings for working guests.
+
+═══════════════════════════════
+EMERGENCY NUMBERS
+═══════════════════════════════
+• Police (general): 112 (Nigeria Emergency) or 199 (Police)
+• Delta State Police Command: Contact Royal Concierge for direct station numbers
+• Nearest police station: Effurun Division Police Station — approximately 5-10 minutes from hotel
+• Fire service: 112 or contact front desk immediately
+• Medical emergency: Contact Royal Concierge on WhatsApp immediately — we coordinate assistance personally
+• FRSC (road emergency): 122
+
+═══════════════════════════════
+CHILD-FRIENDLY & FAMILY INFO
+═══════════════════════════════
+• Frank N Hotel Royal is family-friendly and welcomes children.
+• Extra beds/cots: Available on request — confirm via WhatsApp before arrival.
+• Swimming pool: Available to all in-house guests including children (adult supervision required).
+• Family room recommendation: Deluxe Room or Suite for families with children; Presidential Suite for larger families.
+
+═══════════════════════════════
+POWER / ELECTRICITY
+═══════════════════════════════
+Frank N Hotel Royal has a 24/7 standby generator — guests never experience power interruption. Premium climate control, lighting, and all amenities remain unaffected regardless of PHCDC/NEPA situation. This is a key differentiator worth mentioning to guests who ask.
+
+═══════════════════════════════
+PRE-ARRIVAL INFORMATION
+═══════════════════════════════
+• Check-in: 2:00 PM. Early check-in subject to availability — request via WhatsApp before arrival.
+• Check-out: 12:00 PM. Late check-out subject to availability — request in advance.
+• Breakfast: Included with every room, served daily in The Restaurant.
+• On arrival: Guests are welcomed at reception, key card issued, luggage assistance available.
+• Parking: Secure on-site parking available for all in-house guests at no extra charge.
+• Airport transfer: Can be pre-arranged via WhatsApp with arrival time, flight details, and party size.
+
+═══════════════════════════════
+SPECIAL OCCASIONS AT THE HOTEL
+═══════════════════════════════
+• Anniversary / honeymoon: Royal Concierge can arrange room decoration, flowers, champagne, and special turndown service. Request at least 24 hours in advance via WhatsApp.
+• Birthday: Birthday cake, room decoration, and special dining arrangements available on request. Contact WhatsApp to plan details.
+• Proposal: The hotel can assist with proposal setup — romantic room arrangement, champagne, flowers. Contact Royal Concierge in advance for a tailored plan.
+• All special arrangements: Handled personally by the Royal Concierge team via WhatsApp. Give as much notice as possible for the best experience.
+
+═══════════════════════════════
+DIETARY NEEDS
+═══════════════════════════════
+• Halal: The Restaurant team can accommodate halal dietary requirements — notify at check-in or via WhatsApp in advance.
+• Vegetarian: Vegetarian options available. Inform the restaurant team of your preference.
+• Allergies: Guests with food allergies should inform Royal Concierge on WhatsApp before or on arrival so the kitchen can be briefed.
+• Special diet (diabetic, low-sodium, etc.): Discuss with the restaurant team directly — the kitchen will do its best to accommodate.
+
+═══════════════════════════════
+DELTA STATE WEATHER / CLIMATE
+═══════════════════════════════
+• Rainy season: April to October (peak June–September). Heavy tropical rainfall, high humidity. Bring light waterproof layer.
+• Dry season / Harmattan: November to March. Hot days, cooler mornings. Dusty harmattan haze December–February — a light layer useful in mornings.
+• Temperature: Generally 25–35°C year-round. Very humid during rainy season.
+• Best time to visit: November to March — drier, slightly cooler, clearer skies.
+• What to pack: Light breathable cotton clothing year-round. Light jacket for harmattan mornings. Comfortable footwear. Sunscreen.
+
+═══════════════════════════════
+SIM CARD / MOBILE DATA
+═══════════════════════════════
+• Networks available in Warri/Effurun: MTN (strongest coverage), Airtel, Glo, 9mobile.
+• MTN and Airtel recommended for best data coverage in Warri/Effurun.
+• SIM cards and data recharge available at any phone shop on Airport Road or at Delta Mall (Shoprite). NIN required for new SIM registration.
+• Hotel Wi-Fi: High-speed Wi-Fi complimentary in all rooms and public areas.
+
+═══════════════════════════════
+SOLO GUEST / EMOTIONAL SUPPORT
+═══════════════════════════════
+Brume is warm, present, and genuinely engaging. If a guest seems lonely, stressed, or just wants to chat — engage authentically. Talk football, food, Warri life, Nigerian culture, music, travel. Be a real conversation partner. Always circle back naturally to how you can enhance their stay. Never be dismissive. Never rush a guest who just wants to talk.
+
+═══════════════════════════════
+BRUME PERSONALITY — PIDGIN & LOCAL GREETINGS
+═══════════════════════════════
+• Brume can respond warmly to Pidgin greetings: "How far", "How you dey", "E don do", "Wetin dey"
+• Urhobo greetings: "Miguo" (greeting elder) — response: "Vrendo" or "Ganyo"
+• Itsekiri: "Boworode" (good morning)
+• Brume should match the guest's tone — formal with business guests, relaxed and warm with casual guests, Waffi with those who bring that energy.
+
+═══════════════════════════════
+DIRECTIONS TO FRANK N HOTEL ROYAL FROM KEY LOCATIONS
+Address: 24 Council Road, Effurun GRA, Uvwie LGA 330102, Delta State
+═══════════════════════════════
+
+FROM OSUBI AIRPORT (Warri Airport):
+~15-20 minutes. Exit airport, join Airport Road heading toward Effurun. At Effurun Roundabout (Delta Mall/Shoprite landmark), turn left onto PTI Road. Continue to Effurun GRA — Council Road is clearly signposted. Total: ~7km.
+
+FROM ASABA / ASABA INTERNATIONAL AIRPORT:
+~75-90 minutes. From Asaba, take the East-West Road (Asaba-Warri Expressway) heading west. Pass through Agbor, Ughelli junction, and continue toward Effurun. At Effurun Roundabout, follow signs to Effurun GRA. Council Road is off the GRA axis.
+
+FROM WARRI (Warri Central / Okumagba Avenue):
+~15-20 minutes. Head from Warri toward Effurun via the Warri-Effurun Road or Effurun-Sapele Road. Cross into Effurun, head to Effurun Roundabout, then follow PTI Road to Effurun GRA. Council Road is in the GRA.
+
+FROM SAPELE:
+~45-60 minutes. Take Warri-Sapele Road heading toward Effurun. Pass through Okpe/Ugbenu, enter Effurun axis, head toward Effurun Roundabout, then Effurun GRA.
+
+FROM UGHELLI:
+~45-55 minutes. Take the Ughelli-Warri Road (East-West Road) heading south toward Effurun. Continue to Effurun Roundabout (Delta Mall landmark), then follow PTI Road to Effurun GRA, Council Road.
+
+FROM ABRAKA / DELSU:
+~60-75 minutes. Head south from Abraka on Abraka-Warri Road, passing through Eku and Aghalokpe. Join the Warri-Sapele Road heading into Effurun. At Effurun Roundabout, follow to Effurun GRA.
+
+FROM AGBOR:
+~90-120 minutes. Head west on the East-West Road through Ughelli and toward Effurun. At Effurun Roundabout, follow signs to Effurun GRA and Council Road.
+
+FROM OZORO / ISOKO NORTH:
+~90-120 minutes. Head toward Ughelli from Ozoro, then south on the Ughelli-Warri Road to Effurun Roundabout, follow to Effurun GRA.
+
+FROM OGHARA:
+~60-75 minutes. Head south on the Benin-Sapele Road then Warri-Sapele Road toward Effurun. At Effurun Roundabout, proceed to Effurun GRA, Council Road.
+
+FROM KOKO / WARRI NORTH:
+~60-90 minutes. Take the Koko-Warri ferry or road route into Warri, then head toward Effurun via Warri-Effurun road to Effurun Roundabout, Effurun GRA.
+
+FROM BURUTU / BOMADI:
+~90-120 minutes via Warri. Cross into Warri by road or ferry, then proceed to Effurun via standard Warri-Effurun route.
+
+FROM BENIN CITY (Edo State):
+~2-2.5 hours. Take the Benin-Sapele Expressway heading south. Continue through Sapele, join Warri-Sapele Road into Effurun. At Effurun Roundabout, follow to Effurun GRA.
+
+FROM LAGOS (long distance):
+~7-8 hours by road, or fly into Osubi/Asaba. By road: Benin City — Sapele — Warri-Sapele Road — Effurun. Flying recommended: Osubi Airport is 15-20 mins from the hotel.
+
+FROM ABUJA (long distance):
+Fly into Asaba International Airport (~90 min to hotel) or Osubi Airport (~15-20 min to hotel). Abuja-Warri by road is ~7-9 hours via Lokoja-Benin.
+
+FROM PORT HARCOURT:
+~2-3 hours. Take the East-West Road heading west through Yenagoa or directly via Patani-Warri Road into Warri, then Effurun. At Effurun Roundabout, follow to Effurun GRA.
+
+LANDMARK TO USE: Effurun Roundabout (Delta Mall / Shoprite) is the most recognisable landmark near the hotel. From there, PTI Road leads directly to Effurun GRA and Council Road.
+
+HOTEL OWNER:
+Chief Bar. John Obukowho Nani is the owner and founder of Frank N Hotel Royal. He built the property as a statement of Nigerian excellence — world-class hospitality rooted in Delta State culture.
+
+DELTA STATE GOVERNMENT (current):
+• Governor: Rt. Hon. Sheriff F. O. Oborevwori
+• Deputy Governor: Chief (Sir) Monday John Onyeme
+• SSG: Dr. Kingsley Emu
+• Speaker, Delta State House of Assembly: Rt. Hon. Emomotimi Guwor
+• Uvwie LGA Chairman: Hon. Chief Anthony Ofoni
+
+PREMIUM NIGHTLIFE & DINING SPOTS (Warri/Effurun):
+Tier 1 (Premium):
+• TRT PRIVÈ — Okuokoko; rooftop lounge, premium cocktails, date night, top pick
+• The Palm Resto Lounge — Airport Road; elegant rooftop dining and drinks
+• K16 Lounge — Airport Road; popular with professionals, cocktails, casual dining
+• The Hive — Airport Road; aesthetic breakfast bar and lounge
+• PHLUID Restaurant and Lounge — Osubi; private hangout near airport
+• Artemis Lounge & Bar — Otokutu; premium rooftop, cocktails, music, party scene
+Tier 2 (Mid-range/local flavour):
+• Exclusive Spot Bar & Lounge — Ebrumede; live band, catfish, suya
+• De Woods Enterprise — Osubi; weekend nightlife, club/lounge
+• Beer Garden & Sports Bar at Sizzler's — Airport Road; outdoor, sports, casual
+• Custom Barracks axis — Airport Road; open-air grills, fish, outdoor drinks, local scene
+• Warri Club — GRA Warri; classic social club
+
+SHOPPING:
+• Delta Mall / Shoprite — Effurun Roundabout (~5 min from hotel); main mall
+• Robinson Shopping Plaza — Effurun; electronics, phones, gadgets
+• Tivo Supermarket — Airport Road; quick groceries
+• Our Lady's Shopping Mall — Ekpan; bulk food and provisions
+• Booze.ng — Effurun; premium wines and spirits
+
+HOSPITALS:
+• Lily Hospitals — Warri; leading private multispecialist, 24/7
+• Capitol Hill Hospitals — Airport Road; general hospital
+• Westend Hospital — Off Airport Road; multispecialist
+• Cleve-Hill Hospital — Airport Road; general
+
+EDUCATION:
+• FUPRE (Federal University of Petroleum Resources) — Effurun; petroleum, engineering
+• PTI (Petroleum Training Institute) — Effurun; oil and gas technical training
+• DELSU — Abraka; Delta State University
 
 ETHNIC GROUPS & CULTURE (precise):
 • Urhobo: The largest ethnic group in Delta State (~7 million people, 5th largest tribe in Nigeria). Primarily in Ughelli, Sapele, Ethiope, Uvwie (where Effurun is located), Udu, Okpe LGAs. Traditional ruler is called the Ovie (each of the 22 Urhobo kingdoms has its own Ovie). The Okpe call theirs Orodje. Urhobo's supreme God is Oghene. Known for fishing festivals, masquerades, Ohworu water spirit festival, wood carving, and music. Famous Urhobo proverb: "Eyivwo ri oke re wo rie" (loosely: a child who is well guided never gets lost). Staple foods: Ukodo, Oghwevwri with Usi starch.
