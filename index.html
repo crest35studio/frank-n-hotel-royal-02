@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" name="viewport"/>
+<meta name="theme-color" content="#0A0A0A"/>
 <!-- FRANK N HOTEL ROYAL - FINAL BUILD -->
 <title>Frank N Hotel Royal | Where Royalty Finds Rest</title>
 <meta content="Frank N Hotel Royal — Where Royalty Finds Rest. 5-star luxury hotel at 24 Council Road, Effurun GRA, Delta State, Nigeria. Where Nigerian Heritage Meets World-Class Luxury." name="description"/>
@@ -144,7 +145,7 @@
       --raleway:      'Raleway', sans-serif;
 
       /* Layout */
-      --nav-h:        110px;
+      --nav-h:        96px;
       --pad-section:  130px;
       --container:    1380px;
       --pad-x:        48px;
@@ -474,11 +475,11 @@
         bottom: 100px !important;
       }
       /* Corner frames on mobile */
-      .hc { width: 36px !important; height: 36px !important; }
-      .hc.tl { top: 22px !important; left: 22px !important; }
-      .hc.tr { top: 22px !important; right: 22px !important; }
-      .hc.bl { bottom: 90px !important; left: 22px !important; }
-      .hc.br { bottom: 90px !important; right: 22px !important; }
+      .hc { width: 80px !important; height: 20px !important; }
+      .hc.tl { top: 6px !important; left: 6px !important; }
+      .hc.tr { top: 6px !important; right: 6px !important; }
+      .hc.bl { bottom: 10px !important; left: 6px !important; }
+      .hc.br { bottom: 10px !important; right: 6px !important; }
     }
     @media (max-width: 480px) {
       .hero-h1 {
@@ -780,14 +781,14 @@
       line-height: 0;
       flex-shrink: 0;
       height: 100%;
-      padding-top: 10px;
+      padding-top: 0;
     }
     .brand-logo-img {
       display: block;
       width: auto;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 2px 12px rgba(0,0,0,.22));
+      filter: brightness(0.78) saturate(0.70) sepia(0.22) drop-shadow(0 2px 12px rgba(0,0,0,.22));
     }
     .brand-logo-img--nav {
       height: calc(var(--nav-h) - 18px);
@@ -801,7 +802,7 @@
     }
 
     /* Nav hairline */
-    #nav { border-bottom: 1px solid transparent; }
+    #nav { border-top: none; border-bottom: 1px solid transparent; }
     #nav.scrolled { border-bottom-color: rgba(201,169,110,0.18); }
     #nav.nav-hidden {
       opacity: 0;
@@ -927,22 +928,22 @@
 
     /* Decorative corner frames */
     .hc {
-      position:absolute; width:56px; height:56px; z-index:2;
+      position:absolute; width:120px; height:26px; z-index:2;
     }
     .hc::before, .hc::after {
       content:''; position:absolute;
       background:var(--gold); opacity:.45;
     }
-    .hc.tl { top:38px; left:38px; }
+    .hc.tl { top:8px; left:8px; }
     .hc.tl::before { top:0; left:0; width:1px; height:100%; }
     .hc.tl::after  { top:0; left:0; width:100%; height:1px; }
-    .hc.tr { top:38px; right:38px; }
+    .hc.tr { top:8px; right:8px; }
     .hc.tr::before { top:0; right:0; width:1px; height:100%; }
     .hc.tr::after  { top:0; right:0; width:100%; height:1px; }
-    .hc.br { bottom:70px; right:38px; }
+    .hc.br { bottom:16px; right:8px; }
     .hc.br::before { bottom:0; right:0; width:1px; height:100%; }
     .hc.br::after  { bottom:0; right:0; width:100%; height:1px; }
-    .hc.bl { bottom:70px; left:38px; }
+    .hc.bl { bottom:16px; left:8px; }
     .hc.bl::before { bottom:0; left:0; width:1px; height:100%; }
     .hc.bl::after  { bottom:0; left:0; width:100%; height:1px; }
 
@@ -1739,7 +1740,7 @@
     #foot {
       background: var(--bg-deep);
       border-top:1px solid var(--gold-border);
-      padding:100px 0 0;
+      padding:60px 0 0;
     }
     .foot-grid {
       display:grid;
@@ -2602,7 +2603,7 @@
 
       /* ── TOKENS ── */
       :root {
-        --nav-h: 70px;
+        --nav-h: 62px;
         --pad-section: 64px;
         --pad-x: 22px;
         --mob-card-gap: 12px;
@@ -2611,14 +2612,12 @@
       /* ── NAV BAR ── */
       #nav { padding: 0 var(--pad-x) 0 12px; background: transparent; }
       #nav.scrolled { background: rgba(6,6,6,0.65); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-      .nav-links, .btn-nav { display: none; }
+      #nav .nav-links, .btn-nav { display: none !important; }
       .burger { display: flex; }
       .mobile-overlay { display: flex; }
       #mob-backdrop { display: block; pointer-events: none; }
       .nav-grid { padding: 0 8px; }
-      .nav-links { display:none !important; }
-      .btn-nav { display:none !important; }
-      .nav-left { display:flex !important; }
+      .mobile-overlay .nav-links { display: flex !important; flex-direction: column; }
       .brand-logo-img--nav { height: calc(var(--nav-h) - 14px); width:auto; max-width:260px; }
       .brand-logo-link { align-items:center; padding-top:0; }
       .brand-logo-img--footer { height: 90px; width:auto; max-width:260px; }
@@ -2649,6 +2648,11 @@
         z-index: 999;
         background: #0c0b0b;
         border-left: 1px solid rgba(201,169,110,.22);
+        background-image:
+          repeating-linear-gradient(0deg, rgba(201,169,110,0.06) 0, rgba(201,169,110,0.06) 1px, transparent 1px, transparent 18px),
+          repeating-linear-gradient(90deg, rgba(201,169,110,0.06) 0, rgba(201,169,110,0.06) 1px, transparent 1px, transparent 18px),
+          repeating-linear-gradient(45deg, rgba(201,169,110,0.06) 0, rgba(201,169,110,0.06) 1px, transparent 1px, transparent 18px),
+          repeating-linear-gradient(-45deg, rgba(201,169,110,0.06) 0, rgba(201,169,110,0.06) 1px, transparent 1px, transparent 18px);
         display: flex;
         flex-direction: column;
         transform: translateX(100%);
@@ -3260,14 +3264,19 @@
       pointer-events: none;
       height: 0;
       overflow: hidden;
+      background: transparent;
+      transition: height .32s cubic-bezier(.16,1,.3,1), background .2s;
+      will-change: height;
+    }
+    #ptr-indicator.ptr-pulling,
+    #ptr-indicator.ptr-refreshing,
+    #ptr-indicator.ptr-releasing {
       background: linear-gradient(
         to bottom,
         rgba(10,10,10,1) 0%,
         rgba(10,10,10,.96) 70%,
         rgba(10,10,10,0) 100%
       );
-      transition: height .32s cubic-bezier(.16,1,.3,1);
-      will-change: height;
     }
     #ptr-indicator.ptr-pulling {
       transition: none; /* Real-time follow during drag */
@@ -3825,7 +3834,8 @@
 
     /* ── MOBILE: full-width bottom sheet ─────────────────────── */
     @media (max-width: 768px) {
-      #rc-wrap { right: 16px; bottom: 24px; width: auto; height: auto; z-index: 9100; }
+      #rc-wrap { right: 10px; bottom: 14px; width: auto; height: auto; z-index: 9100; }
+      #rc-wrap .brume-bubble svg { width: 62px; height: 62px; }
       #rc-panel {
         position: fixed;
         bottom: 0; left: 0; right: 0;
@@ -5191,7 +5201,6 @@
 <div class="foot-center">24 COUNCIL ROAD  ·  EFFURUN GRA  ·  DELTA STATE</div>
 <p>
 <a href="frank-n-hotel-privacy.html" style="margin-right:18px;">Privacy Policy</a>
-<a href="frank-n-hotel-privacy.html">Terms of Service</a>
 </p>
 </div>
 </footer>
