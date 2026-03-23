@@ -753,14 +753,17 @@
       box-shadow: 0 1px 0 var(--gold-border);
     }
     .nav-grid {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
       height: 100%;
       max-width: var(--container);
       margin: 0 auto;
-      gap: 40px;
+      padding: 0 12px;
     }
+    .nav-left { display:flex; align-items:center; gap:36px; }
+    .nav-center { display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .nav-right-group { display:flex; align-items:center; gap:36px; }
 
     /* Logo */
     .nav-logo {
@@ -782,13 +785,16 @@
       filter: drop-shadow(0 2px 12px rgba(0,0,0,.22));
     }
     .brand-logo-img--nav {
-      width: clamp(98px, 7.2vw, 124px);
-      max-width: 124px;
+      width: clamp(110px, 8vw, 150px);
+      max-width: 150px;
     }
     .brand-logo-img--footer {
       width: clamp(158px, 14vw, 224px);
       max-width: 224px;
     }
+
+    /* Nav hairline */
+    #nav { border-bottom: 1px solid rgba(201,169,110,0.13); }
 
     /* Nav links */
     .nav-links {
@@ -1828,7 +1834,7 @@
     @media(max-width:1024px) {
       :root { --pad-section:100px; --pad-x:32px; }
       .nav-links { gap:28px; }
-      .brand-logo-img--nav { width: 114px; max-width: 114px; }
+      .brand-logo-img--nav { width: 170px; max-width: 170px; }
       .brand-logo-img--footer { width: 196px; max-width: 196px; }
       .stats-row { grid-template-columns:repeat(4,1fr); }
     }
@@ -2590,8 +2596,13 @@
       .burger { display: flex; }
       .mobile-overlay { display: flex; }
       #mob-backdrop { display: block; pointer-events: none; }
-      .nav-grid { grid-template-columns: 1fr auto; gap: 0; }
-      .brand-logo-img--nav { width: 82px; max-width: 82px; }
+      .nav-grid { padding: 0 8px; }
+      .nav-left { display:none !important; }
+      .nav-right-group .nav-links { display:none !important; }
+      .nav-right-group { gap: 0; }
+      .btn-nav { display:none !important; }
+      .nav-center { flex:1; justify-content:flex-start; padding-left:4px; }
+      .brand-logo-img--nav { width: 150px; max-width: 150px; }
       .brand-logo-img--footer { width: 164px; max-width: 164px; }
 
       /* ── MOBILE OVERLAY — cinematic full-bleed ── */
@@ -3179,7 +3190,7 @@
     @media (max-width: 480px) {
       :root { --pad-section: 56px; --pad-x: 18px; }
 
-      .brand-logo-img--nav { width: 72px; max-width: 72px; }
+      .brand-logo-img--nav { width: 130px; max-width: 130px; }
       .brand-logo-img--footer { width: 148px; max-width: 148px; }
 
       .hero-cta { flex-direction: column; align-items: center; }
@@ -3948,13 +3959,20 @@
 <div aria-hidden="true" id="mob-scroll-progress"></div>
 <nav aria-label="Main navigation" id="nav" role="navigation">
 <div class="nav-grid">
-<a aria-label="Frank N Hotel Royal — Home" class="nav-logo brand-logo-link" href="javascript:void(0)" onclick="var t=document.getElementById('hero');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">
-<img alt="Frank N Hotel Royal" class="brand-logo-img brand-logo-img--nav" decoding="async" src="https://raw.githubusercontent.com/crest35studio/Frank-n-hotel-royal-02/main/hero-2.png"/>
-</a>
-<ul class="nav-links" role="list">
+<div class="nav-left">
+<ul class="nav-links" role="list" style="gap:36px;">
 <li><a href="javascript:void(0)" onclick="var t=document.getElementById('suites');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Suites</a></li>
 <li><a href="javascript:void(0)" onclick="var t=document.getElementById('dining');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Dining</a></li>
 <li><a href="javascript:void(0)" onclick="var t=document.getElementById('gallery');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Storybook</a></li>
+</ul>
+</div>
+<div class="nav-center">
+<a aria-label="Frank N Hotel Royal — Home" class="nav-logo brand-logo-link" href="javascript:void(0)" onclick="var t=document.getElementById('hero');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">
+<img alt="Frank N Hotel Royal" class="brand-logo-img brand-logo-img--nav" decoding="async" src="https://raw.githubusercontent.com/crest35studio/Frank-n-hotel-royal-02/main/logo.png"/>
+</a>
+</div>
+<div class="nav-right-group">
+<ul class="nav-links" role="list" style="gap:36px;">
 <li><a href="javascript:void(0)" onclick="var t=document.getElementById('story');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Heritage</a></li>
 <li><a href="javascript:void(0)" onclick="var t=document.getElementById('contact');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Contact</a></li>
 </ul>
@@ -3965,6 +3983,7 @@
 </button>
 </div>
 </div>
+</div>
 </nav>
 <!-- Mobile full-screen overlay -->
 <!-- Mobile Nav: Style D — Dark Drawer -->
@@ -3972,7 +3991,7 @@
 <nav aria-label="Navigation" aria-modal="true" class="mobile-overlay" id="mob" role="dialog">
   <div class="mob-drawer-inner">
     <div class="mob-drawer-header">
-      <div class="mob-drawer-hotel">FRANK N HOTEL ROYAL</div>
+      <span style="font-family:var(--cinzel);font-size:9px;letter-spacing:0.2em;color:rgba(201,169,110,0.5);">MENU</span>
       <button aria-label="Close navigation" class="mob-drawer-close" id="mob-close-btn" onclick="closeMob();">&#10005;</button>
     </div>
     <ul class="nav-links" role="list">
@@ -5088,7 +5107,7 @@
 <!-- Brand -->
 <div class="foot-brand">
 <a aria-label="Frank N Hotel Royal" class="nav-logo brand-logo-link" href="javascript:void(0)" onclick="var t=document.getElementById('hero');if(t){t.scrollIntoView({behavior:'smooth'});}return false;" style="display:inline-flex;">
-<img alt="Frank N Hotel Royal" class="brand-logo-img brand-logo-img--footer" decoding="async" src="https://raw.githubusercontent.com/crest35studio/Frank-n-hotel-royal-02/main/hero-2.png"/>
+<img alt="Frank N Hotel Royal" class="brand-logo-img brand-logo-img--footer" decoding="async" src="https://raw.githubusercontent.com/crest35studio/Frank-n-hotel-royal-02/main/logo.png"/>
 </a>
 <p>
           An ultra-luxury destination in the heart of Effurun GRA, Delta State — where the warmth of Nigerian hospitality is elevated to an art form.
