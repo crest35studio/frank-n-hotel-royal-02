@@ -785,12 +785,14 @@
       filter: drop-shadow(0 2px 12px rgba(0,0,0,.22));
     }
     .brand-logo-img--nav {
-      width: clamp(110px, 8vw, 150px);
-      max-width: 150px;
+      height: var(--nav-h);
+      width: auto;
+      max-width: 320px;
     }
     .brand-logo-img--footer {
-      width: clamp(158px, 14vw, 224px);
-      max-width: 224px;
+      height: 160px;
+      width: auto;
+      max-width: 420px;
     }
 
     /* Nav hairline */
@@ -1834,8 +1836,8 @@
     @media(max-width:1024px) {
       :root { --pad-section:100px; --pad-x:32px; }
       .nav-links { gap:28px; }
-      .brand-logo-img--nav { width: 170px; max-width: 170px; }
-      .brand-logo-img--footer { width: 196px; max-width: 196px; }
+      .brand-logo-img--nav { height: var(--nav-h); width:auto; max-width:320px; }
+      .brand-logo-img--footer { height: 110px; width:auto; max-width:320px; }
       .stats-row { grid-template-columns:repeat(4,1fr); }
     }
 
@@ -2597,13 +2599,11 @@
       .mobile-overlay { display: flex; }
       #mob-backdrop { display: block; pointer-events: none; }
       .nav-grid { padding: 0 8px; }
-      .nav-left { display:none !important; }
-      .nav-right-group .nav-links { display:none !important; }
-      .nav-right-group { gap: 0; }
+      .nav-links { display:none !important; }
       .btn-nav { display:none !important; }
-      .nav-center { flex:1; justify-content:flex-start; padding-left:4px; }
-      .brand-logo-img--nav { width: 150px; max-width: 150px; }
-      .brand-logo-img--footer { width: 164px; max-width: 164px; }
+      .nav-left { display:flex !important; }
+      .brand-logo-img--nav { height: var(--nav-h); width:auto; max-width:240px; }
+      .brand-logo-img--footer { height: 90px; width:auto; max-width:260px; }
 
       /* ── MOBILE OVERLAY — cinematic full-bleed ── */
       /* ── STYLE D: DARK DRAWER ── */
@@ -3190,8 +3190,8 @@
     @media (max-width: 480px) {
       :root { --pad-section: 56px; --pad-x: 18px; }
 
-      .brand-logo-img--nav { width: 130px; max-width: 130px; }
-      .brand-logo-img--footer { width: 148px; max-width: 148px; }
+      .brand-logo-img--nav { height: var(--nav-h); width:auto; max-width:200px; }
+      .brand-logo-img--footer { height: 80px; width:auto; max-width:220px; }
 
       .hero-cta { flex-direction: column; align-items: center; }
       .btn-hero-fill, .btn-hero-outline {
@@ -3960,19 +3960,14 @@
 <nav aria-label="Main navigation" id="nav" role="navigation">
 <div class="nav-grid">
 <div class="nav-left">
-<ul class="nav-links" role="list" style="gap:36px;">
-<li><a href="javascript:void(0)" onclick="var t=document.getElementById('suites');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Suites</a></li>
-<li><a href="javascript:void(0)" onclick="var t=document.getElementById('dining');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Dining</a></li>
-<li><a href="javascript:void(0)" onclick="var t=document.getElementById('gallery');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Storybook</a></li>
-</ul>
-</div>
-<div class="nav-center">
 <a aria-label="Frank N Hotel Royal — Home" class="nav-logo brand-logo-link" href="javascript:void(0)" onclick="var t=document.getElementById('hero');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">
 <img alt="Frank N Hotel Royal" class="brand-logo-img brand-logo-img--nav" decoding="async" src="https://raw.githubusercontent.com/crest35studio/Frank-n-hotel-royal-02/main/logo.png"/>
 </a>
 </div>
-<div class="nav-right-group">
-<ul class="nav-links" role="list" style="gap:36px;">
+<ul class="nav-links" role="list">
+<li><a href="javascript:void(0)" onclick="var t=document.getElementById('suites');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Suites</a></li>
+<li><a href="javascript:void(0)" onclick="var t=document.getElementById('dining');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Dining</a></li>
+<li><a href="javascript:void(0)" onclick="var t=document.getElementById('gallery');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Storybook</a></li>
 <li><a href="javascript:void(0)" onclick="var t=document.getElementById('story');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Heritage</a></li>
 <li><a href="javascript:void(0)" onclick="var t=document.getElementById('contact');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">Contact</a></li>
 </ul>
@@ -3981,7 +3976,6 @@
 <button aria-expanded="false" aria-label="Open navigation menu" class="burger" id="burger">
 <span></span><span></span><span></span>
 </button>
-</div>
 </div>
 </div>
 </nav>
