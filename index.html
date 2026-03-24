@@ -7663,6 +7663,7 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
 
       for (const endpoint of endpoints) {
         try {
+          console.log('[Brume] Trying endpoint:', endpoint.url);
           const res = await fetch(endpoint.url, {
             method: 'POST',
             headers: endpoint.headers,
@@ -7673,15 +7674,21 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
               messages: brumeHistory
             })
           });
-          if (!res.ok) continue;
+          console.log('[Brume] Response status:', res.status, 'from', endpoint.url);
+          if (!res.ok) {
+            const errBody = await res.text();
+            console.warn('[Brume] Error body:', errBody);
+            continue;
+          }
           const data = await res.json();
           const text = (data.content && data.content[0] && data.content[0].text) || '';
+          console.log('[Brume] Got text length:', text.length);
           if (text) {
             brumeHistory.push({ role: 'assistant', content: text });
             return text;
           }
         } catch(e) {
-          console.warn('Brume endpoint failed:', endpoint.url, e.message);
+          console.warn('[Brume] Endpoint failed:', endpoint.url, e.message);
           continue;
         }
       }
