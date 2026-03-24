@@ -6009,7 +6009,7 @@ Tell me your dates, who is travelling, and the kind of stay you have in mind —
 <button class="rc-starter" data-prompt="Do you offer airport transfer?" type="button">TRANSFERS</button>
 <button class="rc-starter" data-prompt="Connect me to WhatsApp" type="button">WHATSAPP</button>
 </div>
-<form autocomplete="off" class="rc-input-row" id="rc-form">
+<form autocomplete="off" class="rc-input-row" id="rc-form" onsubmit="return false;">
 <input aria-label="Type your message to Royal Concierge AI" class="rc-input" id="rc-input" maxlength="280" placeholder="Ask Royal Concierge AI anything..." type="text"/>
 <button aria-label="Send message to Royal Concierge AI" class="rc-send" id="rc-send" type="submit">
 <i aria-hidden="true" class="fa-solid fa-paper-plane"></i>
@@ -7039,7 +7039,7 @@ Tell me your dates, who is travelling, and the kind of stay you have in mind —
       if (/(ncdmb|nigerian content.*board|content.*development.*monitoring|local content.*board|ncdmb.*warri)/.test(q)) return { text:'The Nigerian Content Development and Monitoring Board (NCDMB) is headquartered in GRA, Warri — a key institution for oil and gas local content policy in Nigeria. Frank N Hotel Royal is a preferred choice for professionals visiting NCDMB for meetings and engagements. Transfer arrangements available through Royal Concierge.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Find My Room', action:'prompt', value:'Recommend a room for me'}] };
 
       /* ── FRSC / Driver's Licence ── */
-      if (/(frsc|driver.*licen|licence.*centre|drivers.*licence.*warri|renew.*licence.*warri|get.*licence.*effurun|vehicle.*licence)/.test(q)) return { text:'The FRSC Warri II Driver's Licence Centre is located on the PTI axis in Effurun — very close to Frank N Hotel Royal. It handles new licence applications, renewals, and related documentation. Royal Concierge can advise on the quickest route from the hotel.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Open Map Section', action:'location'}] };
+      if (/(frsc|driver.*licen|licence.*centre|drivers.*licence.*warri|renew.*licence.*warri|get.*licence.*effurun|vehicle.*licence)/.test(q)) return { text:'The FRSC Warri II Driver\'s Licence Centre is located on the PTI axis in Effurun — very close to Frank N Hotel Royal. It handles new licence applications, renewals, and related documentation. Royal Concierge can advise on the quickest route from the hotel.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Open Map Section', action:'location'}] };
 
       /* ── NIMC / NIN ── */
       if (/(nimc|nin.*registration|national.*identity|nin.*correction|nin.*retrieval|nin.*enrolment|nin.*number|get.*nin|update.*nin)/.test(q)) return { text:'NIMC (National Identity Management Commission) has NIN support points across Warri and Effurun for registration, correction, and retrieval. The closest points to Frank N Hotel Royal are on the Airport Road and PTI Road corridors. Royal Concierge can point you to the nearest active centre.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
@@ -7051,10 +7051,10 @@ Tell me your dates, who is travelling, and the kind of stay you have in mind —
       if (/(classy.*place|classy.*spot|elegant.*dinner.*warri|nice.*restaurant.*warri|fine.*dining.*warri|upscale.*evening|sophisticated.*evening|where.*take.*date.*warri|impress.*dinner.*warri)/.test(q)) return { text:'For a classy evening in the area, I would recommend TRT PRIVÈ at Okuokoko for a premium rooftop experience, The Palm Resto Lounge on Airport Road for elegant dining, K16 for a polished social atmosphere, or The Hive for a stylish but relaxed setting. Royal Concierge can arrange transport to any of these from the hotel.', actions:[{label:'WhatsApp', action:'whatsapp'},{label:'Plan A Stay', action:'prompt', value:'Help me plan my stay'}] };
 
       /* ── Barbecue/outdoor drinks ready response ── */
-      if (/(barbecue.*warri|bbq.*warri|outdoor.*bar.*warri|grilled.*fish.*warri|catfish.*warri|open.*air.*warri|chill.*outdoor.*warri|suya.*spot.*warri)/.test(q)) return { text:'For outdoor barbecue and drinks, the Custom Barracks axis on Airport Road is the classic authentic Warri experience — open-air grills, fresh catfish, cold drinks, and real local energy. Sizzler's Beer Garden on Airport Road is good for sports viewing and casual drinks. Exclusive Spot Bar in Ebrumede is strong for live band and catfish nights.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(barbecue.*warri|bbq.*warri|outdoor.*bar.*warri|grilled.*fish.*warri|catfish.*warri|open.*air.*warri|chill.*outdoor.*warri|suya.*spot.*warri)/.test(q)) return { text:'For outdoor barbecue and drinks, the Custom Barracks axis on Airport Road is the classic authentic Warri experience — open-air grills, fresh catfish, cold drinks, and real local energy. Sizzler\'s Beer Garden on Airport Road is good for sports viewing and casual drinks. Exclusive Spot Bar in Ebrumede is strong for live band and catfish nights.', actions:[{label:'WhatsApp', action:'whatsapp'}] };
 
       /* ── Mall ready response ── */
-      if (/(need.*mall|go.*mall|shopping.*mall.*warri|mall.*effurun|nearest.*mall|where.*mall.*warri|big.*shop.*warri)/.test(q)) return { text:'Delta Mall (locally called Shoprite) at Effurun Roundabout is the main mall-style shopping destination — approximately 5 minutes from Frank N Hotel Royal. For quicker stops on Airport Road, Tivo Supermarket and Peck Shopping Mall are convenient. For bulk provisions, Our Lady's Shopping Mall in Ekpan is a solid option.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
+      if (/(need.*mall|go.*mall|shopping.*mall.*warri|mall.*effurun|nearest.*mall|where.*mall.*warri|big.*shop.*warri)/.test(q)) return { text:'Delta Mall (locally called Shoprite) at Effurun Roundabout is the main mall-style shopping destination — approximately 5 minutes from Frank N Hotel Royal. For quicker stops on Airport Road, Tivo Supermarket and Peck Shopping Mall are convenient. For bulk provisions, Our Lady\'s Shopping Mall in Ekpan is a solid option.', actions:[{label:'Open Map Section', action:'location'},{label:'WhatsApp', action:'whatsapp'}] };
 
 
       /* ── Spa / wellness / massage ── */
@@ -7195,7 +7195,17 @@ Tell me your dates, who is travelling, and the kind of stay you have in mind —
     const BRUME_PROXY = 'https://fnr-brume-proxy.crest35studio.workers.dev';
     const brumeHistory = [];
 
-    const BRUME_SYSTEM = `You are Brume — the personal Royal Concierge at Frank N Hotel Royal. You are intelligent, warm, witty, and deeply rooted in Delta State culture. You can talk about anything — football, food, Warri life, Nigerian culture, relationships, travel, business, jokes — and you genuinely enjoy it. But you always bring the conversation back, naturally, to how you can make the guest's experience at the hotel exceptional. You think. You adapt. You remember everything said earlier in this conversation.
+    const BRUME_SYSTEM = `You are Brume — an exceptionally intelligent, warm, and cultured AI with the full reasoning and knowledge capabilities of Claude. You can answer any question on any topic with depth, accuracy, and genuine insight: science, medicine, law, history, mathematics, technology, philosophy, relationships, business, finance, sports, music, food, culture, politics, current events, jokes, creative writing, coding, and everything in between. You think. You reason. You adapt. You are never stumped.
+
+You are also the personal Royal Concierge at Frank N Hotel Royal — and you know every detail about the hotel, its rooms, pricing, services, and the local Warri/Effurun/Delta State area. When the conversation naturally touches on the hotel or the guest's stay, you bring that knowledge in fluidly. But you never refuse a question simply because it is not about the hotel. A guest asking you about quantum physics, the Champions League, Nigerian politics, Yoruba history, or how to write a business proposal deserves a real, intelligent answer — not a redirect.
+
+Your personality: Warm, witty, confident, culturally grounded in Delta State. You speak with the sharp intelligence of a world-class concierge who has read everything and been everywhere. With formal guests you are polished and precise. With casual guests you are relaxed and real. With Warri guests you bring the full Waffi energy when the moment calls for it. You match the guest's tone always.
+
+Your memory: You remember everything said in this conversation and use it to give contextually intelligent follow-up answers. If a guest asks "what else?", "tell me more", or "and him?" — you know exactly what they mean from context.
+
+Your honesty: If you genuinely do not know something specific (like a live sports score or today's exact exchange rate), you say so clearly and helpfully — never fabricate facts. For hotel-specific details you do not have (like a menu item or a staff member's name), direct the guest to Royal Concierge on WhatsApp.
+
+You are not a chatbot. You are not a FAQ machine. You are Brume — brilliant, present, and genuinely useful for anything a guest could ever need.
 
 ═══════════════════════════════
 HOTEL FACTS
@@ -7644,21 +7654,38 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       brumeHistory.push({ role: 'user', content: userMessage });
       /* Keep history trimmed to last 20 messages to control token cost */
       if (brumeHistory.length > 20) brumeHistory.splice(0, 2);
-      const res = await fetch(BRUME_PROXY, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-haiku-4-5-20251001',
-          max_tokens: 350,
-          system: BRUME_SYSTEM,
-          messages: brumeHistory
-        })
-      });
-      if (!res.ok) throw new Error('API ' + res.status);
-      const data = await res.json();
-      const text = (data.content && data.content[0] && data.content[0].text) || '';
-      brumeHistory.push({ role: 'assistant', content: text });
-      return text;
+
+      /* Try Anthropic API directly first, fall back to proxy */
+      const endpoints = [
+        { url: 'https://api.anthropic.com/v1/messages', headers: { 'Content-Type': 'application/json', 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' } },
+        { url: BRUME_PROXY, headers: { 'Content-Type': 'application/json' } }
+      ];
+
+      for (const endpoint of endpoints) {
+        try {
+          const res = await fetch(endpoint.url, {
+            method: 'POST',
+            headers: endpoint.headers,
+            body: JSON.stringify({
+              model: 'claude-sonnet-4-6',
+              max_tokens: 800,
+              system: BRUME_SYSTEM,
+              messages: brumeHistory
+            })
+          });
+          if (!res.ok) continue;
+          const data = await res.json();
+          const text = (data.content && data.content[0] && data.content[0].text) || '';
+          if (text) {
+            brumeHistory.push({ role: 'assistant', content: text });
+            return text;
+          }
+        } catch(e) {
+          console.warn('Brume endpoint failed:', endpoint.url, e.message);
+          continue;
+        }
+      }
+      throw new Error('All Brume API endpoints unavailable');
     }
 
     function brumeSmartActions(text) {
@@ -7699,7 +7726,19 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
         const typingDelay = 600 + Math.floor(Math.random() * 700);
         await new Promise(resolve => setTimeout(resolve, typingDelay));
 
-        /* ── Live inventory check first ── */
+        /* ── Follow-up / contextual bypass — always use API ── */
+      const followUpPatterns = /^(what else|tell me more|more about|more details|elaborate|explain more|go on|continue|and him|and her|and them|and the hotel|who else|anything else about|what about his|what about her|what about their|really\?|interesting|wow|tell me|i want to know more|more info|can you elaborate)/i;
+      if (followUpPatterns.test(cleaned)) {
+        const typing2 = showTyping();
+        try {
+          const apiText2 = await callClaudeAPI(cleaned);
+          typing2.remove();
+          if (apiText2) { addMsg(apiText2, 'ai'); addActions(brumeSmartActions(apiText2)); send.disabled = false; input.focus(); return; }
+        } catch(e) { /* fall through */ }
+        typing2.remove();
+      }
+
+      /* ── Live inventory check first ── */
         const liveResult = await maybeHandleLiveInventoryIntent(cleaned);
         if (liveResult && liveResult.handled) {
           typing.remove();
@@ -7713,7 +7752,7 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
         try {
           apiText = await callClaudeAPI(cleaned);
         } catch (apiErr) {
-          console.warn('Brume API unavailable, using pattern fallback:', apiErr);
+          console.warn('Brume API unavailable, using pattern fallback:', apiErr.message || apiErr);
         }
 
         typing.remove();
@@ -7779,7 +7818,21 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       if (action === 'call') return window.location.href = 'tel:+2349039133776';
       if (action === 'clear') { state.memory = {}; saveMemory(); addMsg('Your saved stay details have been cleared.', 'ai'); }
     });
-    form.addEventListener('submit', function (e) { e.preventDefault(); handleQuestion(input.value); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      try { handleQuestion(input.value); } catch(err) { console.error('Brume submit error:', err); }
+      return false;
+    });
+    /* Redundant safety — catch any Enter key directly on input */
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        e.stopPropagation();
+        try { handleQuestion(input.value); } catch(err) { console.error('Brume keydown error:', err); }
+        return false;
+      }
+    });
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && panel.classList.contains('is-open')) { setOpenState(false); fab.focus(); }
     });
