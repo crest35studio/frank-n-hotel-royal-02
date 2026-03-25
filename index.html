@@ -1328,10 +1328,11 @@
       top: 22px; right: 26px;
       z-index: 10;
       width: 44px; height: 44px;
-      background: rgba(201,169,110,.1);
-      border: 1px solid rgba(201,169,110,.3);
+      background: rgba(10,10,10,.75);
+      border: 1.5px solid rgba(201,169,110,.75);
+      border-radius: 50%;
       color: var(--gold);
-      font-size: 16px;
+      font-size: 18px;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background .25s, border-color .25s;
@@ -1888,7 +1889,7 @@
     /* Hint is phone-only — hidden everywhere by default, shown only in mobile block */
     .dv-switch-hint { display:none !important; }
     .dv-img  { position:relative; overflow:hidden; }
-    .dv-parallax { position:absolute; inset:-12% 0; background-size:cover; background-position:center; will-change:transform; }
+    .dv-parallax { position:absolute; inset:-12% 0; background-size:cover; background-position:center; }
     .dv-img-grad   { position:absolute; inset:0; background:linear-gradient(to right,transparent 55%,var(--bg-dining) 100%); }
     .dv-img-grad-r { background:linear-gradient(to left,transparent 55%,var(--bg-dining) 100%); }
 
@@ -1993,7 +1994,7 @@
 .g-item:nth-child(8) .g-visual  { aspect-ratio:3/4; }
 .g-item:nth-child(9) .g-visual  { aspect-ratio:4/3; }
 .g-item:nth-child(10) .g-visual { aspect-ratio:1/1; }
-.g-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .75s var(--ease-lux), filter .45s var(--ease-lux); }
+.g-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .75s var(--ease-lux), filter .45s var(--ease-lux); touch-action: pan-y; }
 .g-item:hover img, .g-item:focus img { transform:scale(1.06); filter:saturate(1.03); }
 .g-overlay {
   position:absolute; inset:0;
@@ -2065,7 +2066,7 @@
     #lightbox { position:fixed; inset:0; z-index:9990; background:rgba(6,6,6,.97); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .4s var(--ease-lux); }
     #lightbox.open { opacity:1; pointer-events:all; }
     .lb-frame { position:relative; max-width:88vw; max-height:88vh; border:1px solid var(--gold-border); box-shadow:0 0 80px rgba(201,169,110,.1); }
-    .lb-frame img { max-width:88vw; max-height:82vh; object-fit:contain; display:block; }
+    .lb-frame img { max-width:88vw; max-height:82vh; object-fit:contain; display:block; touch-action: pan-y; }
     .lb-close { position:absolute; top:-20px; right:-20px; width:42px; height:42px; background:var(--gold); color:var(--bg); display:flex; align-items:center; justify-content:center; font-size:15px; cursor:pointer; z-index:2; border:none; transition:background .2s; }
     .lb-close:hover { background:var(--gold-light); }
     .lb-cap { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent,rgba(6,6,6,.95)); padding:18px 20px 14px; font-family:var(--cinzel); font-size:8.5px; letter-spacing:.3em; color:var(--gold); }
@@ -2411,7 +2412,7 @@
     .suite-card-ui { border: 1px solid var(--gold-border); overflow: hidden; transition: border-color .35s, box-shadow .35s; }
     .suite-radio-lbl input:checked + .suite-card-ui { border-color: var(--gold); box-shadow: 0 0 28px rgba(201,169,110,.2); }
     .sc-img-wrap { aspect-ratio: 16/9; overflow: hidden; position: relative; }
-    .sc-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease-lux); }
+    .sc-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease-lux); touch-action: pan-y; }
     .suite-radio-lbl:hover .sc-img-wrap img { transform: scale(1.05); }
     .sc-tick { position: absolute; top: 12px; right: 12px; width: 26px; height: 26px; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--bg); opacity: 0; transition: opacity .25s; }
     .suite-radio-lbl input:checked + .suite-card-ui .sc-tick { opacity: 1; }
@@ -5734,6 +5735,9 @@ window.__sbLoaded = new Promise(function(res, rej) {
       lbCap.textContent = el.dataset.cap || '';
       lb.classList.add('open');
       document.body.style.overflow = 'hidden';
+      if (window.history && window.history.pushState) {
+        window.history.pushState({ brumeOverlay: 'lightbox' }, '');
+      }
       lbImg.style.opacity = '0';
       lbImg.onload = () => { lbImg.style.transition = 'opacity .35s'; lbImg.style.opacity = '1'; };
       /* Move focus into dialog */
@@ -5744,6 +5748,9 @@ window.__sbLoaded = new Promise(function(res, rej) {
       const opener = items[current];
       lb.classList.remove('open');
       document.body.style.overflow = '';
+      if (window.history.state && window.history.state.brumeOverlay === 'lightbox') {
+        window.history.back();
+      }
       /* Return focus to the item that opened the lightbox */
       if (opener) opener.focus();
     }
@@ -5980,7 +5987,7 @@ window.__sbLoaded = new Promise(function(res, rej) {
 <div aria-hidden="true" class="rc-head-icon" style="font-family:var(--cormorant);font-size:17px;font-style:italic;color:var(--gold);">B</div>
 <div>
 <span class="rc-head-name">BRUME</span>
-<div class="rc-head-status"><span aria-hidden="true" class="rc-dot-live"></span><span>Royal Concierge · personal guest assistant</span></div>
+<div class="rc-head-status"><span style="font-family:var(--cormorant);font-style:italic;font-size:11px;color:#C9A96E;letter-spacing:0.3px;">Personal Guest Assistant</span></div>
 </div>
 </div>
 <button aria-label="Close Brume concierge chat" class="rc-panel-close" id="rc-close" type="button">
@@ -5992,6 +5999,8 @@ window.__sbLoaded = new Promise(function(res, rej) {
 <div class="rc-msg rc-msg-ai">
 <div class="rc-bubble">Good day. How may I assist your stay?</div>
 </div>
+<div style="height:70px;"></div>
+<p style="font-family:var(--cinzel);font-size:7.5px;letter-spacing:1.5px;color:rgba(201,169,110,.2);text-align:center;margin:0 0 12px;">ROOM RATES · DINING · DIRECTIONS · ANYTHING</p>
 </div>
 <div aria-label="Quick questions" class="rc-starters" style="display:none;"></div>
 <form autocomplete="off" class="rc-input-row" id="rc-form" onsubmit="return false;">
@@ -6000,7 +6009,7 @@ window.__sbLoaded = new Promise(function(res, rej) {
 <i aria-hidden="true" class="fa-solid fa-paper-plane"></i>
 </button>
 </form>
-<div class="rc-foot">ALWAYS AVAILABLE · GUIDED STAYS · INSTANT HANDOFF</div>
+<div class="rc-foot">INSTANT HANDOFF</div>
 </section>
 <button aria-controls="rc-panel" aria-expanded="false" aria-label="Chat with Brume, Royal Concierge" id="rc-fab" type="button">
   <div class="brume-bubble">
@@ -6159,6 +6168,13 @@ window.__sbLoaded = new Promise(function(res, rej) {
         /* Silent fail — never interrupt guest experience */
       }
     }
+
+    /* popstate handler — phone back button closes any open overlay */
+    window.addEventListener('popstate', function(e) {
+      var state = e.state;
+      if (!state || !state.brumeOverlay) return;
+      if (state.brumeOverlay === 'brume') { setOpenState(false); }
+    });
 
     function setOpenState(isOpen) {
       /* Save session on close if guest had a real conversation */
@@ -8554,6 +8570,10 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       };
 
       modal.classList.add('sm-open');
+      /* Push history state so phone back button closes modal */
+      if (window.history && window.history.pushState) {
+        window.history.pushState({ brumeOverlay: 'suite' }, '');
+      }
       /* iOS-safe scroll lock — position:fixed preserves page position */
       var _sy = window.scrollY || window.pageYOffset || 0;
       modal._scrollY = _sy;
@@ -8569,6 +8589,10 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
 
     function closeSuiteModal() {
       modal.classList.remove('sm-open');
+      /* Pop history state if we pushed one */
+      if (window.history.state && window.history.state.brumeOverlay === 'suite') {
+        window.history.back();
+      }
       /* Restore body scroll — iOS-safe unlock */
       var _sy = modal._scrollY || 0;
       document.body.style.position            = '';
@@ -9319,6 +9343,36 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
     }
   });
 
+  /* ─── BACK BUTTON: close any open overlay ──────────────── */
+  window.addEventListener('popstate', function(e) {
+    var state = e.state;
+    if (!state || !state.brumeOverlay) return;
+    if (state.brumeOverlay === 'suite') {
+      var modal = document.getElementById('suite-modal');
+      if (modal && modal.classList.contains('sm-open')) {
+        modal.classList.remove('sm-open');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.overflow = '';
+      }
+    }
+    if (state.brumeOverlay === 'lightbox') {
+      var lb = document.getElementById('lightbox');
+      if (lb && lb.classList.contains('open')) {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+    if (state.brumeOverlay === 'nav') {
+      if (typeof window.closeMob === 'function') window.closeMob();
+    }
+    if (state.brumeOverlay === 'brume') {
+      if (window.__brumeSetOpen) window.__brumeSetOpen(false);
+    }
+  });
+
   /* ─── BACK TO TOP ─────────────────────────────────────── */
   var bttEl = document.getElementById('back-top');
   if (bttEl) {
@@ -9614,6 +9668,9 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       /* Use IIFE's setOpenState if available — keeps session/memory in sync */
       if (window.__brumeSetOpen) { window.__brumeSetOpen(true); return; }
       panel.classList.add('is-open');
+      if (window.history && window.history.pushState) {
+        window.history.pushState({ brumeOverlay: 'brume' }, '');
+      }
       fab.classList.add('is-open');
       fab.setAttribute('aria-expanded', 'true');
       panel.setAttribute('aria-hidden', 'false');
@@ -9623,6 +9680,9 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
     function closePanel() {
       if (window.__brumeSetOpen) { window.__brumeSetOpen(false); return; }
       panel.classList.remove('is-open');
+      if (window.history.state && window.history.state.brumeOverlay === 'brume') {
+        window.history.back();
+      }
       fab.classList.remove('is-open');
       fab.setAttribute('aria-expanded', 'false');
       panel.setAttribute('aria-hidden', 'true');
@@ -9670,6 +9730,9 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       burger.classList.add('is-open');
       mob.classList.add('open');
       mob.setAttribute('aria-hidden', 'false');
+      if (window.history && window.history.pushState) {
+        window.history.pushState({ brumeOverlay: 'nav' }, '');
+      }
       if (backdrop) {
         backdrop.classList.add('open');
         backdrop.style.pointerEvents = 'auto';
@@ -9682,6 +9745,9 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       burger.classList.remove('is-open');
       mob.classList.remove('open');
       mob.setAttribute('aria-hidden', 'true');
+      if (window.history.state && window.history.state.brumeOverlay === 'nav') {
+        window.history.back();
+      }
       if (backdrop) {
         backdrop.classList.remove('open');
         backdrop.style.pointerEvents = 'none';
