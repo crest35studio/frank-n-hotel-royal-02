@@ -2210,8 +2210,20 @@ function renderDelPinDots() {
 }
 function verifyDelPin() {
   if (delPinEntry === DELETE_PIN) {
+    var cb = delPinCb;
     closeDelPin();
-    if (delPinCb) { delPinCb(); delPinCb = null; }
+    if (typeof cb === 'function') {
+      try {
+        var result = cb();
+        if (result && typeof result.then === 'function') {
+          result.catch(function(err) {
+            toast(err && err.message ? err.message : 'Delete failed', false);
+          });
+        }
+      } catch(err) {
+        toast(err && err.message ? err.message : 'Delete failed', false);
+      }
+    }
   } else {
     document.getElementById('dpd-err').style.display = 'block';
     var dots = document.getElementById('dpd-dots');
