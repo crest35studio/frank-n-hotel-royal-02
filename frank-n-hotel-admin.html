@@ -172,6 +172,37 @@ body{background:var(--bg);color:var(--text);font-family:var(--ral);min-height:10
 .tb-right{margin-left:auto;display:flex;align-items:center;gap:16px}
 .tb-time{font-size:10px;color:var(--text-muted);letter-spacing:.04em}
 .tb-live{display:flex;align-items:center;gap:6px;font-size:8px;letter-spacing:.16em;color:var(--text-muted)}
+/* ── NEW ALERT INDICATOR ── */
+#alert-dot {
+  display: none;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #C9A96E;
+  box-shadow: 0 0 0 0 rgba(201,169,110,1);
+  animation: alertPulse 0.8s ease-in-out infinite;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+#alert-dot.on { display: block; }
+@keyframes alertPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(201,169,110,.9); background:#C9A96E; }
+  50%  { box-shadow: 0 0 0 12px rgba(201,169,110,0); background:#FFD980; }
+  100% { box-shadow: 0 0 0 0 rgba(201,169,110,0); background:#C9A96E; }
+}
+#alert-msg {
+  display: none;
+  font-family: var(--cinzel);
+  font-size: 9px;
+  letter-spacing: .18em;
+  color: #FFD980;
+  animation: alertFade 0.5s ease;
+  white-space: nowrap;
+}
+#alert-msg.on { display: block; }
+@keyframes alertFade {
+  from { opacity:0; transform:translateY(-4px); }
+  to   { opacity:1; transform:none; }
+}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(46,204,113,.4)}50%{opacity:.7;box-shadow:0 0 0 4px rgba(46,204,113,0)}}
 
@@ -712,7 +743,9 @@ tbody tr:hover .copy-btn{opacity:1}
     <div class="tb-title" id="tb-title">DASHBOARD</div>
     <div class="tb-right">
       <div style="font-size:8px;letter-spacing:.14em;color:rgba(201,169,110,.45);border:1px solid rgba(201,169,110,.2);padding:3px 8px;">v4 · MAR 2026</div>
-      <div class="tb-live" title="Auto-refreshing every 90s"><div class="live-dot"></div>LIVE</div>
+      <div id="alert-dot" title="New activity detected" onclick="dismissAlert()"></div>
+      <div id="alert-msg"></div>
+      <div class="tb-live" title="Auto-refreshing every 60s"><div class="live-dot"></div>LIVE</div>
       <div class="tb-time" id="tb-time"></div>
     </div>
   </header>
@@ -1179,7 +1212,7 @@ function startRefresh() {
     else if (a.id==='panel-bookings') loadBookings();
     else if (a.id==='panel-enquiries') loadEnquiries();
     else if (a.id==='panel-concierge') loadConcierge();
-  }, 90000);
+  }, 60000);
   /* Real-time subscriptions — instant updates */
   try {
     sb.channel('fnr-admin')
@@ -1210,6 +1243,10 @@ function startRefresh() {
 }
 
 /* NAV */
+function navTo(id) {
+  /* Dismiss alert when navigating to active section */
+  if (id === 'bookings' || id === 'enquiries') { dismissAlert(); }
+}
 var TITLES = {
   dashboard:'DASHBOARD',bookings:'BOOKINGS',enquiries:'ENQUIRIES',
   rooms:'ROOMS & PRICING',testimonials:'TESTIMONIALS',
@@ -1251,16 +1288,53 @@ function clip(txt,lbl) {
 }
 
 /* BADGES */
+
+/* ════════════════════════════════════════
+   BRIGHT GOLD ALERT SYSTEM
+════════════════════════════════════════ */
+var _lastBkCount = -1, _lastEnqCount = -1;
+
+function triggerAlert(msg) {
+  var dot = document.getElementById('alert-dot');
+  var msgEl = document.getElementById('alert-msg');
+  if (dot) { dot.classList.add('on'); }
+  if (msgEl) {
+    msgEl.textContent = msg || 'NEW ACTIVITY';
+    msgEl.classList.remove('on');
+    void msgEl.offsetWidth; /* reflow to restart animation */
+    msgEl.classList.add('on');
+  }
+}
+
+function dismissAlert() {
+  var dot = document.getElementById('alert-dot');
+  var msgEl = document.getElementById('alert-msg');
+  if (dot) dot.classList.remove('on');
+  if (msgEl) msgEl.classList.remove('on');
+}
+
 async function loadBadges() {
   if(!sb) return;
   var p  = await sb.from('bookings').select('*',{count:'exact',head:true}).eq('status','pending');
   var u  = await sb.from('enquiries').select('*',{count:'exact',head:true}).eq('status','unread');
   var tr = await sb.from('concierge_sessions').select('*',{count:'exact',head:true}).not('deleted_at','is',null);
-  document.getElementById('sb-pending').textContent = p.count||0;
-  document.getElementById('sb-unread').textContent  = u.count||0;
+  var newBk  = p.count || 0;
+  var newEnq = u.count || 0;
+  document.getElementById('sb-pending').textContent = newBk;
+  document.getElementById('sb-unread').textContent  = newEnq;
   var trPill = document.getElementById('sb-trash');
   if(tr.count>0){ trPill.textContent=tr.count; trPill.style.display=''; }
   else { trPill.style.display='none'; }
+  /* Trigger bright alert if counts increased */
+  if (_lastBkCount >= 0 && newBk > _lastBkCount) {
+    var diff = newBk - _lastBkCount;
+    triggerAlert(diff + ' NEW BOOKING' + (diff > 1 ? 'S' : ''));
+  } else if (_lastEnqCount >= 0 && newEnq > _lastEnqCount) {
+    var diff2 = newEnq - _lastEnqCount;
+    triggerAlert(diff2 + ' NEW ENQUIR' + (diff2 > 1 ? 'IES' : 'Y'));
+  }
+  _lastBkCount  = newBk;
+  _lastEnqCount = newEnq;
 }
 
 /* ════════════════════════════════════════
