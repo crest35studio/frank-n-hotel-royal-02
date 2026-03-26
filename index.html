@@ -1679,7 +1679,7 @@
     .sm-amenities {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px 20px;
+      gap: 12px 24px;
       margin-bottom: 36px;
     }
     .sm-amenity {
@@ -1688,14 +1688,18 @@
       font-weight: 300;
       color: var(--text-muted);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 9px;
+      line-height: 1.5;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(201,169,110,.07);
     }
     .sm-amenity i {
       color: var(--gold);
       font-size: 10px;
       opacity: .75;
       flex-shrink: 0;
+      margin-top: 3px;
     }
 
     /* Price + CTA */
