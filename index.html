@@ -1763,14 +1763,27 @@
     ══════════════════════════════════════════════════════ */
     @media (max-width: 768px) {
 
-      /* Modal — 90% screen height, centred, not full screen */
+      /* Modal — Option 3: room fills background */
       #suite-modal {
-        inset: 5vh 4vw;
-        border-radius: 16px 16px 12px 12px;
+        inset: 0;
+        border-radius: 0;
         flex-direction: column;
         overflow: hidden;
-        max-height: 90vh;
+        max-height: 100dvh;
         align-items: stretch;
+        background: #0A0A0A;
+      }
+      /* Room photo bleeds as dimmed background */
+      #suite-modal::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-image: var(--sm-bg-img, none);
+        background-size: cover;
+        background-position: center;
+        filter: brightness(.22);
+        pointer-events: none;
       }
 
       /* sm-scroll-wrap — single natural scroll column */
@@ -1784,17 +1797,23 @@
         -webkit-overflow-scrolling: auto;
         overscroll-behavior-y: contain;
         scroll-behavior: auto;
+        position: relative;
+        z-index: 1;
       }
 
-      /* Photo panel — 55vw height, does not fill screen */
+      /* Photo panel — floats inside the dimmed room bg */
       .sm-photo-panel {
         flex: none;
-        width: 100%;
-        height: 58vw;
-        min-height: 220px;
-        max-height: 320px;
+        width: 92%;
+        margin: 46px auto 0;
+        height: 54vw;
+        min-height: 200px;
+        max-height: 300px;
         position: relative;
         overflow: hidden;
+        border-radius: 12px 12px 0 0;
+        border: 1px solid rgba(201,169,110,.18);
+        border-bottom: none;
       }
 
       .sm-main-photo {
@@ -1812,7 +1831,7 @@
       /* Photo counter hidden — dots handle it */
       .sm-photo-count { display: none !important; }
 
-      /* Scroll hint hidden — not needed with natural scroll */
+      /* Scroll hint hidden */
       .sm-scroll-hint { display: none !important; }
 
       /* Progress bar + paused badge — removed (no auto-advance) */
@@ -1841,21 +1860,24 @@
         transform: scale(1.3);
       }
 
-      /* ── Info panel — natural content flow below photo ── */
+      /* ── Info panel — floats below photo card ── */
       .sm-info-panel {
         flex: none;
-        width: 100%;
-        padding: 22px 20px 40px;
+        width: 92%;
+        margin: 0 auto;
+        padding: 18px 18px 40px;
         box-sizing: border-box;
         overflow: visible;
-        background: #0A0A0A;
-        border-top: 1px solid rgba(201,169,110,.25);
-        /* Reset any bottom sheet transforms */
+        background: rgba(8,8,8,.96);
+        border: 1px solid rgba(201,169,110,.18);
+        border-top: none;
+        border-radius: 0 0 12px 12px;
         transform: none !important;
         transition: none !important;
         position: static;
         height: auto;
         min-height: 0;
+        margin-bottom: 24px;
       }
 
       /* Sheet dim overlay — not needed for Option B */
@@ -1873,28 +1895,34 @@
       .sm-reserve-btn { width: 100%; justify-content: center; padding: 14px 20px; }
       .sm-close     { top: 10px; right: 10px; width: 40px; height: 40px; z-index: 20; }
       .sm-divider   { margin: 12px 0; }
-      /* ── Swipe hint (mobile only) ── */
+      /* ── Swipe hint pill (mobile only) ── */
       .sm-swipe-hint {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
         position: absolute;
-        bottom: 10px;
-        left: 0; right: 0;
+        bottom: 12px;
+        left: 50%; transform: translateX(-50%);
         z-index: 7;
         pointer-events: none;
+        background: rgba(0,0,0,.58);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border-radius: 20px;
+        padding: 5px 14px;
         animation: swipeHintAnim 2.5s ease-in-out infinite;
         transition: opacity .4s ease;
+        white-space: nowrap;
       }
-      .sm-swipe-hint.hidden { opacity: 0; }
+      .sm-swipe-hint.hidden { opacity: 0; pointer-events: none; }
       @keyframes swipeHintAnim {
-        0%,100% { opacity: .85; }
-        50%      { opacity: .45; }
+        0%,100% { opacity: 1; }
+        50%      { opacity: .55; }
       }
       .sm-swipe-chv {
-        font-size: 22px;
-        color: rgba(201,169,110,.9);
+        font-size: 16px;
+        color: #C9A96E;
         line-height: 1;
         font-weight: 300;
       }
@@ -1902,17 +1930,17 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4px;
+        gap: 3px;
       }
       .sm-swipe-dots-row {
         display: flex;
-        gap: 5px;
+        gap: 4px;
         align-items: center;
       }
       .sm-swipe-dot {
         width: 5px; height: 5px;
         border-radius: 50%;
-        background: rgba(201,169,110,.35);
+        background: rgba(201,169,110,.4);
         transition: background .3s, transform .3s;
         flex-shrink: 0;
       }
@@ -1923,8 +1951,8 @@
       .sm-swipe-label {
         font-family: var(--cinzel);
         font-size: 7px;
-        letter-spacing: .32em;
-        color: rgba(201,169,110,.75);
+        letter-spacing: .28em;
+        color: rgba(201,169,110,.85);
         line-height: 1;
       }
       /* Mobile booking field overrides */
@@ -8829,6 +8857,11 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       /* Reset to info view on every open */
       smSwitchView('sm-view-info');
 
+      /* Option 3 — set room photo as CSS bg variable */
+      if (photos && photos[0]) {
+        modal.style.setProperty('--sm-bg-img', 'url(' + photos[0].src + ')');
+      }
+
       modal.classList.add('sm-open');
       /* Reset scroll to top of photo on every open */
       var sw = document.getElementById('sm-scroll-wrap');
@@ -9071,6 +9104,14 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
     window.closeSuiteModal = closeSuiteModal;
 
     closeBtn.addEventListener('click', closeSuiteModal);
+
+    /* Android back button — intercept popstate to close modal */
+    window.addEventListener('popstate', function(e) {
+      if (modal.classList.contains('sm-open')) {
+        e.preventDefault();
+        closeSuiteModal();
+      }
+    });
     prevBtn.addEventListener('click', function() { setPhoto(current - 1); mobCarousel.reset(); if(photos.length>1) mobCarousel.init(photos.length); });
     nextBtn.addEventListener('click', function() { setPhoto(current + 1); mobCarousel.reset(); if(photos.length>1) mobCarousel.init(photos.length); });
 
