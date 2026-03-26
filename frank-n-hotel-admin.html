@@ -610,6 +610,21 @@ tbody tr:hover .copy-btn{opacity:1}
 
 
 /* ── SUITE INCLUSIONS EDITOR ── */
+/* ── ICON PICKER ── */
+.incl-add-row { display:flex; gap:6px; margin-top:8px; align-items:center; flex-wrap:wrap; }
+.incl-icon-sel {
+  background:var(--bg3);
+  border:1px solid var(--gold-bdr);
+  color:var(--text);
+  font-size:13px;
+  padding:6px 8px;
+  outline:none;
+  cursor:pointer;
+  min-width:52px;
+  transition:border-color var(--ease);
+}
+.incl-icon-sel:focus { border-color:var(--gold); }
+
 .incl-section{margin-top:14px;padding-top:12px;border-top:1px solid var(--gold-bdr)}
 .incl-title{font-family:var(--cinzel);font-size:8px;letter-spacing:.22em;color:var(--text-muted);margin-bottom:8px}
 .incl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
@@ -1496,7 +1511,11 @@ async function loadRooms() {
     var incl=Array.isArray(rm.inclusions)?rm.inclusions:[];
     var tags=incl.map(function(item,i){
       var lbl=typeof item==='string'?item:(item.label||'');
-      return '<div class="incl-tag">'+esc(lbl)+'<span class="incl-tag-x" data-id="'+id+'" data-idx="'+i+'" onclick="inclRemove(this)" title="Remove">&#x2715;</span></div>';
+      var ico=typeof item==='string'?'fa-check':(item.icon||'fa-check');
+      return '<div class="incl-tag" data-icon="'+ico+'">'
+        +'<i class="fas '+ico+'" style="color:var(--gold);font-size:9px;margin-right:5px;opacity:.8;"></i>'
+        +esc(lbl)
+        +'<span class="incl-tag-x" data-id="'+id+'" data-idx="'+i+'" onclick="inclRemove(this)" title="Remove">&#x2715;</span></div>';
     }).join('');
     var avail=rm.is_available;
     var card='<div class="room-card" data-id="'+id+'">';
@@ -1508,8 +1527,7 @@ async function loadRooms() {
     card+='<div class="price-row"><span class="price-curr">₦</span><input class="price-inp" id="prc-'+id+'" type="number" value="'+(rm.price_ngn||0)+'" min="0"/><span style="font-size:9px;color:var(--text-muted)">/ NIGHT</span></div>';
     card+='<div class="incl-section"><div class="incl-title">SUITE INCLUSIONS</div>';
     card+='<div class="incl-tags" id="incl-tags-'+id+'">'+(tags||'<span style="font-size:10px;color:var(--text-muted)">No inclusions yet</span>')+'</div>';
-        card+='<div class="incl-add-row"><input class="incl-inp" id="incl-inp-'+id+'" data-room-id="'+id+'" type="text" placeholder="e.g. Complimentary breakfast"/>';
-    card+='<button class="incl-add-btn" data-room-id="'+id+'" onclick="inclAddById(this.dataset.roomId)">+ ADD</button>';
+        card+='<div class="incl-add-row"><select class="incl-icon-sel" id="incl-ico-'+id+'"><option value="fa-check">✓ General</option><option value="fa-crown">👑 Butler / VIP</option><option value="fa-bed">🛏 Bed type</option><option value="fa-bath">🛁 Bathroom / Spa</option><option value="fa-utensils">🍽 Dining / Breakfast</option><option value="fa-wifi">📶 Wi-Fi</option><option value="fa-snowflake">❄ AC / Climate</option><option value="fa-glass-martini">🍸 Minibar / Bar</option><option value="fa-shield-halved">🔒 Safe / Security</option><option value="fa-tv">📺 Smart TV</option><option value="fa-swimming-pool">🏊 Pool</option><option value="fa-dumbbell">🏋 Gym / Fitness</option><option value="fa-car">🚗 Parking / Transfer</option><option value="fa-plane">✈ Airport Transfer</option><option value="fa-shirt">🧺 Laundry</option><option value="fa-mug-hot">☕ Coffee / Tea</option><option value="fa-spa">🌿 Spa / Wellness</option><option value="fa-building">🏢 Terrace / View</option><option value="fa-couch">🛋 Lounge / Living</option><option value="fa-concierge-bell">🎯 Concierge</option></select><input class="incl-inp" id="incl-inp-'+id+'" data-room-id="'+id+'" type="text" placeholder="e.g. Complimentary breakfast"/><button class="incl-add-btn" data-room-id="'+id+'" onclick="inclAddById(this.dataset.roomId)">+ ADD</button></div>';
     card+='</div></div></div>';
     return card;
   }).join('');
@@ -1821,10 +1839,12 @@ window._inclData = {};
 
 function inclGetData(id) {
   if (!window._inclData[id]) {
-    /* Bootstrap from current DOM tags */
+    /* Bootstrap from Supabase data already rendered in DOM */
     var tags = document.querySelectorAll('#incl-tags-' + id + ' .incl-tag');
     window._inclData[id] = Array.from(tags).map(function(t) {
-      return t.textContent.replace('✕','').trim();
+      var lbl = t.textContent.replace('✕','').trim();
+      var ico = t.dataset.icon || 'fa-check';
+      return { label: lbl, icon: ico };
     });
   }
   return window._inclData[id];
@@ -1838,9 +1858,13 @@ function inclRender(id) {
     container.innerHTML = '<span style="font-size:10px;color:var(--text-muted)">No inclusions yet</span>';
     return;
   }
-  container.innerHTML = items.map(function(lbl, i) {
-    return '<div class="incl-tag">' + esc(lbl) +
-      '<span class="incl-tag-x" onclick="inclRemove(this)" data-id="' + id + '" data-idx="' + i + '" title="Remove">&#x2715;</span></div>';
+  container.innerHTML = items.map(function(item, i) {
+    var lbl = typeof item === 'string' ? item : (item.label || '');
+    var ico = typeof item === 'string' ? 'fa-check' : (item.icon || 'fa-check');
+    return '<div class="incl-tag" data-icon="' + ico + '">'
+      + '<i class="fas ' + ico + '" style="color:var(--gold);font-size:9px;margin-right:5px;opacity:.8;"></i>'
+      + esc(lbl)
+      + '<span class="incl-tag-x" onclick="inclRemove(this)" data-id="' + id + '" data-idx="' + i + '" title="Remove">&#x2715;</span></div>';
   }).join('');
 }
 
@@ -1868,14 +1892,17 @@ function inclRemove(el) {
 
 function inclAddById(id) {
   var inp = document.getElementById('incl-inp-' + id);
+  var ico = document.getElementById('incl-ico-' + id);
   if (!inp) return;
   var val = inp.value.trim();
   if (!val) return;
+  var icon = ico ? ico.value : 'fa-check';
   var items = inclGetData(id);
-  items.push(val);
+  items.push({ label: val, icon: icon });
   window._inclData[id] = items;
   inclRender(id);
   inp.value = '';
+  if (ico) ico.value = 'fa-check';
   inp.focus();
 }
 
