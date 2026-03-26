@@ -4588,7 +4588,7 @@
     <div class="sm-conf-icon"><i class="fas fa-check-circle"></i></div>
     <div class="sm-conf-title">Reservation Submitted</div>
     <div class="sm-conf-ref" id="sm-conf-ref"></div>
-    <p class="sm-conf-msg">Thank you. Our team will confirm your stay within the hour.</p>
+    <p class="sm-conf-msg">Your reservation is in our hands. Expect a personal confirmation from our team shortly.</p>
     <button class="sm-conf-close" id="sm-conf-close"><i class="fas fa-crown"></i> CLOSE</button>
   </div>
 </div>
@@ -5200,7 +5200,7 @@
 <div class="ci-cell rv">
 <div class="ci-icon"><i class="fas fa-phone"></i></div>
 <div class="ci-label">TELEPHONE</div>
-<div class="ci-value"><a href="tel:+2349039133776">+234 903 913 3776</a><br/><br/>Daily · 6:00 AM – 11:00 PM</div>
+<div class="ci-value"><a href="tel:+2349039133776">+234 903 913 3776</a><br/><br/>Available 24 hours · 7 days a week</div>
 </div>
 <div class="ci-cell rv">
 <div class="ci-icon"><i class="fas fa-globe"></i></div>
@@ -6169,23 +6169,31 @@ window.__sbLoaded = new Promise(function(res, rej) {
     btn.disabled = true;
 
     try {
-      if (isLiveLeadEndpointReady()) {
-        await window.FrankNBookingBackend.submitLead({
-          type: 'newsletter_signup',
-          source: 'website-newsletter',
-          email: email
-        });
-        success.innerHTML = '<i class="fas fa-check" style="color:var(--gold);margin-right:8px;"></i>Thanks — your subscription has been received.';
+      const sb = window.__sb;
+      if (!sb) throw new Error('Connection unavailable.');
+
+      const { error } = await sb.from('newsletter_subscribers').insert({
+        email:  email,
+        source: 'website'
+      });
+
+      if (error) {
+        /* Unique violation = already subscribed */
+        if (error.code === '23505') {
+          success.innerHTML = '<i class="fas fa-check" style="color:var(--gold);margin-right:8px;"></i>You are already part of the Royal Circle.';
+        } else {
+          throw new Error(error.message);
+        }
       } else {
-        localStorage.setItem('fnhr-newsletter-draft', JSON.stringify({ email: email, savedAt: new Date().toISOString() }));
-        success.innerHTML = '<i class="fas fa-info-circle" style="color:var(--gold);margin-right:8px;"></i>This standalone file is ready for newsletter integration. Your email was saved locally on this device only.';
+        success.innerHTML = '<i class="fas fa-check" style="color:var(--gold);margin-right:8px;"></i>Welcome to the Royal Circle. We will be in touch.';
       }
       row.style.display = 'none';
       success.classList.add('show');
-    } catch (error) {
-      console.warn('Newsletter signup could not reach a live endpoint', error);
-      success.innerHTML = '<i class="fas fa-info-circle" style="color:var(--gold);margin-right:8px;"></i>Newsletter signup needs a live endpoint before website-wide capture can go live.';
+
+    } catch (err) {
+      success.innerHTML = '<i class="fas fa-times-circle" style="color:#e67e73;margin-right:8px;"></i>Something went wrong. Please try again.';
       success.classList.add('show');
+      console.warn('Newsletter error:', err);
     } finally {
       btn.textContent = defaultLabel;
       btn.disabled = false;
