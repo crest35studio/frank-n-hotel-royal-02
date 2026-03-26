@@ -1838,27 +1838,8 @@
       .sm-mob-progress { display: none !important; }
       .sm-mob-paused   { display: none !important; }
 
-      /* ── Carousel dots — centred below photo ── */
-      .sm-mob-dots {
-        position: absolute;
-        bottom: 8px; left: 0; right: 0;
-        display: flex;
-        justify-content: center;
-        gap: 7px;
-        z-index: 6;
-        pointer-events: none;
-      }
-      .sm-mob-dot {
-        width: 6px; height: 6px;
-        border-radius: 50%;
-        background: rgba(201,169,110,.35);
-        transition: background .3s, transform .3s;
-        flex-shrink: 0;
-      }
-      .sm-mob-dot.on {
-        background: #C9A96E;
-        transform: scale(1.3);
-      }
+      /* sm-mob-dots hidden on mobile — pill handles dots */
+      .sm-mob-dots { display: none !important; }
 
       /* ── Info panel — floats below photo card ── */
       .sm-info-panel {
@@ -8281,7 +8262,7 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
     }
 
     try {
-      const url = `https://fnr-brume-proxy.crest35studio.workers.dev/weather`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent('Warri,NG')}&units=metric&appid=${OW_KEY}`;
       const r   = await fetch(url, { cache:'no-store' });
       if (!r.ok) throw new Error('weather_api');
       const d   = await r.json();
@@ -8333,7 +8314,7 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
     if (!EX_KEY) { console.warn('Exchange rate key missing'); return; }
 
     try {
-      const r = await fetch(`https://fnr-brume-proxy.crest35studio.workers.dev/currency`, { cache:'no-store' });
+      const r = await fetch(`https://v6.exchangerate-api.com/v6/${EX_KEY}/latest/NGN`, { cache:'no-store' });
       if (!r.ok) throw new Error('currency_api');
       const d = await r.json();
       const now = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
