@@ -1496,7 +1496,7 @@ async function loadRooms() {
     var incl = Array.isArray(rm.inclusions) ? rm.inclusions : [];
     var tags = incl.map(function(item,i){
       var lbl = typeof item === 'string' ? item : (item.label||'');
-      return '<div class="incl-tag">'+esc(lbl)+'<span class="incl-tag-x" onclick="inclRemove(''+id+'','+i+')" title="Remove">&#x2715;</span></div>';
+      return '<div class="incl-tag">'+esc(lbl)+'<span class="incl-tag-x" onclick="inclRemove(this)" data-id="'+id+'" data-idx="'+i+'" title="Remove">&#x2715;</span></div>';
     }).join('');
     return '<div class="room-card" data-id="'+id+'">' +
       '<div class="room-hdr">' +
@@ -1515,8 +1515,8 @@ async function loadRooms() {
         '<div class="incl-title">SUITE INCLUSIONS</div>' +
         '<div class="incl-tags" id="incl-tags-'+id+'">' + tags + (tags?'':'<span style="font-size:10px;color:var(--text-muted)">No inclusions yet</span>') + '</div>' +
         '<div class="incl-add-row">' +
-          '<input class="incl-inp" id="incl-inp-'+id+'" type="text" placeholder="e.g. Complimentary breakfast" onkeydown="if(event.key==='Enter'){inclAdd(''+id+'');event.preventDefault();}"/>' +
-          '<button class="incl-add-btn" onclick="inclAdd(''+id+'')">+ ADD</button>' +
+          '<input class="incl-inp" id="incl-inp-'+id+'" type="text" placeholder="e.g. Complimentary breakfast" data-room-id="'+id+'" onkeydown="if(event.key==='Enter'){inclAddById(this.dataset.roomId);event.preventDefault();}"/>' +
+          '<button class="incl-add-btn" data-room-id="'+id+'" onclick="inclAddById(this.dataset.roomId)">+ ADD</button>' +
         '</div>' +
       '</div>' +
     '</div>';
@@ -1842,7 +1842,7 @@ function inclRender(id) {
   }
   container.innerHTML = items.map(function(lbl, i) {
     return '<div class="incl-tag">' + esc(lbl) +
-      '<span class="incl-tag-x" onclick="inclRemove('' + id + '',' + i + ')" title="Remove">&#x2715;</span></div>';
+      '<span class="incl-tag-x" onclick="inclRemove(this)" data-id="' + id + '" data-idx="' + i + '" title="Remove">&#x2715;</span></div>';
   }).join('');
 }
 
@@ -1859,11 +1859,26 @@ function inclAdd(id) {
   inp.focus();
 }
 
-function inclRemove(id, idx) {
+function inclRemove(el) {
+  var id = el.dataset.id;
+  var idx = parseInt(el.dataset.idx, 10);
   var items = inclGetData(id);
   items.splice(idx, 1);
   window._inclData[id] = items;
   inclRender(id);
+}
+
+function inclAddById(id) {
+  var inp = document.getElementById('incl-inp-' + id);
+  if (!inp) return;
+  var val = inp.value.trim();
+  if (!val) return;
+  var items = inclGetData(id);
+  items.push(val);
+  window._inclData[id] = items;
+  inclRender(id);
+  inp.value = '';
+  inp.focus();
 }
 
 /* ════════════════════════════════════════
