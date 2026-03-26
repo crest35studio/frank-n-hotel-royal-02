@@ -1840,7 +1840,7 @@ function openCV(session){
   fb.className='cv-flag-btn'+(isFlag?' on':'');
   fb.innerHTML=isFlag?'\u2691 UNFLAG TRAINING':'\u2691 FLAG FOR TRAINING';
 
-  document.getElementById('cv-trash-btn').style.display   = (!isTrash&&!isConv)?'':'none';
+  document.getElementById('cv-trash-btn').style.display   = !isTrash?'':'none';
   document.getElementById('cv-restore-btn').style.display = isTrash?'':'none';
   document.getElementById('cv-perm-btn').style.display    = isTrash?'':'none';
 
