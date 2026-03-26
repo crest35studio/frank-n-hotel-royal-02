@@ -4576,6 +4576,9 @@
         <div class="sm-bk-field"><label class="sm-bk-lbl">FULL NAME</label><input class="sm-bk-in" id="sm-bk-name" type="text" placeholder="Your name" autocomplete="name"/></div>
         <div class="sm-bk-field"><label class="sm-bk-lbl">EMAIL</label><input class="sm-bk-in" id="sm-bk-email" type="email" placeholder="your@email.com" autocomplete="email"/></div>
       </div>
+      <div class="sm-bk-row">
+        <div class="sm-bk-field" style="grid-column:1/-1"><label class="sm-bk-lbl">PHONE NUMBER</label><input class="sm-bk-in" id="sm-bk-phone" type="tel" placeholder="+234 000 000 0000" autocomplete="tel"/></div>
+      </div>
       <div class="sm-bk-total-row" id="sm-bk-total-row"></div>
     </div>
     <button class="sm-bk-submit" id="sm-bk-submit"><i class="fas fa-crown"></i> CONFIRM RESERVATION</button>
@@ -8959,13 +8962,12 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
             price_per_night:  rawPrice,
             check_in:         ci,
             check_out:        co,
-            nights:           nights,
             adults:           1,
             children:         0,
             total_ngn:        rawPrice * nights,
             guest_name:       name,
             guest_email:      email,
-            guest_phone:      null,
+            guest_phone:      (document.getElementById('sm-bk-phone') ? document.getElementById('sm-bk-phone').value.trim() || null : null),
             occasion:         null,
             special_requests: null,
             status:           'pending',
