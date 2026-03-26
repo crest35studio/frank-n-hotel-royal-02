@@ -1434,6 +1434,181 @@
     }
     .sm-thumb:hover { opacity: .82; }
 
+
+    /* ════════════════════════════════════════════════
+       SWIPE HINT — mobile only
+    ════════════════════════════════════════════════ */
+    .sm-swipe-hint {
+      display: none; /* shown only in mobile block */
+    }
+
+    /* ════════════════════════════════════════════════
+       MODAL VIEWS — info / booking / confirm
+    ════════════════════════════════════════════════ */
+    .sm-view {
+      display: none;
+    }
+    .sm-view.active {
+      display: block;
+    }
+
+    /* ── In-modal booking panel ── */
+    .sm-bk-back {
+      font-family: var(--cinzel);
+      font-size: 8px;
+      letter-spacing: .28em;
+      color: var(--gold);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      opacity: .75;
+      transition: opacity .2s;
+    }
+    .sm-bk-back:hover { opacity: 1; }
+    .sm-bk-suite-name {
+      font-family: var(--cormorant);
+      font-size: 26px;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .sm-bk-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .sm-bk-price {
+      font-family: var(--cinzel);
+      font-size: 20px;
+      color: var(--gold);
+    }
+    .sm-bk-per {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    .sm-bk-fields { margin-top: 20px; }
+    .sm-bk-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .sm-bk-field { display: flex; flex-direction: column; gap: 5px; }
+    .sm-bk-lbl {
+      font-family: var(--cinzel);
+      font-size: 7px;
+      letter-spacing: .26em;
+      color: var(--text-muted);
+    }
+    .sm-bk-in {
+      background: #161210;
+      border: 1px solid rgba(201,169,110,.22);
+      color: var(--text);
+      font-family: var(--raleway);
+      font-size: 13px;
+      padding: 10px 12px;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color .25s;
+      color-scheme: dark;
+    }
+    .sm-bk-in:focus { border-color: var(--gold); }
+    .sm-bk-total-row {
+      font-family: var(--cinzel);
+      font-size: 10px;
+      letter-spacing: .2em;
+      color: var(--gold);
+      padding: 14px 0 6px;
+      border-top: 1px solid rgba(201,169,110,.1);
+      min-height: 20px;
+    }
+    .sm-bk-submit {
+      width: 100%;
+      margin-top: 18px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--cinzel);
+      font-size: 9px;
+      letter-spacing: .3em;
+      padding: 15px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background .3s, color .3s;
+    }
+    .sm-bk-submit:hover { background: rgba(201,169,110,.1); }
+    .sm-bk-submit:disabled { opacity: .5; cursor: not-allowed; }
+    .sm-bk-err {
+      font-size: 11px;
+      color: #e67e73;
+      margin-top: 10px;
+      min-height: 16px;
+    }
+
+    /* ── Confirmation view ── */
+    .sm-conf-icon {
+      font-size: 44px;
+      color: var(--gold);
+      text-align: center;
+      margin: 20px 0 14px;
+    }
+    .sm-conf-title {
+      font-family: var(--cinzel);
+      font-size: 11px;
+      letter-spacing: .32em;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .sm-conf-ref {
+      font-family: var(--cinzel);
+      font-size: 13px;
+      letter-spacing: .18em;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .sm-conf-msg {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.75;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .sm-conf-close {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--cinzel);
+      font-size: 9px;
+      letter-spacing: .3em;
+      padding: 14px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background .3s;
+    }
+    .sm-conf-close:hover { background: rgba(201,169,110,.1); }
+
+    /* View transition */
+    .sm-view {
+      animation: smViewIn .35s cubic-bezier(.16,1,.3,1);
+    }
+    @keyframes smViewIn {
+      from { opacity: 0; transform: translateX(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+
     /* ── RIGHT: Info panel ── */
     .sm-info-panel {
       flex: 1;
@@ -1694,6 +1869,64 @@
       .sm-reserve-btn { width: 100%; justify-content: center; padding: 14px 20px; }
       .sm-close     { top: 10px; right: 10px; width: 40px; height: 40px; z-index: 20; }
       .sm-divider   { margin: 12px 0; }
+      /* ── Swipe hint (mobile only) ── */
+      .sm-swipe-hint {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        position: absolute;
+        bottom: 10px;
+        left: 0; right: 0;
+        z-index: 7;
+        pointer-events: none;
+        animation: swipeHintAnim 2.5s ease-in-out infinite;
+        transition: opacity .4s ease;
+      }
+      .sm-swipe-hint.hidden { opacity: 0; }
+      @keyframes swipeHintAnim {
+        0%,100% { opacity: .85; }
+        50%      { opacity: .45; }
+      }
+      .sm-swipe-chv {
+        font-size: 22px;
+        color: rgba(201,169,110,.9);
+        line-height: 1;
+        font-weight: 300;
+      }
+      .sm-swipe-mid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      .sm-swipe-dots-row {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+      .sm-swipe-dot {
+        width: 5px; height: 5px;
+        border-radius: 50%;
+        background: rgba(201,169,110,.35);
+        transition: background .3s, transform .3s;
+        flex-shrink: 0;
+      }
+      .sm-swipe-dot.on {
+        background: #C9A96E;
+        transform: scale(1.3);
+      }
+      .sm-swipe-label {
+        font-family: var(--cinzel);
+        font-size: 7px;
+        letter-spacing: .32em;
+        color: rgba(201,169,110,.75);
+        line-height: 1;
+      }
+      /* Mobile booking field overrides */
+      .sm-bk-row { grid-template-columns: 1fr; }
+      .sm-bk-suite-name { font-size: 22px; }
+      .sm-bk-price { font-size: 18px; }
     }
 
     /* ═══════════════════════════════════════════════
@@ -4298,47 +4531,65 @@
 <div class="sm-main-photo">
 <img alt="" id="sm-main-img" loading="eager" src=""/>
 <div aria-live="polite" class="sm-photo-count" id="sm-count"></div>
-<button aria-label="Previous photo" class="sm-arrow sm-arrow-prev" id="sm-prev">
-<i class="fas fa-chevron-left"></i>
-</button>
-<button aria-label="Next photo" class="sm-arrow sm-arrow-next" id="sm-next">
-<i class="fas fa-chevron-right"></i>
-</button>
-<!-- Mobile-only carousel UI -->
+<button aria-label="Previous photo" class="sm-arrow sm-arrow-prev" id="sm-prev"><i class="fas fa-chevron-left"></i></button>
+<button aria-label="Next photo" class="sm-arrow sm-arrow-next" id="sm-next"><i class="fas fa-chevron-right"></i></button>
 <div class="sm-mob-dots" id="sm-mob-dots" aria-hidden="true"></div>
-<div class="sm-mob-progress" id="sm-mob-progress" aria-hidden="true">
-  <div class="sm-mob-progress-fill" id="sm-mob-fill"></div>
-</div>
-<div class="sm-mob-paused" id="sm-mob-paused" aria-hidden="true">PAUSED</div>
-<div class="sm-scroll-hint" id="sm-scroll-hint" aria-hidden="true">
-  <div class="sm-scroll-hint-bar"></div>
-  <div class="sm-scroll-hint-label">SCROLL</div>
+<div class="sm-swipe-hint" id="sm-swipe-hint" aria-hidden="true">
+  <span class="sm-swipe-chv">&#8249;</span>
+  <div class="sm-swipe-mid">
+    <div class="sm-swipe-dots-row" id="sm-swipe-dots-row"></div>
+    <span class="sm-swipe-label">SWIPE</span>
+  </div>
+  <span class="sm-swipe-chv">&#8250;</span>
 </div>
 </div>
 <div aria-label="Suite photos" class="sm-thumbs" id="sm-thumbs" role="list"></div>
 </div>
-<!-- RIGHT / BELOW: Info -->
-<div class="sm-info-panel">
-<div class="sm-badge" id="sm-badge"></div>
-<h2 class="sm-name" id="sm-modal-name"></h2>
-<p class="sm-tagline" id="sm-tagline"></p>
-<div aria-hidden="true" class="sm-divider"></div>
-<p class="sm-desc" id="sm-desc"></p>
-<div class="sm-amenities-title">SUITE INCLUSIONS</div>
-<div class="sm-amenities" id="sm-amenities"></div>
-<div class="sm-footer">
-<div>
-<div class="sm-price" id="sm-price"></div>
-<div class="sm-price-note">per night · all inclusive</div>
+<div class="sm-info-panel" id="sm-info-panel">
+  <div class="sm-view sm-view-info active" id="sm-view-info">
+    <div class="sm-badge" id="sm-badge"></div>
+    <h2 class="sm-name" id="sm-modal-name"></h2>
+    <p class="sm-tagline" id="sm-tagline"></p>
+    <div aria-hidden="true" class="sm-divider"></div>
+    <p class="sm-desc" id="sm-desc"></p>
+    <div class="sm-amenities-title">SUITE INCLUSIONS</div>
+    <div class="sm-amenities" id="sm-amenities"></div>
+    <div class="sm-footer">
+      <div>
+        <div class="sm-price" id="sm-price"></div>
+        <div class="sm-price-note">per night · all inclusive</div>
+      </div>
+      <button class="sm-reserve-btn" id="sm-reserve-btn"><i class="fas fa-crown"></i> RESERVE THIS SUITE</button>
+    </div>
+  </div>
+  <div class="sm-view sm-view-book" id="sm-view-book">
+    <div class="sm-bk-back" id="sm-bk-back"><i class="fas fa-arrow-left"></i> Back to suite</div>
+    <div class="sm-bk-suite-name" id="sm-bk-suite-name"></div>
+    <div class="sm-bk-price-row"><span class="sm-bk-price" id="sm-bk-price"></span><span class="sm-bk-per"> / night</span></div>
+    <div class="sm-divider"></div>
+    <div class="sm-bk-fields">
+      <div class="sm-bk-row">
+        <div class="sm-bk-field"><label class="sm-bk-lbl">CHECK-IN</label><input class="sm-bk-in" id="sm-bk-checkin" type="date"/></div>
+        <div class="sm-bk-field"><label class="sm-bk-lbl">CHECK-OUT</label><input class="sm-bk-in" id="sm-bk-checkout" type="date"/></div>
+      </div>
+      <div class="sm-bk-row">
+        <div class="sm-bk-field"><label class="sm-bk-lbl">FULL NAME</label><input class="sm-bk-in" id="sm-bk-name" type="text" placeholder="Your name" autocomplete="name"/></div>
+        <div class="sm-bk-field"><label class="sm-bk-lbl">EMAIL</label><input class="sm-bk-in" id="sm-bk-email" type="email" placeholder="your@email.com" autocomplete="email"/></div>
+      </div>
+      <div class="sm-bk-total-row" id="sm-bk-total-row"></div>
+    </div>
+    <button class="sm-bk-submit" id="sm-bk-submit"><i class="fas fa-crown"></i> CONFIRM RESERVATION</button>
+    <div class="sm-bk-err" id="sm-bk-err"></div>
+  </div>
+  <div class="sm-view sm-view-confirm" id="sm-view-confirm">
+    <div class="sm-conf-icon"><i class="fas fa-check-circle"></i></div>
+    <div class="sm-conf-title">Reservation Submitted</div>
+    <div class="sm-conf-ref" id="sm-conf-ref"></div>
+    <p class="sm-conf-msg">Thank you. Our team will confirm your stay within the hour.</p>
+    <button class="sm-conf-close" id="sm-conf-close"><i class="fas fa-crown"></i> CLOSE</button>
+  </div>
 </div>
-<button class="sm-reserve-btn" id="sm-reserve-btn">
-<i class="fas fa-crown"></i>
-          RESERVE THIS SUITE
-        </button>
-</div>
-</div>
-  <!-- Bottom sheet dim overlay (mobile only) -->
-  <div class="sm-sheet-dim" id="sm-sheet-dim"></div>
+<div class="sm-sheet-dim" id="sm-sheet-dim"></div>
 </div><!-- /sm-scroll-wrap -->
 </div><!-- /suite-modal -->
 <!-- ╔══════════════════════════════════════╗
@@ -8512,10 +8763,15 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
     }
 
     function buildAmenities(data) {
-      const el = document.getElementById('sm-amenities');
-      el.innerHTML = data.amenities.map(function(a) {
-        return '<div class="sm-amenity"><i class="fas ' + a.icon + '" aria-hidden="true"></i>' + a.label + '</div>';
-      }).join('');
+      /* Try Supabase inclusions first, fall back to SUITE_DATA amenities */
+      if (typeof window.smFetchInclusions === 'function') {
+        window.smFetchInclusions(data.name, data.amenities);
+      } else {
+        const el = document.getElementById('sm-amenities');
+        el.innerHTML = data.amenities.map(function(a) {
+          return '<div class="sm-amenity"><i class="fas ' + a.icon + '" aria-hidden="true"></i>' + a.label + '</div>';
+        }).join('');
+      }
     }
 
     window.openSuiteModal = function(key) {
@@ -8550,17 +8806,13 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       mobCarousel.reset();
       if (photos.length > 1) mobCarousel.init(photos.length);
 
-      /* Wire reserve button */
+      /* Wire reserve button — opens in-modal booking view */
       document.getElementById('sm-reserve-btn').onclick = function() {
-        const radios = Array.from(document.querySelectorAll('input[name="suite"]'));
-        const match = radios.find(function(r) { return r.value === data.name; });
-        if (match) match.checked = true;
-        bkBuildSummary();
-        closeSuiteModal();
-        setTimeout(function() {
-          document.getElementById('booking').scrollIntoView({ behavior:'smooth' });
-        }, 300);
+        smShowBookView(data);
       };
+
+      /* Reset to info view on every open */
+      smSwitchView('sm-view-info');
 
       modal.classList.add('sm-open');
       /* Reset scroll to top of photo on every open */
@@ -8582,6 +8834,196 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       document.body.style.overflow            = 'hidden';
 
             setTimeout(function() { closeBtn.focus(); }, 80);
+    };
+
+
+    /* ════════════════════════════════════════════════════
+       IN-MODAL VIEW SWITCHER
+    ════════════════════════════════════════════════════ */
+    function smSwitchView(id) {
+      document.querySelectorAll('.sm-view').forEach(function(v) {
+        v.classList.remove('active');
+      });
+      var el = document.getElementById(id);
+      if (el) {
+        el.classList.add('active');
+        /* Scroll info panel to top */
+        var panel = document.getElementById('sm-info-panel');
+        if (panel) panel.scrollTop = 0;
+        var sw = document.getElementById('sm-scroll-wrap');
+        if (sw) sw.scrollTop = 0;
+      }
+    }
+
+    /* ════════════════════════════════════════════════════
+       IN-MODAL BOOKING
+    ════════════════════════════════════════════════════ */
+    var smCurrentData = null;
+
+    function smShowBookView(data) {
+      smCurrentData = data;
+
+      /* Populate booking panel header */
+      var nameEl = document.getElementById('sm-bk-suite-name');
+      var priceEl = document.getElementById('sm-bk-price');
+      if (nameEl) nameEl.textContent = data.name;
+      if (priceEl) priceEl.textContent = data.price;
+
+      /* Default dates — today + tomorrow */
+      var today = new Date();
+      var tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate() + 1);
+      var fmt = function(d) {
+        return d.getFullYear() + '-' +
+               String(d.getMonth()+1).padStart(2,'0') + '-' +
+               String(d.getDate()).padStart(2,'0');
+      };
+      var ci = document.getElementById('sm-bk-checkin');
+      var co = document.getElementById('sm-bk-checkout');
+      if (ci && !ci.value) ci.value = fmt(today);
+      if (co && !co.value) co.value = fmt(tomorrow);
+
+      /* Clear fields */
+      ['sm-bk-name','sm-bk-email'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      var errEl = document.getElementById('sm-bk-err');
+      if (errEl) errEl.textContent = '';
+
+      smUpdateTotal();
+      smSwitchView('sm-view-book');
+    }
+
+    function smUpdateTotal() {
+      if (!smCurrentData) return;
+      var ci = document.getElementById('sm-bk-checkin');
+      var co = document.getElementById('sm-bk-checkout');
+      var row = document.getElementById('sm-bk-total-row');
+      if (!ci || !co || !row) return;
+      var d1 = new Date(ci.value), d2 = new Date(co.value);
+      if (isNaN(d1) || isNaN(d2) || d2 <= d1) { row.textContent = ''; return; }
+      var nights = Math.round((d2 - d1) / 86400000);
+      var rawPrice = parseInt((smCurrentData.price || '').replace(/[^\d]/g,''), 10) || 0;
+      var total = rawPrice * nights;
+      row.textContent = nights + ' night' + (nights > 1 ? 's' : '') +
+        '  ·  ₦' + total.toLocaleString('en-NG') + ' total';
+    }
+
+    /* Live total update */
+    ['sm-bk-checkin','sm-bk-checkout'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('change', smUpdateTotal);
+    });
+
+    /* Back button */
+    var smBkBack = document.getElementById('sm-bk-back');
+    if (smBkBack) {
+      smBkBack.addEventListener('click', function() {
+        smSwitchView('sm-view-info');
+      });
+    }
+
+    /* Submit reservation */
+    var smBkSubmit = document.getElementById('sm-bk-submit');
+    if (smBkSubmit) {
+      smBkSubmit.addEventListener('click', async function() {
+        var name  = (document.getElementById('sm-bk-name').value || '').trim();
+        var email = (document.getElementById('sm-bk-email').value || '').trim();
+        var ci    = document.getElementById('sm-bk-checkin').value;
+        var co    = document.getElementById('sm-bk-checkout').value;
+        var errEl = document.getElementById('sm-bk-err');
+
+        if (!name)  { errEl.textContent = 'Please enter your name.'; return; }
+        if (!email || !email.includes('@')) { errEl.textContent = 'Please enter a valid email.'; return; }
+        if (!ci || !co) { errEl.textContent = 'Please select your dates.'; return; }
+        var d1 = new Date(ci), d2 = new Date(co);
+        if (d2 <= d1) { errEl.textContent = 'Check-out must be after check-in.'; return; }
+
+        errEl.textContent = '';
+        smBkSubmit.disabled = true;
+        smBkSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
+
+        var nights = Math.round((d2 - d1) / 86400000);
+        var rawPrice = parseInt((smCurrentData.price || '').replace(/[^\d]/g,''), 10) || 0;
+        var ref = 'FNR-' + Date.now().toString(36).toUpperCase().slice(-6);
+
+        try {
+          var sb = window.__sb;
+          if (!sb) throw new Error('Connection unavailable. Please try the booking form below.');
+
+          var slug = (smCurrentData.name||'').toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+          var payload = {
+            reference:        ref,
+            room_slug:        slug,
+            room_name:        smCurrentData.name,
+            price_per_night:  rawPrice,
+            check_in:         ci,
+            check_out:        co,
+            nights:           nights,
+            adults:           1,
+            children:         0,
+            total_ngn:        rawPrice * nights,
+            guest_name:       name,
+            guest_email:      email,
+            guest_phone:      null,
+            occasion:         null,
+            special_requests: null,
+            status:           'pending',
+            source:           'modal'
+          };
+
+          var res = await sb.from('bookings').insert(payload);
+          if (res.error) throw new Error(res.error.message);
+
+          /* Show confirmation */
+          var refEl = document.getElementById('sm-conf-ref');
+          if (refEl) refEl.textContent = 'REF: ' + ref;
+          smSwitchView('sm-view-confirm');
+
+        } catch(err) {
+          errEl.textContent = err.message || 'Submission failed. Please try again.';
+          smBkSubmit.disabled = false;
+          smBkSubmit.innerHTML = '<i class="fas fa-crown"></i> CONFIRM RESERVATION';
+        }
+      });
+    }
+
+    /* Confirmation close */
+    var smConfClose = document.getElementById('sm-conf-close');
+    if (smConfClose) {
+      smConfClose.addEventListener('click', function() {
+        closeSuiteModal();
+      });
+    }
+
+    /* ════════════════════════════════════════════════════
+       SUITE INCLUSIONS — fetch from Supabase
+       Falls back to SUITE_DATA.amenities if unavailable
+    ════════════════════════════════════════════════════ */
+    window.smFetchInclusions = async function(roomName, fallbackAmenities) {
+      var el = document.getElementById('sm-amenities');
+      if (!el) return;
+      try {
+        var sb = window.__sb;
+        if (!sb) throw new Error('no sb');
+        var res = await sb.from('rooms')
+          .select('inclusions')
+          .eq('name', roomName)
+          .single();
+        if (res.error || !res.data) throw new Error('no data');
+        var incl = res.data.inclusions;
+        if (!incl || !incl.length) throw new Error('empty');
+        el.innerHTML = incl.map(function(item) {
+          var icon = item.icon || 'fa-check';
+          var label = item.label || item;
+          return '<div class="sm-amenity"><i class="fas ' + icon + '" aria-hidden="true"></i>' + label + '</div>';
+        }).join('');
+      } catch(e) {
+        /* Fallback to hardcoded */
+        el.innerHTML = fallbackAmenities.map(function(a) {
+          return '<div class="sm-amenity"><i class="fas ' + a.icon + '" aria-hidden="true"></i>' + a.label + '</div>';
+        }).join('');
+      }
     };
 
     function closeSuiteModal() {
@@ -8658,8 +9100,12 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       }
 
       function syncDots(idx) {
+        /* Sync main dots */
         var dots = document.querySelectorAll('.sm-mob-dot');
         dots.forEach(function(d, i) { d.classList.toggle('on', i === idx); });
+        /* Sync swipe hint dots */
+        var sdots = document.querySelectorAll('.sm-swipe-dot');
+        sdots.forEach(function(d, i) { d.classList.toggle('on', i === idx); });
       }
 
       /* Wire horizontal swipe on main photo */
@@ -8684,17 +9130,50 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
         }, { passive: true });
       }
 
+      function buildSwipeDots(count) {
+        var row = document.getElementById('sm-swipe-dots-row');
+        if (!row) return;
+        row.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+          var d = document.createElement('div');
+          d.className = 'sm-swipe-dot' + (i === 0 ? ' on' : '');
+          row.appendChild(d);
+        }
+      }
+
       return {
         init: function(count) {
           if (!isMob()) return;
           requestAnimationFrame(function() {
             buildDots(count);
+            buildSwipeDots(count);
             syncDots(0);
+            /* Show swipe hint, hide after first swipe or 4s */
+            var hint = document.getElementById('sm-swipe-hint');
+            if (hint && count > 1) {
+              hint.classList.remove('hidden');
+              var hintTimer = setTimeout(function() {
+                if (hint) hint.classList.add('hidden');
+              }, 4000);
+              /* Hide on first swipe */
+              var mi2 = document.getElementById('sm-main-img');
+              if (mi2) {
+                mi2.addEventListener('touchend', function hideOnSwipe() {
+                  clearTimeout(hintTimer);
+                  if (hint) hint.classList.add('hidden');
+                  mi2.removeEventListener('touchend', hideOnSwipe);
+                }, { passive: true, once: true });
+              }
+            }
           });
         },
         reset: function() {
           var el = document.getElementById('sm-mob-dots');
           if (el) el.innerHTML = '';
+          var row = document.getElementById('sm-swipe-dots-row');
+          if (row) row.innerHTML = '';
+          var hint = document.getElementById('sm-swipe-hint');
+          if (hint) hint.classList.remove('hidden');
         },
         stop: function() {}
       };
