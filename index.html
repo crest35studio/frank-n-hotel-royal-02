@@ -2986,6 +2986,19 @@
       }
       .mob-drawer-reserve:hover { opacity: .88; }
 
+      /* Tap highlight on nav links */
+      .mobile-overlay .nav-links a:active,
+      .mob-drawer-reserve:active {
+        color: #C9A96E !important;
+        opacity: .7;
+        transition: none;
+      }
+
+      /* Snappier close */
+      .mobile-overlay {
+        transition: transform .25s cubic-bezier(.4,0,.2,1) !important;
+      }
+
       .mob-drawer-contact {
         font-family: var(--raleway); font-size: 11px; font-weight: 300;
         color: rgba(245,240,232,.22); letter-spacing: .08em;
@@ -4240,16 +4253,15 @@
       <button aria-label="Close navigation" class="mob-drawer-close" id="mob-close-btn" onclick="closeMob();">&#10005;</button>
     </div>
     <ul class="nav-links" role="list">
-      <li data-section="suites"><a class="mlink" href="javascript:void(0)" onclick="closeMob();var t=document.getElementById('suites');if(t){t.scrollIntoView({behavior:'smooth'});}return false;"><span aria-hidden="true" class="mob-d-dot"></span>Suites &amp; Rooms</a></li>
-      <li data-section="dining"><a class="mlink" href="javascript:void(0)" onclick="closeMob();var t=document.getElementById('dining');if(t){t.scrollIntoView({behavior:'smooth'});}return false;"><span aria-hidden="true" class="mob-d-dot"></span>Dining</a></li>
-      <li data-section="gallery"><a class="mlink" href="javascript:void(0)" onclick="closeMob();var t=document.getElementById('gallery');if(t){t.scrollIntoView({behavior:'smooth'});}return false;"><span aria-hidden="true" class="mob-d-dot"></span>Storybook</a></li>
-      <li data-section="story"><a class="mlink" href="javascript:void(0)" onclick="closeMob();var t=document.getElementById('story');if(t){t.scrollIntoView({behavior:'smooth'});}return false;"><span aria-hidden="true" class="mob-d-dot"></span>Our Heritage</a></li>
-      <li data-section="booking"><a class="mlink" href="javascript:void(0)" onclick="closeMob();var t=document.getElementById('booking');if(t){t.scrollIntoView({behavior:'smooth'});}return false;"><span aria-hidden="true" class="mob-d-dot"></span>Reserve</a></li>
-      <li data-section="contact"><a class="mlink" href="javascript:void(0)" onclick="closeMob();var t=document.getElementById('contact');if(t){t.scrollIntoView({behavior:'smooth'});}return false;"><span aria-hidden="true" class="mob-d-dot"></span>Contact</a></li>
-      <li data-section="location"><a class="mlink" href="javascript:void(0)" onclick="closeMob();var t=document.getElementById('location');if(t){t.scrollIntoView({behavior:'smooth'});}return false;"><span aria-hidden="true" class="mob-d-dot"></span>Location</a></li>
+      <li data-section="suites"><a class="mlink" href="javascript:void(0)" onclick="mobNavTo('suites');return false;"><span aria-hidden="true" class="mob-d-dot"></span>Suites &amp; Rooms</a></li>
+      <li data-section="dining"><a class="mlink" href="javascript:void(0)" onclick="mobNavTo('dining');return false;"><span aria-hidden="true" class="mob-d-dot"></span>Dining</a></li>
+      <li data-section="gallery"><a class="mlink" href="javascript:void(0)" onclick="mobNavTo('gallery');return false;"><span aria-hidden="true" class="mob-d-dot"></span>Storybook</a></li>
+      <li data-section="story"><a class="mlink" href="javascript:void(0)" onclick="mobNavTo('story');return false;"><span aria-hidden="true" class="mob-d-dot"></span>Our Heritage</a></li>
+      <li data-section="contact"><a class="mlink" href="javascript:void(0)" onclick="mobNavTo('contact');return false;"><span aria-hidden="true" class="mob-d-dot"></span>Contact</a></li>
+      <li data-section="location"><a class="mlink" href="javascript:void(0)" onclick="mobNavTo('location');return false;"><span aria-hidden="true" class="mob-d-dot"></span>Location</a></li>
     </ul>
     <div class="mob-drawer-footer">
-      <a class="mob-drawer-reserve mlink" href="javascript:void(0)" onclick="closeMob();var t=document.getElementById('booking');if(t){t.scrollIntoView({behavior:'smooth'});}return false;">RESERVE YOUR SUITE</a>
+      <a class="mob-drawer-reserve mlink" href="javascript:void(0)" onclick="mobNavTo('booking');return false;">RESERVE YOUR SUITE</a>
       <div class="mob-drawer-contact">+234 903 913 3776</div>
     </div>
   </div>
@@ -10132,8 +10144,31 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
       document.body.style.overflow = '';
     }
 
-    /* Expose globally for onclick= handlers in drawer links */
+    /* Expose globally */
     window.closeMob = closeNav;
+
+    /* ── Cinematic nav: close drawer, then glide to section ── */
+    window.mobNavTo = function(sectionId) {
+      closeNav();
+      setTimeout(function() {
+        var target = document.getElementById(sectionId);
+        if (!target) return;
+        var startY = window.pageYOffset;
+        var endY   = target.getBoundingClientRect().top + startY - 60;
+        var duration = 900;
+        var startTime = null;
+        function easeInOutCubic(t) {
+          return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+        }
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          window.scrollTo(0, startY + (endY - startY) * easeInOutCubic(progress));
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }, 280);
+    };
 
     /* Burger tap */
     burger.addEventListener('click', function() {
@@ -10149,6 +10184,18 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && isOpen) { closeNav(); }
     });
+
+    /* ── Swipe right to dismiss drawer ── */
+    var swipeStartX = 0, swipeStartY = 0;
+    mob.addEventListener('touchstart', function(e) {
+      swipeStartX = e.touches[0].clientX;
+      swipeStartY = e.touches[0].clientY;
+    }, { passive: true });
+    mob.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - swipeStartX;
+      var dy = Math.abs(e.changedTouches[0].clientY - swipeStartY);
+      if (dx > 60 && dy < 40 && isOpen) { closeNav(); }
+    }, { passive: true });
 
     /* All .mlink taps (drawer links + reserve button) */
     var mlinks = document.querySelectorAll('.mlink');
