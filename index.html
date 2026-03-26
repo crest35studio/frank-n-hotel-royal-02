@@ -8954,7 +8954,17 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
           var sb = window.__sb;
           if (!sb) throw new Error('Connection unavailable. Please try the booking form below.');
 
-          var slug = (smCurrentData.name||'').toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+          /* Exact slug map — must match rooms.slug in Supabase */
+          var SLUG_MAP = {
+            'Royal Presidential Suite': 'Royal Presidential Suite',
+            'Presidential Suite':       'presidential-suite',
+            'Suite':                    'suite',
+            'Executive Room':           'executive-room',
+            'Deluxe Room':              'deluxe-room',
+            'Standard Room':            'standard-room'
+          };
+          var slug = SLUG_MAP[smCurrentData.name] ||
+            (smCurrentData.name||'').toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
           var payload = {
             reference:        ref,
             room_slug:        slug,
