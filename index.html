@@ -875,7 +875,7 @@
       position:fixed;
       top:0; right:0; bottom:0;
       width:78%; max-width:320px;
-      z-index:999;
+      z-index:1002;
       background:#0c0b0b;
       border-left:1px solid rgba(201,169,110,.22);
       flex-direction:column;
@@ -2841,7 +2841,7 @@
       /* Backdrop dimmer */
       #mob-backdrop {
         display: none;
-        position: fixed; inset: 0; z-index: 998;
+        position: fixed; inset: 0; z-index: 1001;
         background: rgba(0,0,0,0);
         transition: background .4s ease;
         -webkit-tap-highlight-color: transparent;
@@ -2858,7 +2858,7 @@
         top: 0; right: 0; bottom: 0;
         width: 78%;
         max-width: 320px;
-        z-index: 999;
+        z-index: 1002;
         background: #0c0b0b;
         border-left: 1px solid rgba(201,169,110,.22);
         background-image:
@@ -6233,6 +6233,13 @@ window.__sbLoaded = new Promise(function(res, rej) {
   });
 
   </script>
+<!-- BACK TO TOP ═══════════════════════════════════════════════════════════ -->
+<div aria-hidden="true" id="back-top">
+<button aria-label="Back to top" class="btt-inner" onclick="window.scrollTo({top:0,behavior:'smooth'});" type="button">
+<span class="btt-ring">&#9650;</span>
+<span class="btt-label">TOP</span>
+</button>
+</div>
 <!-- ROYAL CONCIERGE AI CHAT ═══════════════════════════════════════════════ -->
 <div aria-label="Brume — Royal Concierge" id="rc-wrap" role="complementary">
 <section aria-hidden="true" aria-label="Brume — Royal Concierge chat panel" id="rc-panel">
@@ -10130,6 +10137,11 @@ TONE: Warm, confident, concise, and Nigerian in spirit. Never stuffy. Never robo
     }
 
     function closeNav() {
+      /* Guard: closing is idempotent. A nav link fires closeNav twice in the
+         same click (its onclick=mobNavTo and the .mlink listener). Without this
+         guard the second call runs a second history.back() before the first has
+         applied — popping past our pushed state and navigating off the site. */
+      if (!isOpen) { return; }
       isOpen = false;
       burger.setAttribute('aria-expanded', 'false');
       burger.classList.remove('is-open');
